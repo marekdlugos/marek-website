@@ -1,0 +1,4 @@
+baseURL = "https://www.marekdlugos.com/"
+languageCode = "en-us"
+title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering."
+disableKinds = ["taxonomy", "taxonomyTerm"]

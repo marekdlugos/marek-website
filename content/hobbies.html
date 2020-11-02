@@ -1,0 +1,396 @@
+---
+title: "Hobbies"
+date: 2020-04-15T20:09:07+02:00
+---
+
+<section>
+  <!-- Couchsurfing? -->
+  <h2>Traveling</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <p>Countries visited: 46</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <p>Journeys around the world: 2</p>
+    </div>
+    <div class="col-md-4 text-right">
+      <p><a href="https://my.flightradar24.com/marekdlugos" class="external" target="_blank">My Flight Radar profile</a></p>
+    </div>
+  </div>
+  
+  <script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
+  <script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js" type="text/javascript"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
+  <div id="mapdiv" style="width: 1156px; height: 450px;"></div>
+  <script type="text/javascript">
+    var map = AmCharts.makeChart("mapdiv", {
+      type: "map",
+      theme: "dark",
+      projection: "mercator",
+      panEventsEnabled: true,
+      backgroundColor: "#535364",
+      backgroundAlpha: 1,
+      zoomControl: {
+        zoomControlEnabled: true
+      },
+      dataProvider: {
+        map: "worldHigh",
+        getAreasFromMap: true,
+        areas:
+          [
+            {
+              "id": "AT",
+              "showAsSelected": true
+            },
+            {
+              "id": "BE",
+              "showAsSelected": true
+            },
+            {
+              "id": "BG",
+              "showAsSelected": true
+            },
+            {
+              "id": "HR",
+              "showAsSelected": true
+            },
+            {
+              "id": "CY",
+              "showAsSelected": true
+            },
+            {
+              "id": "CZ",
+              "showAsSelected": true
+            },
+            {
+              "id": "DK",
+              "showAsSelected": true
+            },
+            {
+              "id": "FR",
+              "showAsSelected": true
+            },
+            {
+              "id": "DE",
+              "showAsSelected": true
+            },
+            {
+              "id": "GR",
+              "showAsSelected": true
+            },
+            {
+              "id": "HU",
+              "showAsSelected": true
+            },
+            {
+              "id": "IE",
+              "showAsSelected": true
+            },
+            {
+              "id": "IT",
+              "showAsSelected": true
+            },
+            {
+              "id": "LI",
+              "showAsSelected": true
+            },
+            {
+              "id": "LU",
+              "showAsSelected": true
+            },
+            {
+              "id": "NL",
+              "showAsSelected": true
+            },
+            {
+              "id": "PL",
+              "showAsSelected": true
+            },
+            {
+              "id": "PT",
+              "showAsSelected": true
+            },
+            {
+              "id": "SK",
+              "showAsSelected": true
+            },
+            {
+              "id": "SI",
+              "showAsSelected": true
+            },
+            {
+              "id": "ES",
+              "showAsSelected": true
+            },
+            {
+              "id": "CH",
+              "showAsSelected": true
+            },
+            {
+              "id": "GB",
+              "showAsSelected": true
+            },
+            {
+              "id": "BS",
+              "showAsSelected": true
+            },
+            {
+              "id": "CA",
+              "showAsSelected": true
+            },
+            {
+              "id": "US",
+              "showAsSelected": true
+            },
+            {
+              "id": "AR",
+              "showAsSelected": true
+            },
+            {
+              "id": "BR",
+              "showAsSelected": true
+            },
+            {
+              "id": "CL",
+              "showAsSelected": true
+            },
+            {
+              "id": "UY",
+              "showAsSelected": true
+            },
+            {
+              "id": "KH",
+              "showAsSelected": true
+            },
+            {
+              "id": "HK",
+              "showAsSelected": true
+            },
+            {
+              "id": "ID",
+              "showAsSelected": true
+            },
+            {
+              "id": "IL",
+              "showAsSelected": true
+            },
+            {
+              "id": "JO",
+              "showAsSelected": true
+            },
+            {
+              "id": "LA",
+              "showAsSelected": true
+            },
+            {
+              "id": "MO",
+              "showAsSelected": true
+            },
+            {
+              "id": "MY",
+              "showAsSelected": true
+            },
+            {
+              "id": "PS",
+              "showAsSelected": true
+            },
+            {
+              "id": "PH",
+              "showAsSelected": true
+            },
+            {
+              "id": "QA",
+              "showAsSelected": true
+            },
+            {
+              "id": "SG",
+              "showAsSelected": true
+            },
+            {
+              "id": "KR",
+              "showAsSelected": true
+            },
+            {
+              "id": "TW",
+              "showAsSelected": true
+            },
+            {
+              "id": "TH",
+              "showAsSelected": true
+            },
+            {
+              "id": "AE",
+              "showAsSelected": true
+            },
+            {
+              "id": "VN",
+              "showAsSelected": true
+            }
+          ]
+      },
+      areasSettings: {
+        autoZoom: true,
+        color: "#B4B4B7",
+        colorSolid: "#84ADE9",
+        selectedColor: "#84ADE9",
+        outlineColor: "#666666",
+        rollOverColor: "#9EC2F7",
+        rollOverOutlineColor: "#000000"
+      }
+    });
+  </script>
+
+  <div class="row">
+    <div class="col-md-3 p-20">
+      <h5>Asia</h5>
+      {{< countries-traveled asia >}}
+    </div>
+    <div class="col-md-3 p-20">
+      <h5>Europe</h5>
+      {{< countries-traveled europe >}}
+    </div>
+    <div class="col-md-3 p-20">
+      <h5>North America</h5>
+      {{< countries-traveled north-america >}}
+    </div>
+    <div class="col-md-3 p-20">
+      <h5>South America</h5>
+      {{< countries-traveled south-america >}}
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Sharing</h2>
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Interviews</h3>
+    </div>
+    <div class="col-md-9">
+      <img src="hobbies/marek-dlugos-podcast.jpg" alt="Marek Dlugos Podcast" class="mb-40">
+      <p>I was fortunate to meet a lot of very interesting people along the way and now I am happy to bring 5 interviews with some of them! I guess I might be able to say it is quality content, unfortunately, it is only available in the Slovak language.</p>
+      {{< podcast >}}
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Photography</h2>
+  <img src="hobbies/marek-dlugos-photography.jpg" alt="Marek Dlugos Photography" class="mb-40">
+  <div class="row">
+    <!-- <div class="col-md-6">
+      <h3>Best shots</h3>
+      <ul>
+        <li><a href="#">People</a></li>
+        <li><a href="#">Nature</a></li>
+        <li><a href="#">City</a></li>
+        <li><a href="#">Street</a></li>
+      </ul>
+    </div> -->
+    <div class="col-md-6">
+      <h3>Hair Tie Story</h3>
+      <p>I kissed a girl and after that, I had to leave her for 4 months. She gave me her hair tie and I captured spectacular moments with that hair tie on my wrist during my journey around the world until I came back to her. The story hit the front page of Imgur with over 170k views.</p>
+      <ul>
+        <li><a href="#" class="external">Read on Imgur</a></li>
+        <li><a href="#" class="external">Read on Medium</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Videography</h2>
+
+  <div class="row subsection">
+    <div class="col-md-7">
+      <h3>Traveling the South East Asia Series</h3>
+      <p>Since I was always into the video after I finished my semester abroad in South Korea, I have decided to travel and film everything I experience. It was kinda my experiment whether or not I would like to do vlogging on regular basis. I ended up uploading 19 videos on YouTube from my travels through Taiwan, Philippines, Singapore, and Malaysia.</p>
+    </div>
+    <div class="col-md-4 col-md-offset-1">
+      <div class="card">
+        <h4>Series info</h4>
+        <div class="row">
+          <div class="col-sm-6">Videos</div>
+          <div class="col-sm-6">22</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">Total length</div>
+          <div class="col-sm-6">2hr 22min</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">Produced</div>
+          <div class="col-sm-6">2015</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLfAn5S6hUak_H134_C8py9Cd5L275z-or" class="btn youtube">Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row subsection">
+    <div class="col-md-7">
+      <h3>Questions w/ Shopify Interns Series</h3>
+      <p>I’ve filmed 5 episodes of interviews with Shopify Interns during summer 2016 ranging from designers to software engineers so everyone can find themselves in their stories, get inspired and motivated and apply for an internship in some cool companies such as Shopify!</p>
+    </div>
+    <div class="col-md-4 col-md-offset-1">
+      <div class="card">
+        <h4>Series info</h4>
+        <div class="row">
+          <div class="col-sm-6">Videos</div>
+          <div class="col-sm-6">5</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">Total length</div>
+          <div class="col-sm-6">2hr 22min</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">Produced</div>
+          <div class="col-sm-6">2015</div>
+        </div>
+        <a href="https://youtu.be/ApSOemHdUcU?list=PLfAn5S6hUak9NqYmSIPIhspARcNvrllpq" class="btn youtube">Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row subsection">
+    <div class="col-sm-12">
+      <h3>Other small video projects/edits</h3>
+      {{< other-videos >}}
+    </div>
+  </div>
+
+  <div class="row subsection">
+    <div class="col-sm-12">
+      <h3>While working for companies</h3>
+      {{< work-videos >}}
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <h2>Sports</h2>
+  <div class="row mb-80">
+    <div class="col-md-3">
+      <h3>Basketball</h3>
+    </div>
+    <div class="col-md-9">
+      <img src="https://via.placeholder.com/1500x500" alt="" class="mb-40">
+      <p>This sport was in my heart for really long time. Everyday on the court outside and inside playing for my school team. Best memories, best friends, best moments. Can not forget. I have decided to give something back to my community and organized Christmas Basketball Tournament.</p>
+      <ul>
+        <li><a href="https://www.facebook.com/pg/Viano%C4%8Dn%C3%BD-streetball-Star%C3%A1-%C4%BDubov%C5%88a-129773007083153/photos/?tab=album&album_id=623940997666349" class="external">Photos from the tournament</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Ballroom Dancing</h3>
+    </div>
+    <div class="col-md-9">
+      <img src="hobbies/marek-dlugos-ballroom-dancing.jpg" alt="Marek Dlugos Ballroom Dancing" class="mb-40">
+      <p>I was really fortunate when the instructor from social dance classes came to me during the break and asked me if I want to level it up. Saying yes to a lot of opportunities I started to dance with my wonderful dance partner Karolina who alrady had had 10 year of experience. We were crushing competitions together for a year and half and I fell in love with this sport!</p>
+      <ul>
+        <li><a href="http://ksis.szts.sk/ksis/par.php?id=9117" class="external">Attended competitions</a></li>
+      </ul>
+    </div>
+  </div>
+</section>

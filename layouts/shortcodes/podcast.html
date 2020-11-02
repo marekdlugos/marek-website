@@ -1,0 +1,14 @@
+<ul>
+{{ range $.Site.Data.hobbies.podcast }}
+  <li><a href="{{ .url }}" title="{{ .name }}">{{ .name }}</a> (with {{ .with }})</li>
+{{end}}
+</ul>
+
+<!-- <div class="row between-md">
+{{ range $.Site.Data.hobbies.podcast }}
+<div class="col-md-3">
+  <img src="https://via.placeholder.com/300x300" alt="">
+  <p><a href="{{ .url }}" title="{{ .name }}">{{ .name }}</a> (with {{ .with }})</p>
+</div>
+{{end}}
+</div> -->

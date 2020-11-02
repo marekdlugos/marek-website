@@ -1,0 +1,8 @@
+<div class="row">
+    {{ range $.Site.Data.sharing.socialnetworks }}
+    <div class="col-md-6 mb-40">
+        <h3 class="mb-0"><a href="{{ .url }}" title="{{ .name }}" target="_blank">{{ .name }}</a></h3>
+        <small>{{ .desc }}</small>
+    </div>
+    {{ end }}
+</div>

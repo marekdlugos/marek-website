@@ -1,0 +1,14 @@
+
+{{$foo := index .Params 0 }}
+{{ $url := printf "/data/sharing/%s.json" $foo }}
+
+{{ range $rally := getJSON $url }}
+<div class="row">
+  <div class="col-md-2">
+    <p><span class="time">{{ .month }} {{ .year }}</span></p>
+  </div>
+  <div class="col-md-10">
+    <p><a href="{{ .url }}" title="{{ .title }}" target="_blank">{{ .title }}</a>{{ with .medium }}, {{ . }}{{ end }}</p>
+  </div>
+</div>
+{{ end }}

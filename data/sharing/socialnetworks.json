@@ -1,0 +1,42 @@
+[
+  {
+    "name": "LinkedIn",
+    "desc": "Work related content together with my resume.",
+    "url": "https://www.linkedin.com/in/marekdlugos/"
+  },
+  {
+    "name": "Facebook",
+    "desc": "Life updates and insights.",
+    "url": "https://www.facebook.com/marek.dlugos"
+  },
+  {
+    "name": "Instagram",
+    "desc": "Travels.",
+    "url": "https://www.instagram.com/marekdlugos/"
+  },
+  {
+    "name": "Twitter",
+    "desc": "Tech related content. Startups and web development.",
+    "url": "https://twitter.com/MarekDlugos"
+  },
+  {
+    "name": "YouTube",
+    "desc": "Travel vlogs and interviews.",
+    "url": "https://www.youtube.com/MarekDlugosVideos"
+  },
+  {
+    "name": "Medium",
+    "desc": "Long-read stories.",
+    "url": "https://medium.com/@MarekDlugos"
+  },
+  {
+    "name": "Dribbble",
+    "desc": "Design projects.",
+    "url": "https://medium.com/@MarekDlugos"
+  },
+  {
+    "name": "Github",
+    "desc": "Code projects.",
+    "url": "https://github.com/marekdlugos/"
+  }
+]

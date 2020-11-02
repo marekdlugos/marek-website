@@ -1,0 +1,11 @@
+
+{{ range $.Site.Data.educationawards.awards }}
+<div class="row">
+  <div class="col-md-2">
+      <p><span class="time">Year {{ .year }}</span></p>
+  </div>
+  <div class="col-md-10">
+      <p>{{ .award }}</p>
+  </div>
+</div>
+{{end}}
