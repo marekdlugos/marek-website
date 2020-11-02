@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Marek Dlugos on Marek Dlugos — Revenue Growth, Product, Design, Software Engineering.</title>
+    <link>https://www.marekdlugos.com/</link>
+    <description>Recent content in Marek Dlugos on Marek Dlugos — Revenue Growth, Product, Design, Software Engineering.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2020 18:05:30 +0200</lastBuildDate>
+    
+	<atom:link href="https://www.marekdlugos.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Work</title>
+      <link>https://www.marekdlugos.com/work/</link>
+      <pubDate>Wed, 15 Apr 2020 20:09:17 +0200</pubDate>
+      
+      <guid>https://www.marekdlugos.com/work/</guid>
+      <description>I used to create software. Now I am selling it.   I had to publish this page unfinished to force myself to finish it. 11/02/2020
+ Skills Business-wise  Account Expansion Demand Generation   Technology-wise  Account Expansion Demand Generation      I can help you with Business-wise  Account Expansion Demand Generation   Technology-wise  Account Expansion Demand Generation      Work Experience Account Executive SpotMe Lausanne, Switzerland Helping out event managers and marketing people increase ROI on events with mobile apps that help engage with their audience.</description>
+    </item>
+    
+    <item>
+      <title>Hobbies</title>
+      <link>https://www.marekdlugos.com/hobbies/</link>
+      <pubDate>Wed, 15 Apr 2020 20:09:07 +0200</pubDate>
+      
+      <guid>https://www.marekdlugos.com/hobbies/</guid>
+      <description>Traveling Countries visited: 46
+ Journeys around the world: 2
+ My Flight Radar profile
+      var map = AmCharts.makeChart(&#34;mapdiv&#34;, { type: &#34;map&#34;, theme: &#34;dark&#34;, projection: &#34;mercator&#34;, panEventsEnabled: true, backgroundColor: &#34;#535364&#34;, backgroundAlpha: 1, zoomControl: { zoomControlEnabled: true }, dataProvider: { map: &#34;worldHigh&#34;, getAreasFromMap: true, areas: [ { &#34;id&#34;: &#34;AT&#34;, &#34;showAsSelected&#34;: true }, { &#34;id&#34;: &#34;BE&#34;, &#34;showAsSelected&#34;: true }, { &#34;id&#34;: &#34;BG&#34;, &#34;showAsSelected&#34;: true }, { &#34;</description>
+    </item>
+    
+    <item>
+      <title>Sharing</title>
+      <link>https://www.marekdlugos.com/sharing/</link>
+      <pubDate>Tue, 14 Apr 2020 12:44:18 +0200</pubDate>
+      
+      <guid>https://www.marekdlugos.com/sharing/</guid>
+      <description>Follow along LinkedIn Work related content together with my resume.  Facebook Life updates and insights.  Instagram Travels.  Twitter Tech related content. Startups and web development.  YouTube Travel vlogs and interviews.  Medium Long-read stories.  Dribbble Design projects.  Github Code projects.     Writing Life Stories  Dec 2019
+ Today is My Sister’s Second Birthday Since She Died
+  Jun 2017</description>
+    </item>
+    
+    <item>
+      <title>Side Projects</title>
+      <link>https://www.marekdlugos.com/side-projects/</link>
+      <pubDate>Mon, 13 Apr 2020 18:32:06 +0200</pubDate>
+      
+      <guid>https://www.marekdlugos.com/side-projects/</guid>
+      <description>I am driven by improving things around me.   I had to publish this page unfinished to force myself to finish it. 11/02/2020
+ Projects Take Me as an Intern Jun 2016 — Oct 2016 During the 4 months gap between graduating high school and starting of university I wanted to be an intern so I made one-page site describing my skills and how can I contribute to the business.</description>
+    </item>
+    
+    <item>
+      <title>Education Awards</title>
+      <link>https://www.marekdlugos.com/education-awards/</link>
+      <pubDate>Mon, 13 Apr 2020 18:05:30 +0200</pubDate>
+      
+      <guid>https://www.marekdlugos.com/education-awards/</guid>
+      <description>Education The Story  High-quality technical education abroad has been my aim for a long time, which is why I left my home country after graduating from the best tech high school in Slovakia (according to the INEKO ranking).
+Followed by applying for the Ivy League universities. The University of Cambridge, according to rankings, the 4th best university in the world, invited me for interviews where I exceeded their expectations in Computer Science but didn&#39;t persuade them with my math skills.</description>
+    </item>
+    
+  </channel>
+</rss>
