@@ -1,11 +1,21 @@
 <head>
-    <title>{{.Title}}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="{{ .Description }}">
-    <base href="{{ .Site.BaseURL }}">
-    <link rel="canonical" href="{{ .Permalink }}">
+  <title>{{.Title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{ .Description }}">
+  <base href="{{ .Site.BaseURL }}">
+  <link rel="canonical" href="{{ .Permalink }}">
 
-    {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}">
+  {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36B0M4RPHF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-36B0M4RPHF');
+  </script>
 </head>
