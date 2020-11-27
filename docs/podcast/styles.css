@@ -1,0 +1,37 @@
+.blog-header {
+  line-height: 1;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.photo {
+  background: url(marek-dlugos.jpg) no-repeat left center;
+  background-size: cover;
+}
+
+.blog-header-logo {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 2.25rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+.centered {
+  float: none;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 2.3rem;
+}
+
+.bg-light-blue {
+  background-color: #e3f2fd;
+}
