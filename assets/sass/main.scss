@@ -15,6 +15,13 @@ body {
   margin-right: 80px; 
   margin-bottom: 160px;
   margin-left: 80px;
+
+  @media (max-width: 640px) { 
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
 }
 
 .container {
@@ -33,6 +40,12 @@ header {
     justify-content: flex-end;
     padding-top: 15px;
     padding-bottom: 15px;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
 
     h1 {
       font-size: 18px;
@@ -56,9 +69,17 @@ header {
       padding-left: 0;
       margin-left: auto;
 
+      @media (max-width: 640px) {
+          margin-left: 0;
+        }
+
       li {
         display: inline-block;
         margin-left: 50px;
+
+        @media (max-width: 640px) {
+          display: block;
+        }
 
         a {
           color: #000000;
@@ -171,6 +192,10 @@ span.time {
 
 .homepage {
   margin-top: 5rem;
+
+  @media (max-width: 640px) {
+    margin-top: 0;
+  }
 
   h2 {
     font-size: 48px;
@@ -388,4 +413,9 @@ section {
 footer {
   margin-top: 200px;
   margin-bottom: 200px;
+
+  @media (max-width: 640px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }
