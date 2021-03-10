@@ -4,3 +4,6 @@ title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering.
 disableKinds = ["taxonomy", "taxonomyTerm"]
 publishDir = "docs"
 disableHugoGeneratorInject = true
+
+[minify]
+  minifyOutput = true

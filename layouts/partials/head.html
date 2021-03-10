@@ -1,17 +1,28 @@
 
 <head>
   
-  <meta charset="utf-8">
-  <title>{{.Title}}</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
+  <title>{{.Title}}</title>
+  
   <meta name="description" content="{{ .Description }}">
+  <meta name="keywords" content="{{ delimit .Keywords " " }}">
+  <meta name="subject" content="Marek Dlugos Personal Website">
+  <meta name="rating" content="General">
   
   <base href="{{ .Site.BaseURL }}">
   <link rel="canonical" href="{{ .Permalink }}">
+  <meta name="robots" content="index,follow">
 
   {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="author" href="humans.txt">
+  <link rel="me" href="https://www.facebook.com/marek.dlugos/" type="text/html">
+  <link rel="me" href="mailto:hi@marekdlugos.com">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-36B0M4RPHF"></script>
