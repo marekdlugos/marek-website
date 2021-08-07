@@ -1,0 +1,26 @@
+{
+  "name": "marek-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marekdlugos/marek-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marekdlugos/marek-website/issues"
+  },
+  "homepage": "https://github.com/marekdlugos/marek-website#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.0"
+  }
+}
