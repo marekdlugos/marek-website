@@ -1,10 +1,17 @@
 baseURL = "https://www.marekdlugos.com/"
 languageCode = "en-us"
 title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering."
+theme = "marekstheme"
+relativeURLS = true
 disableKinds = ["taxonomy", "taxonomyTerm"]
 publishDir = "docs"
 disableHugoGeneratorInject = true
 SectionPagesMenu = "main"
+
+[module]
+  [[module.mounts]]
+    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    target = "assets/js/bootstrap.bundle.min.js"
 
 [minify]
   minifyOutput = true
