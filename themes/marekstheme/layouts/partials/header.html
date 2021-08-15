@@ -1,8 +1,8 @@
-<header>
+<header class="mb-2">
 
   <nav class="navbar navbar-expand-sm navbar-light bg-white" aria-label="Main Navigation">
     <div class="container-fluid">
-      <h1><a class="navbar-brand" href="#">Marek Dlugos</a></h1>
+      <h1><a class="navbar-brand p-1" href="/">Marek Dlugos</a></h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
         aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -13,7 +13,7 @@
           {{ $currentPage := . }}
           {{ range .Site.Menus.main }}
           <li class="nav-item">
-            <a class="nav-link {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{end}}" aria-current="page" href="{{.URL}}">{{ .Name }}</a>
+            <a class="nav-link mx-2 {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{end}}" aria-current="page" href="{{.URL}}">{{ .Name }}</a>
           </li>
           {{ end }}
         </ul>

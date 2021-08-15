@@ -5,9 +5,9 @@
 {{ range $rally := getJSON $url }}
 <div class="row">
   <div class="col-md-2">
-    <p><span class="time">{{ .month }} {{ .year }}</span></p>
+    <p><span class="text-muted">{{ .month }} {{ .year }}</span></p>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-10 gx-0">
     <p><a href="{{ .url }}" title="{{ .title }}" target="_blank">{{ .title }}</a>{{ with .medium }}, {{ . }}{{ end }}</p>
   </div>
 </div>
