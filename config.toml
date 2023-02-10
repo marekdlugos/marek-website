@@ -1,7 +1,7 @@
 baseURL = "https://www.marekdlugos.com/"
 languageCode = "en-us"
 title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering."
-theme = "marekstheme"
+theme = "marekovica"
 relativeURLS = true
 disableKinds = ["taxonomy", "taxonomyTerm"]
 publishDir = "docs"
@@ -15,3 +15,6 @@ SectionPagesMenu = "main"
 
 [minify]
   minifyOutput = true
+
+[build]
+  writeStats = true
