@@ -1,11 +1,11 @@
 ---
 title: "Motivation to Write"
 date: 2024-05-10T22:42:33+02:00
+layout:: "single"
 draft: true
 ---
 
 # Motivation to write
-Started writing on May 10, 2024.
 
 For many years I enjoyed reading blogs, but never thought of writing one myself. I found the fact that the content becomes obsolete and stuff I write won't be true anymore (or people will disagree with them) scary. But here I am today, in the VS Code typing in the first lines of what I am hoping will help me clear my head and form my thoughts better. Become more intimate with the world and people who want to tag along.
 
