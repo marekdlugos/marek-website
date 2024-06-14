@@ -1,3 +1,4 @@
 ---
-title: Blog WIP
+draft: true
+title: Blog
 ---
