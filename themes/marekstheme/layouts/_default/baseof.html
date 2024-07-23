@@ -8,7 +8,7 @@
             {{- partial "header.html" . -}}
         </div>
     </header>
-    <main>
+    <main class="mt-5">
         <div class="container gx-md-3 gx-sm-2">
             {{- block "main" . }}{{- end }}
         </div>
@@ -18,6 +18,12 @@
             {{- partial "footer.html" . -}}
         </div>
     </footer>
+
+    <div class="fixed-bottom">
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
+    </div>
 
     <!-- JavaScript and dependencies -->
     {{ $bootstrap := resources.Get "js/bootstrap.bundle.min.js" }}
