@@ -37,6 +37,14 @@ h5 {
   @include font-size($font-size-base*0.8);
 }
 
+.nav-link {
+  color: #333;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+}
+
 .project {
   margin-top: 4rem;
 

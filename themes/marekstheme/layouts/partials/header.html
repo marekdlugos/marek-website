@@ -13,7 +13,7 @@
           {{ $currentPage := . }}
           {{ range .Site.Menus.main }}
           <li class="nav-item">
-            <a class="nav-link mx-2 {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{end}}" aria-current="page" href="{{.URL}}">{{ .Name }}</a>
+            <a class="nav-link mx-1 {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{end}}" aria-current="page" href="{{.URL}}">{{ .Name }}</a>
           </li>
           {{ end }}
         </ul>
