@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/marekdlugos/marek-website#readme",
   "dependencies": {
-    "bootstrap": "^5.1.0"
+    "bootstrap": "^5.3.3"
   },
   "devDependencies": {
     "@popperjs/core": "^2.9.3"
