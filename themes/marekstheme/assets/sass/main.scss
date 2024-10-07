@@ -74,3 +74,7 @@ h5 {
   background: $blue;
   width: 0%;
 }
+
+.grayscale {
+  filter: grayscale(1);
+}
