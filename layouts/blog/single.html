@@ -1,5 +1,26 @@
-{{define "main"}}
-  <div class="col-8 story-body">
-    {{ .Content }}
-  </div>
-{{end}}
+{{ define "main" }}
+  <section>
+    <div class="col-md-8 story-body">
+      <h2>{{ .Title }}</h2>
+      {{ with .Date }}
+        {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
+        {{ $dateHuman := . | time.Format ":date_long" }}
+        <small><time datetime="{{ $dateMachine }}" class="text-muted">{{ $dateHuman }}</time></small>
+      {{ end }}
+      <article>
+        {{ .Content }}
+      </article>
+    </div>
+    <!-- <aside>
+      {{ with .GetTerms "tags" }}
+        <div>{{ (index . 0).Parent.LinkTitle }}</div>
+        <ul>
+          {{ range . }}
+            <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </aside> -->
+  </section>
+{{ end }}
+
