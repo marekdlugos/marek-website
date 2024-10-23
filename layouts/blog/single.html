@@ -2,11 +2,13 @@
   <section>
     <div class="col-md-8 story-body">
       <h2>{{ .Title }}</h2>
-      {{ with .Date }}
-        {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
-        {{ $dateHuman := . | time.Format ":date_long" }}
-        <small><time datetime="{{ $dateMachine }}" class="text-muted">{{ $dateHuman }}</time></small>
-      {{ end }}
+      <small>
+        {{ with .Date }}
+          {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
+          {{ $dateHuman := . | time.Format ":date_long" }}
+          <time datetime="{{ $dateMachine }}" class="text-muted">{{ $dateHuman }}</time>
+        {{ end }} | Written by Marek Dlugos
+      </small>
       <article>
         {{ .Content }}
       </article>

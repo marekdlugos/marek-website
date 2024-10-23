@@ -21,8 +21,13 @@ h2 {
   font-weight: normal;
 }
 
-h3, h4 {
+h3 {
   @include font-size($font-size-base * 1.6);
+  margin-bottom: 0;
+}
+
+h4 {
+  @include font-size($font-size-base * 1.4);
   margin-bottom: 0;
 }
 
@@ -60,6 +65,20 @@ h5 {
 
   p {
     margin-top: 1.6rem;
+    line-height: 1.8;
+  }
+
+  h3 {
+    @include font-size($font-size-base * 2);
+    margin-top: 6rem;
+  }
+
+  h4 {
+    @include font-size($font-size-base * 1.6);
+    margin-top: 4rem;
+  }
+
+  ul li {
     line-height: 1.8;
   }
 }
