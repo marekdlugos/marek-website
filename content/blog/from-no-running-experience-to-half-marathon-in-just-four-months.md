@@ -1,6 +1,6 @@
 ---
 title: "From No Running Experience to Half Marathon in Four Months"
-date: 2024-11-01T10:08:25+02:00
+date: 2024-11-01T08:08:25+02:00
 layout: "single"
 draft: false
 ---
