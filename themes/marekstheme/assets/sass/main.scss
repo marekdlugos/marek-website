@@ -98,3 +98,7 @@ h5 {
 .grayscale {
   filter: grayscale(1);
 }
+
+.navbar {
+  backdrop-filter: blur(3px);
+}
