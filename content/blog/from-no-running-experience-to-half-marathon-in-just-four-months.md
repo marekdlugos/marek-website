@@ -1,8 +1,13 @@
 ---
+author: "Marek Dlugos"
 title: "From No Running Experience to Half Marathon in Four Months"
 date: 2024-11-01T08:08:25+02:00
+description: "XYZ"
+featured: true
 layout: "single"
 draft: false
+tags: ["running", "workout", "test-tag"]
+categories: ["running"]
 ---
 
 I was the guy who only ran in school because the PE teacher made us do it—not exactly a big fan. But I’ve always admired certain people around me for their athletic achievements. I thought those were not possible for me to achieve.

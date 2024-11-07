@@ -102,3 +102,25 @@ h5 {
 .navbar {
   backdrop-filter: blur(3px);
 }
+
+/* Floating TOC styling */
+.toc-container {
+  position: fixed;
+  top: 500px;
+  left: 20px;
+  width: 250px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #f8f9fa; /* Bootstrap light background */
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: .25rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure TOC hides on mobile and tablet sizes */
+@media (max-width: 991.98px) {
+  .toc-container {
+    display: none;
+  }
+}

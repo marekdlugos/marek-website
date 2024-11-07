@@ -1,8 +1,13 @@
 ---
+author: "Marek Dlugos"
 title: "Motivation to Write"
 date: 2024-10-07T19:12:33+02:00
+description: "XYZ"
+featured: true
 layout: "single"
 draft: false
+tags: ["misc", "writing", "test-tag"]
+categories: ["other"]
 ---
 
 For many years I enjoyed reading blogs, but was never brave enough to write one myself. I found the fact that the content becomes obsolete and stuff I write won't be true anymore (or people will disagree with me) scary. But here I am today, in the VS Code typing in the first lines of what I am hoping will help me clear my head and form my thoughts better. Become more intimate with the world and people who want to tag along.

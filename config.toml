@@ -3,7 +3,6 @@ languageCode = "en-us"
 title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering."
 theme = "marekstheme"
 relativeURLS = true
-disableKinds = ["taxonomy", "term"]
 publishDir = "docs"
 disableHugoGeneratorInject = true
 SectionPagesMenu = "main"
@@ -15,3 +14,7 @@ SectionPagesMenu = "main"
 
 [minify]
   minifyOutput = true
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

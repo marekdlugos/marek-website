@@ -2,17 +2,51 @@
 
 <h2>{{ .Title }}</h2>
 
-{{ range .Pages.ByPublishDate.Reverse }}
-
 <div class="row">
-  <div class="col-md-10">
-    <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
-  </div>
-  <div class="col-md-2">
-    <p><span class="text-muted">{{ .Date | time.Format ":date_long" }}</span></p>
+  <div class="col-md-8 mb-2">
+    <p>I soft-launched this blog at the end of 2024. For older writings, please refer to the <a href="/sharing">Sharing</a> page, section writing.</p>
   </div>
 </div>
 
-{{ end }}
+<div class="row">
+  
+  <div class="col-md-8">
+    {{ range .Pages.ByPublishDate.Reverse }}
+      <p>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a><br>
+        <small>{{ .Date | time.Format ":date_long" }}</small>
+      </p>
+    {{ end }}
+  </div>
+
+  <!-- <div class="col-md-4">
+    <aside>
+      <h3>Featured posts</h3>
+      {{ $featuredPosts := where .Site.RegularPages "Params.featured" true | sort | first 5 }}
+      <ul>
+        {{ range $featuredPosts }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+      </ul>
+      <h3>Categories</h3>
+      <ul>
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+          <li>
+            <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a> ({{ len $taxonomy }})
+          </li>
+        {{ end }}
+      </ul>
+      <h3>Tags</h3>
+      <ul>
+        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+          <li>
+            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a> ({{ len $taxonomy }})
+          </li>
+        {{ end }}
+      </ul>
+    </aside>
+  </div> -->
+
+</div>
 
 {{ end }}
