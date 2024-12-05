@@ -12,6 +12,8 @@ categories: ["running"]
 
 I was the guy who only ran in school because the PE teacher made us do it—not exactly a big fan. But I’ve always admired certain people around me for their athletic achievements. I thought those were not possible for me to achieve.
 
+{{< youtube a4MxPc0iAHU >}}
+
 After avoiding any form of exercise for the past 2-3 years. Before, I used to basketball, do ballroom dancing, or go to the gym. The first two required others and facilities. With the gym, I just hate the fact that here in Europe it's so rare to live in an apartment building that would have a gym. Otherwise, I just find it annoying and time-consuming to commute to the gym. Seeing a lot of my connections on socials running, I always wanted to see what and if I could achieve in this sport. Another advantage? The only thing I'd need were shoes. It doesn't matter if I am currently traveling or whether there's a facility nearby. I could just get out there and explore.
 
 So, in July, I started experimenting with running, setting a goal I thought was ambitious: to run 5km (3.1 mi) non-stop by Christmas. I had six months to make it happen.
