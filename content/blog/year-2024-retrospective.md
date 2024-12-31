@@ -65,6 +65,7 @@ Last but not least, I tried to work on my skills. I thought I would achieve more
 
 #### Things that did not work so well in 2024
 
-- ❌ I was unable to find the next interesting team I could join in 2024, but certain things are already in progress for 2025, which I am truly excited about. More on this soon.
-- ❌ I did not get a chance to get into a committed relationship which is not ideal as I do dream about having a family as a rather younger dad.
+- ❌ I did not get into any committed relationship.
 - ❌ I told myself I would obtain at least one cloud certification but haven't made it a priority.
+
+The year 2024 was epic. A preparation for 2025 that is certainly going to be full of big changes and I am both slightly scared and truly excited!
