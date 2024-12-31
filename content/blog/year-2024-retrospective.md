@@ -5,7 +5,7 @@ date: 2024-12-31T08:08:25+02:00
 description: "A reflective look back at 2024, highlighting personal milestones, and key lessons learned, from running a first half marathon to exploring new career opportunities and creative projects."
 featured: true
 layout: "single"
-draft: true
+draft: false
 tags: ["retrospective"]
 categories: ["retrospectives"]
 ---
