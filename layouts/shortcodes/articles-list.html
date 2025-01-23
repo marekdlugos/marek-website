@@ -1,8 +1,10 @@
+{{ $foo := index .Params 0 }}
+{{ $url := printf "/data/hobbies/%s.json" $foo }}
 
-{{$foo := index .Params 0 }}
-{{ $url := printf "/data/sharing/%s.json" $foo }}
+{{ $resource := .Get $url }}
+{{ $data := transform.Unmarshal $resource.Content }}
 
-{{ range $rally := getJSON $url }}
+{{ range $rally := $data }}
 <div class="row">
   <div class="col-md-2">
     <p><span class="text-muted">{{ .month }} {{ .year }}</span></p>
