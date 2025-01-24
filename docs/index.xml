@@ -374,40 +374,28 @@
  
  
  
- 
- 
- 
-
+ &lt;small class="text-muted">Cambodia&lt;/small>&lt;small class="text-muted">, China (Hong Kong, Macau)&lt;/small>&lt;small class="text-muted">, Indonesia&lt;/small>&lt;small class="text-muted">, Israel&lt;/small>&lt;small class="text-muted">, Jordan&lt;/small>&lt;small class="text-muted">, Kuwait&lt;/small>&lt;small class="text-muted">, Laos&lt;/small>&lt;small class="text-muted">, Malaysia&lt;/small>&lt;small class="text-muted">, Maldives&lt;/small>&lt;small class="text-muted">, Palestine&lt;/small>&lt;small class="text-muted">, Philippines&lt;/small>&lt;small class="text-muted">, Qatar (Doha)&lt;/small>&lt;small class="text-muted">, Saudi Arabia&lt;/small>&lt;small class="text-muted">, Singapore&lt;/small>&lt;small class="text-muted">, South Korea&lt;/small>&lt;small class="text-muted">, Taiwan&lt;/small>&lt;small class="text-muted">, Thailand&lt;/small>&lt;small class="text-muted">, Turkey&lt;/small>&lt;small class="text-muted">, United Arab Emirates&lt;/small>&lt;small class="text-muted">, Vietnam&lt;/small>
  &lt;/div>
  &lt;div class="col-md-3 gy-2">
  &lt;h5 class="mb-1">Europe&lt;/h5>
  
  
  
- 
- 
- 
-
+ &lt;small class="text-muted">Austria&lt;/small>&lt;small class="text-muted">, Belgium&lt;/small>&lt;small class="text-muted">, Bulgaria&lt;/small>&lt;small class="text-muted">, Croatia&lt;/small>&lt;small class="text-muted">, Cyprus&lt;/small>&lt;small class="text-muted">, Czech Republic&lt;/small>&lt;small class="text-muted">, Denmark&lt;/small>&lt;small class="text-muted">, France&lt;/small>&lt;small class="text-muted">, Germany&lt;/small>&lt;small class="text-muted">, Greece&lt;/small>&lt;small class="text-muted">, Hungary&lt;/small>&lt;small class="text-muted">, Iceland&lt;/small>&lt;small class="text-muted">, Ireland&lt;/small>&lt;small class="text-muted">, Italy&lt;/small>&lt;small class="text-muted">, Liechtenstein&lt;/small>&lt;small class="text-muted">, Lithuania&lt;/small>&lt;small class="text-muted">, Luxembourg&lt;/small>&lt;small class="text-muted">, Malta&lt;/small>&lt;small class="text-muted">, Netherlands&lt;/small>&lt;small class="text-muted">, Poland&lt;/small>&lt;small class="text-muted">, Portugal&lt;/small>&lt;small class="text-muted">, Slovenia&lt;/small>&lt;small class="text-muted">, Spain&lt;/small>&lt;small class="text-muted">, Sweden&lt;/small>&lt;small class="text-muted">, Switzerland&lt;/small>&lt;small class="text-muted">, United Kingdom&lt;/small>&lt;small class="text-muted">, Vatican City&lt;/small>
  &lt;/div>
  &lt;div class="col-md-3 gy-2">
  &lt;h5 class="mb-1">Latin America&lt;/h5>
  
  
  
- 
- 
- 
-
+ &lt;small class="text-muted">Argentina&lt;/small>&lt;small class="text-muted">, Bahamas&lt;/small>&lt;small class="text-muted">, Bolivia&lt;/small>&lt;small class="text-muted">, Brazil&lt;/small>&lt;small class="text-muted">, Chile&lt;/small>&lt;small class="text-muted">, Colombia&lt;/small>&lt;small class="text-muted">, Costa Rica&lt;/small>&lt;small class="text-muted">, Dominican Republic&lt;/small>&lt;small class="text-muted">, Ecuador&lt;/small>&lt;small class="text-muted">, Mexico&lt;/small>&lt;small class="text-muted">, Panama&lt;/small>&lt;small class="text-muted">, Peru&lt;/small>&lt;small class="text-muted">, Uruguay&lt;/small>
  &lt;/div>
  &lt;div class="col-md-3 gy-2">
  &lt;h5 class="mb-1">North America&lt;/h5>
  
  
  
- 
- 
- 
-
+ &lt;small class="text-muted">Canada (Ottawa, Toronto, Montreal)&lt;/small>&lt;small class="text-muted">, USA (Florida, Hawaii, NYC, Puerto Rico, SF)&lt;/small>
  &lt;/div>
  &lt;/div>
 &lt;/section>
@@ -481,77 +469,12 @@
  
  
  
- 
- 
-
- &lt;/div>
- &lt;/div>
-
- &lt;div class="row">
- &lt;div class="col-md-3">
- &lt;h3>Work&lt;/h3>
- &lt;/div>
- &lt;div class="col-md-9">
- 
- 
- 
- 
- 
- 
-
- &lt;/div>
- &lt;/div>
-
-&lt;/section>
-
-&lt;section>
- &lt;h2>Media&lt;/h2>
-
- &lt;div class="row">
- &lt;div class="col-md-3">
- &lt;h3>Interviews&lt;/h3>
- &lt;/div>
- &lt;div class="col-md-9">
- 
- 
- 
- 
- 
- 
-
- &lt;/div>
- &lt;/div>
-
- &lt;div class="row">
- &lt;div class="col-md-3">
- &lt;h3>Mentions&lt;/h3>
- &lt;/div>
- &lt;div class="col-md-9">
- 
- 
- 
- 
- 
- 
-
- &lt;/div>
- &lt;/div>
-
-&lt;/section>
-
-&lt;section>
- &lt;h2>Speaking&lt;/h2>
- &lt;div class="row subsection">
- &lt;div class="col-md-3">— The Journey of My Talent&lt;/div>
- &lt;div class="col-md-9 mb-3">&lt;img src="sharing/the-journey-of-my-talent-marek-dlugos.jpg" alt="Marek Dlugos Conference" class="img-fluid">&lt;/div>
- &lt;/div>
- &lt;div class="row subsection">
- &lt;div class="col-md-3">
- &lt;/div>
- &lt;div class="col-md-9">
  &lt;div class="row">
  &lt;div class="col-md-2">
- &lt;p>&lt;span class="text-muted">Feb 2016&lt;/span>&lt;/p></description></item><item><title>Side Projects</title><link>https://www.marekdlugos.com/side-projects/</link><pubDate>Mon, 13 Apr 2020 18:32:06 +0200</pubDate><guid>https://www.marekdlugos.com/side-projects/</guid><description>&lt;section>
+ &lt;p>&lt;span class="text-muted">Feb 2023&lt;/span>&lt;/p>
+ &lt;/div>
+ &lt;div class="col-md-10 gx-0">
+ &lt;p>&lt;a href="https://blog.refresher.sk/article/10500/saudska-arabia-vsetko-co-potrebujes-vediet" title="Saudi Arabia - everything you need to know" target="_blank">Saudi Arabia - everything you need to know&lt;/a>&lt;/p></description></item><item><title>Side Projects</title><link>https://www.marekdlugos.com/side-projects/</link><pubDate>Mon, 13 Apr 2020 18:32:06 +0200</pubDate><guid>https://www.marekdlugos.com/side-projects/</guid><description>&lt;section>
  &lt;div class="row">
  &lt;div class="col-md-11">
  &lt;h2 class="mt-2 mb-1">I am driven by improving things around me.&lt;/h2>

@@ -1,9 +1,4 @@
 {{ $foo := index .Params 0 }}
-{{ $url := printf "/data/hobbies/%s.json" $foo }}
+{{ $data := index .Site.Data.hobbies $foo }}
 
-{{ $resource := .Get $url }}
-{{ $data := transform.Unmarshal $resource.Content }}
-
-{{ range $i, $e := $data }}
-  <small class="text-muted">{{ if $i }}, {{ end }}{{ $e }}</small>
-{{ end }}
+{{ range $i, $e := $data }}<small class="text-muted">{{ if $i }}, {{ end }}{{ $e }}</small>{{ end }}

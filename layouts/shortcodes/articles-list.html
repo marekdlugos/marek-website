@@ -1,16 +1,13 @@
 {{ $foo := index .Params 0 }}
-{{ $url := printf "/data/hobbies/%s.json" $foo }}
+{{ $data := index .Site.Data.sharing $foo }}
 
-{{ $resource := .Get $url }}
-{{ $data := transform.Unmarshal $resource.Content }}
-
-{{ range $rally := $data }}
-<div class="row">
-  <div class="col-md-2">
-    <p><span class="text-muted">{{ .month }} {{ .year }}</span></p>
+{{ range $i, $e := $data }}
+  <div class="row">
+    <div class="col-md-2">
+      <p><span class="text-muted">{{ .month }} {{ .year }}</span></p>
+    </div>
+    <div class="col-md-10 gx-0">
+      <p><a href="{{ .url }}" title="{{ .title }}" target="_blank">{{ .title }}</a>{{ with .medium }}, {{ . }}{{ end }}</p>
+    </div>
   </div>
-  <div class="col-md-10 gx-0">
-    <p><a href="{{ .url }}" title="{{ .title }}" target="_blank">{{ .title }}</a>{{ with .medium }}, {{ . }}{{ end }}</p>
-  </div>
-</div>
 {{ end }}
