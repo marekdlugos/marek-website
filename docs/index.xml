@@ -484,13 +484,16 @@
 
 &lt;section>
 
- &lt;div class="col-md-10 project">
- &lt;h3>Take Me as an Intern&lt;/h3>
- &lt;small class="text-muted">2016&lt;/small>
- &lt;p>During the 4 months gap between graduating high school and starting of university I wanted to be an intern so I
- made one-page site describing my skills and how can I contribute to the business. The site made it as #1 on YC Hacker
- News. Had over 30k visitors in one night and get huge media attention all around the world. Brought me over 150 emails
- and secured job in Hawaii and later on an internship in Canada.&lt;/p></description></item><item><title>Education &amp; Awards</title><link>https://www.marekdlugos.com/education-awards/</link><pubDate>Mon, 13 Apr 2020 18:05:30 +0200</pubDate><guid>https://www.marekdlugos.com/education-awards/</guid><description>&lt;section>
+ &lt;div class="row">
+ &lt;div class="col-md-12">
+ &lt;h3 class="mt-2 mb-3">Highlighted Projects&lt;/h3>
+ &lt;/div>
+ &lt;/div>
+
+ &lt;div class="row gx-4">
+ &lt;div class="col-md-6">
+ &lt;h4 class="mb-1">Hire Me as an Intern&lt;/h4>
+ &lt;p>At the end of high school, I created a website to express my desire to find a summer internship abroad. The website gained massive attention, becoming the #1 post on Y Combinator's Hacker News and attracting over 30,000 visitors in a single day. It also brought me more than 150 emails from around the world and significant media coverage.&lt;/p></description></item><item><title>Education &amp; Awards</title><link>https://www.marekdlugos.com/education-awards/</link><pubDate>Mon, 13 Apr 2020 18:05:30 +0200</pubDate><guid>https://www.marekdlugos.com/education-awards/</guid><description>&lt;section>
  &lt;h2>Education&lt;/h2>
  &lt;div class="row">
  &lt;div class="col-md-3">
