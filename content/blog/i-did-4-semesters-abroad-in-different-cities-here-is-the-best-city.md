@@ -1,7 +1,7 @@
 ---
 title: "At Uni, I Did 4 Semesters Abroad. Here Is the Best City"
 date: 2025-01-27T17:06:23+02:00
-draft: false
+draft: true
 ---
 
 My story of getting a higher education is somewhat strange. I shot for the moon, got half-way through and in the end chose to stay on the ground. Which in my eyes turned out to be the best possible decision. 
