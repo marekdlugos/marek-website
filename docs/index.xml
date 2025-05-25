@@ -63,7 +63,7 @@
  &lt;h2>Traveling&lt;/h2>
  &lt;div class="row">
  &lt;div class="col-md-4">
- &lt;p>Countries visited: 64&lt;/p>
+ &lt;p>Countries visited: 68&lt;/p>
  &lt;/div>
  &lt;div class="col-md-4 text-md-center">
  &lt;p>Journeys around the world: 2&lt;/p>
@@ -356,6 +356,22 @@
  {
  "id": "PR",
  "showAsSelected": true
+ },
+ {
+ "id": "AL",
+ "showAsSelected": true
+ },
+ {
+ "id": "XK",
+ "showAsSelected": true
+ },
+ {
+ "id": "MK",
+ "showAsSelected": true
+ },
+ {
+ "id": "ME",
+ "showAsSelected": true
  }
  ]
  },
@@ -384,7 +400,7 @@
  
  
  
- &lt;small class="text-muted">Austria&lt;/small>&lt;small class="text-muted">, Belgium&lt;/small>&lt;small class="text-muted">, Bulgaria&lt;/small>&lt;small class="text-muted">, Croatia&lt;/small>&lt;small class="text-muted">, Cyprus&lt;/small>&lt;small class="text-muted">, Czech Republic&lt;/small>&lt;small class="text-muted">, Denmark&lt;/small>&lt;small class="text-muted">, France&lt;/small>&lt;small class="text-muted">, Germany&lt;/small>&lt;small class="text-muted">, Greece&lt;/small>&lt;small class="text-muted">, Hungary&lt;/small>&lt;small class="text-muted">, Iceland&lt;/small>&lt;small class="text-muted">, Ireland&lt;/small>&lt;small class="text-muted">, Italy&lt;/small>&lt;small class="text-muted">, Liechtenstein&lt;/small>&lt;small class="text-muted">, Lithuania&lt;/small>&lt;small class="text-muted">, Luxembourg&lt;/small>&lt;small class="text-muted">, Malta&lt;/small>&lt;small class="text-muted">, Netherlands&lt;/small>&lt;small class="text-muted">, Poland&lt;/small>&lt;small class="text-muted">, Portugal&lt;/small>&lt;small class="text-muted">, Slovenia&lt;/small>&lt;small class="text-muted">, Spain&lt;/small>&lt;small class="text-muted">, Sweden&lt;/small>&lt;small class="text-muted">, Switzerland&lt;/small>&lt;small class="text-muted">, United Kingdom&lt;/small>&lt;small class="text-muted">, Vatican City&lt;/small>
+ &lt;small class="text-muted">Albania&lt;/small>&lt;small class="text-muted">, Austria&lt;/small>&lt;small class="text-muted">, Belgium&lt;/small>&lt;small class="text-muted">, Bulgaria&lt;/small>&lt;small class="text-muted">, Croatia&lt;/small>&lt;small class="text-muted">, Cyprus&lt;/small>&lt;small class="text-muted">, Czech Republic&lt;/small>&lt;small class="text-muted">, Denmark&lt;/small>&lt;small class="text-muted">, France&lt;/small>&lt;small class="text-muted">, Germany&lt;/small>&lt;small class="text-muted">, Greece&lt;/small>&lt;small class="text-muted">, Hungary&lt;/small>&lt;small class="text-muted">, Iceland&lt;/small>&lt;small class="text-muted">, Ireland&lt;/small>&lt;small class="text-muted">, Italy&lt;/small>&lt;small class="text-muted">, Kosovo&lt;/small>&lt;small class="text-muted">, Liechtenstein&lt;/small>&lt;small class="text-muted">, Lithuania&lt;/small>&lt;small class="text-muted">, Luxembourg&lt;/small>&lt;small class="text-muted">, Malta&lt;/small>&lt;small class="text-muted">, Montenegro&lt;/small>&lt;small class="text-muted">, Netherlands&lt;/small>&lt;small class="text-muted">, North Macedonia&lt;/small>&lt;small class="text-muted">, Poland&lt;/small>&lt;small class="text-muted">, Portugal&lt;/small>&lt;small class="text-muted">, Slovenia&lt;/small>&lt;small class="text-muted">, Spain&lt;/small>&lt;small class="text-muted">, Sweden&lt;/small>&lt;small class="text-muted">, Switzerland&lt;/small>&lt;small class="text-muted">, United Kingdom&lt;/small>&lt;small class="text-muted">, Vatican City&lt;/small>
  &lt;/div>
  &lt;div class="col-md-3 gy-2">
  &lt;h5 class="mb-1">Latin America&lt;/h5>
