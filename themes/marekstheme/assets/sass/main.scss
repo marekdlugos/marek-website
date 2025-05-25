@@ -37,6 +37,27 @@ h5 {
   margin-bottom: 0rem;
 }
 
+.display-6 {
+  line-height: 1.5;
+
+  strong {
+    font-weight: 500;
+  }
+}
+
+.announcement {
+  border: 1px solid #d7d7d7;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 2rem;
+  border-radius: .25rem;
+
+  p {
+    color: #555;
+    margin-bottom: 0;
+    @include font-size($font-size-base * 0.8);
+  }
+}
+
 .nav-item {
   font-weight: 500;
   @include font-size($font-size-base*0.8);
