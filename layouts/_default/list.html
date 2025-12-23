@@ -4,18 +4,25 @@
 
 <div class="row">
   <div class="col-md-8 mb-2">
-    <p>I soft-launched this blog at the end of 2024. For older writings, please refer to the <a href="/sharing">Sharing</a> page, section writing.</p>
+    <p>
+      I launched this blog at the end of 2024 without telling anyone. <br>
+      This is an authentic, non-AI generated blog. <br>
+      All thoughts are my own. For better or worse. <br>
+    </p>
+    <p>
+      For older writings, please refer to the <a href="/sharing">Sharing</a> page, section writing.
+    </p>
   </div>
 </div>
 
 <div class="row">
-  
+
   <div class="col-md-8">
     {{ range .Pages.ByPublishDate.Reverse }}
-      <p>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a><br>
-        <small>{{ .Date | time.Format ":date_long" }}</small>
-      </p>
+    <p>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a><br>
+      <small>{{ .Date | time.Format ":date_long" }}</small>
+    </p>
     {{ end }}
   </div>
 
