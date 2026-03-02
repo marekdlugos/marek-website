@@ -48,4 +48,38 @@
         document.getElementById("myBar").style.width = scrolled + "%";
       }
     </script>
+
+  {{- if .IsHome }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://www.marekdlugos.com/#person",
+    "name": "Marek Dlugos",
+    "url": "https://www.marekdlugos.com",
+    "jobTitle": "AI Solutions & Revenue Growth Consultant",
+    "description": "B2B SaaS consultant specializing in product, retention, and revenue growth. Aligning design, engineering, and sales into one execution engine.",
+    "knowsAbout": ["B2B SaaS", "AI agents", "business process automation", "revenue growth", "product management", "customer success"],
+    "sameAs": [
+      "https://www.linkedin.com/in/marekdlugos/",
+      "https://www.instagram.com/marekdlugos/",
+      "https://www.facebook.com/marek.dlugos"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Duvo",
+      "url": "https://duvo.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Marek Dlugos",
+    "url": "https://www.marekdlugos.com",
+    "author": { "@id": "https://www.marekdlugos.com/#person" }
+  }
+  </script>
+  {{- end }}
 </head>
