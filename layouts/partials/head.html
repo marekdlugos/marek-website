@@ -11,6 +11,15 @@
   <meta name="subject" content="Marek Dlugos Personal Website">
   <meta name="rating" content="General">
 
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ .Description }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{- if eq .Section "blog" }}
+  <meta property="og:type" content="article">
+  {{- else }}
+  <meta property="og:type" content="website">
+  {{- end }}
+
   <base href="{{ .Site.BaseURL }}">
   <link rel="canonical" href="{{ .Permalink }}">
   <meta name="robots" content="index,follow">

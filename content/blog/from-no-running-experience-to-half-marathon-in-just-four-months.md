@@ -2,7 +2,7 @@
 author: "Marek Dlugos"
 title: "From No Running Experience to Half Marathon in Four Months"
 date: 2024-11-01T08:08:25+02:00
-description: "XYZ"
+description: "How I went from zero running experience to finishing a half marathon in just four months — training plan, mistakes, and race day."
 featured: true
 layout: "single"
 draft: false
