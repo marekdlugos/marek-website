@@ -1,4 +1,4 @@
 {{ $foo := index .Params 0 }}
-{{ $data := index .Site.Data.hobbies $foo }}
+{{ $data := index hugo.Data.hobbies $foo }}
 
 {{ range $i, $e := $data }}<small class="text-muted">{{ if $i }}, {{ end }}{{ $e }}</small>{{ end }}

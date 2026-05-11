@@ -1,5 +1,5 @@
 <div class="mt-2 list-group list-group-flush">
-  {{ range $.Site.Data.hobbies.othervideos }}
+  {{ range hugo.Data.hobbies.othervideos }}
   <a href="{{ .link }}" class="list-group-item list-group-item-action">{{ .name }} - {{ .year }}</a>
   {{end}}
 </div>

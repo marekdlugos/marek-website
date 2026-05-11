@@ -1,5 +1,5 @@
 baseURL = "https://www.marekdlugos.com/"
-languageCode = "en-us"
+locale = "en-us"
 title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering."
 relativeURLS = true
 publishDir = "docs"

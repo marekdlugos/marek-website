@@ -1,5 +1,5 @@
 {{ $foo := index .Params 0 }}
-{{ $data := index .Site.Data.sharing $foo }}
+{{ $data := index hugo.Data.sharing $foo }}
 
 {{ range $i, $e := $data }}
   <div class="row">
