@@ -21,3 +21,8 @@ SectionPagesMenu = "main"
 [taxonomies]
   tag = "tags"
   category = "categories"
+
+# Allow .html files in content/ (Hugo 0.163+ blocks text/html content by default).
+# This site's pages are authored as raw HTML, so we re-enable it.
+[security]
+  allowContent = ['.']
