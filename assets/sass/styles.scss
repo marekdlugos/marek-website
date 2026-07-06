@@ -6,7 +6,7 @@ $font-size-base: 1.35rem;
 $font-size-sm: $font-size-base * .5;
 $font-size-lg: $font-size-base * 1.25;
 
-$card-spacer-y: $spacer/2;
-$card-spacer-x: $spacer/2;
+$card-spacer-y: $spacer * .5;
+$card-spacer-x: $spacer * .5;
 $list-group-item-padding-y: $spacer * .25;
-$list-group-item-padding-x: $spacer/2;
+$list-group-item-padding-x: $spacer * .5;
