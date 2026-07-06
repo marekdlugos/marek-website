@@ -1,0 +1,5 @@
+<div class="mt-2 list-group list-group-flush">
+  {{ range where hugo.Data.hobbies.videos "category" (.Get 0) }}
+  <a href="{{ .url }}" class="list-group-item list-group-item-action">{{ .title }} - {{ .year }}</a>
+  {{end}}
+</div>

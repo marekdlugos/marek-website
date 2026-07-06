@@ -6,7 +6,7 @@ description: "How I went from zero running experience to finishing a half marath
 featured: true
 layout: "single"
 draft: false
-tags: ["running", "workout", "test-tag"]
+tags: ["running", "workout"]
 categories: ["running"]
 ---
 

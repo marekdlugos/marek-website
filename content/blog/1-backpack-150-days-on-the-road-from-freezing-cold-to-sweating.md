@@ -1,7 +1,13 @@
 ---
+author: "Marek Dlugos"
 title: "1 Backpack 150 Days on the Road From Freezing Cold to Sweating"
 date: 2024-05-11T17:34:41+02:00
+description: ""
+featured: false
+layout: "single"
 draft: true
+tags: []
+categories: []
 ---
 
 It's funny how when I tell people I travel for a longer period of time with one backpack only, people have a hard time to comprehend that while it seems incredibly easy to me.
