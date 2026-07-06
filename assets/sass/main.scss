@@ -38,11 +38,13 @@ section {
   margin-bottom: $spacer*1.6;
 }
 
-h1 {
+// Navbar brand keeps the line-box geometry it had as an <h1> wrapper.
+.site-title {
   margin: 0;
   line-height: 3rem;
 }
 
+h1,
 h2 {
   @include font-size($font-size-base * 3.6);
   font-weight: normal;
