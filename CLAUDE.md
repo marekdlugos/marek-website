@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Personal website of Marek Dlugos (https://www.marekdlugos.com/). Built with **Hugo** (static site generator) and **Bootstrap 5**. No Hugo theme is used — all layouts are custom. The site is deployed as static HTML from the `docs/` directory (GitHub Pages).
+Personal website of Marek Dlugos (https://www.marekdlugos.com/). Built with **Hugo** (static site generator) and **Bootstrap 5**. No Hugo theme is used — all layouts are custom. The site is built and deployed to GitHub Pages by GitHub Actions (`.github/workflows/hugo.yml`) on every push to `master`; the `docs/` build output is gitignored, never committed.
 
 ## Tech Stack
 
@@ -16,12 +16,13 @@ Personal website of Marek Dlugos (https://www.marekdlugos.com/). Built with **Hu
 ## Repository Structure
 
 ```
+├── .github/workflows/   # CI: hugo.yml builds PRs, builds+deploys master to Pages
 ├── archetypes/          # Hugo content templates
 │   ├── default.md       # Minimal archetype
-│   └── post.md          # Blog post archetype with full frontmatter
+│   └── post.md          # Blog post archetype (only the fields actually used)
 ├── assets/
 │   └── sass/
-│       ├── main.scss    # Main stylesheet (imports styles.scss + bootstrap)
+│       ├── main.scss    # Main stylesheet (selective Bootstrap imports + custom styles)
 │       └── styles.scss  # Bootstrap variable overrides
 ├── config.toml          # Hugo site configuration
 ├── content/             # Site content (pages + blog posts)
@@ -39,9 +40,9 @@ Personal website of Marek Dlugos (https://www.marekdlugos.com/). Built with **Hu
 │   └── podcast/         # Standalone podcast page with own assets
 ├── data/                # JSON data files consumed by shortcodes
 │   ├── educationawards/awards.json
-│   ├── hobbies/         # asia.json, europe.json, videos.json, etc.
+│   ├── hobbies/         # continent lists (asia.json, …), videos.json, podcast.json
 │   └── sharing/         # interviews.json, work.json, socialnetworks.json, etc.
-├── docs/                # Build output (publishDir) — served by GitHub Pages
+├── docs/                # Build output (publishDir) — gitignored, built by CI
 ├── layouts/
 │   ├── _default/
 │   │   ├── baseof.html  # Base template (head, header, main block, footer, JS)
@@ -59,8 +60,7 @@ Personal website of Marek Dlugos (https://www.marekdlugos.com/). Built with **Hu
 │       ├── articles-list.html   # Lists items from data/sharing/*.json
 │       ├── awards-list.html     # Lists data/educationawards/awards.json
 │       ├── countries-traveled.html  # Lists countries from data/hobbies/*.json
-│       ├── other-videos.html    # Lists data/hobbies/othervideos.json
-│       ├── work-videos.html     # Lists data/hobbies/workvideos.json
+│       ├── videos-list.html     # Lists data/hobbies/videos.json filtered by category param
 │       ├── podcast.html         # Podcast embed
 │       └── social.html          # Social network links from data/sharing/socialnetworks.json
 ├── static/              # Static assets (images, SVGs, favicon)
@@ -90,12 +90,17 @@ Personal website of Marek Dlugos (https://www.marekdlugos.com/). Built with **Hu
 # Install dependencies
 npm install
 
-# Run local dev server
+# Run local dev server (NOTE: writes dev output into docs/ — docs/ is
+# gitignored, so this is harmless, but never treat local docs/ as deployable)
 hugo server
 
-# Build for production (outputs to docs/)
-hugo
+# Production build (outputs to docs/; CI runs this and deploys the result)
+hugo --gc --minify
 ```
+
+Deployment: GitHub Actions (`.github/workflows/hugo.yml`) builds and deploys
+to GitHub Pages on every push to `master`. PRs get a build-only check. Do not
+commit `docs/`.
 
 ## Content Conventions
 
@@ -103,7 +108,7 @@ hugo
 
 - Top-level pages are `.html` files in `content/` with YAML frontmatter
 - Pages in the main nav use `menu: main` with a `weight` to control order:
-  - Work (10), Side Projects (20), Hobbies (30), Sharing (40)
+  - Work (10), Side Projects (20), Education & Awards (25), Hobbies (30), Sharing (40), Now (50)
 - Pages use raw HTML with Bootstrap grid classes inside Hugo content files
 - The homepage (`content/_index.html`) uses `layout: single`
 
@@ -132,11 +137,14 @@ hugo
 - JSON files in `data/` are consumed by shortcodes
 - Shortcodes take a parameter referencing the JSON filename (e.g., `{{</* articles-list "work" */>}}` reads `data/sharing/work.json`)
 - Data entries typically have: `year`, `month`, `title`, `url`, and optional `medium` or `lang` fields
+- `data/hobbies/videos.json` holds ALL videos with a `category` field (`"work"` or `"personal"`); the `videos-list` shortcode filters by it: `{{</* videos-list "work" */>}}`. Add new videos here.
 
 ## Styling Conventions
 
-- **Bootstrap variable overrides** go in `assets/sass/styles.scss` (imported before Bootstrap)
-- **Custom styles** go in `assets/sass/main.scss` (after Bootstrap import)
+- **Bootstrap is imported selectively** in `assets/sass/main.scss` (legacy `@import` cherry-pick — Hugo compiles with LibSass, so `@use` and `sass:math` are unavailable). If markup starts using a Bootstrap component whose module isn't imported (e.g. tables, forms, badge, modal), add its `@import` in canonical bootstrap.scss order
+- **Bootstrap variable overrides** go in `assets/sass/styles.scss` (imported between Bootstrap's `functions` and `variables`)
+- **Custom styles** go in `assets/sass/main.scss` (after all Bootstrap imports)
+- Google Fonts are loaded via `<link>` tags in `layouts/partials/head.html`, not via CSS `@import`
 - Primary font: Poppins (sans-serif) for all pages
 - Blog body font: Merriweather (serif), applied via `.story-body` class
 - Base font size: 1.35rem, line height: 1.65
@@ -150,16 +158,17 @@ hugo
 
 - All pages extend `baseof.html` via `{{ define "main" }}...{{ end }}`
 - Partials: `head.html`, `header.html`, `footer.html`
-- Shortcodes load data from `data/` directory using `index .Site.Data.<folder> <param>`
-- Bootstrap JS is bundled via Hugo Pipes: `resources.Get` → `resources.Concat` → `resources.Minify`
-- CSS is processed via Hugo's SCSS pipeline: `resources.Get "sass/main.scss" | toCSS | minify`
+- Shortcodes load data from `data/` directory using `hugo.Data.<folder>`
+- Bootstrap JS (already minified upstream) is published via `resources.Get` → `resources.Copy "js/bundle.js"`
+- CSS is compiled via `resources.Get "sass/main.scss" | css.Sass` with `outputStyle: compressed` (no extra minify step); published as `css/style.css`
 
 ## Important Notes
 
 - **No Hugo theme** — everything is custom in `layouts/`
-- **Output directory is `docs/`**, not `public/` — this is for GitHub Pages deployment
-- The `resources/` and `node_modules/` directories are gitignored
-- The `post.md` archetype has many frontmatter fields from a previous theme; only `title`, `date`, `description`, `draft`, `tags`, `categories`, `featured`, `layout`, and `author` are actively used
+- **Output directory is `docs/`**, not `public/` — and it is **gitignored**; GitHub Actions builds and deploys it. Never commit build output.
+- The `resources/` and `node_modules/` directories are also gitignored
+- Every page has exactly one `<h1>` (a `visually-hidden` one on section-based pages like Hobbies/Sharing); keep it that way when adding pages
+- The `<base href>` tag in `head.html` is load-bearing: raw-HTML content pages reference images with bare relative paths (`src="awards/foo.jpg"`) that resolve through it
 - The blog is described as "authentic, non-AI generated" — respect this when creating content
 - Images should be placed in `static/` in the appropriate subdirectory
 - New data entries (articles, videos, etc.) go in the corresponding JSON file in `data/`
