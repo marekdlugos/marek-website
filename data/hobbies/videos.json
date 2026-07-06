@@ -3,67 +3,88 @@
     "year": 2019,
     "month": "Sep",
     "title": "Study Abroad with Czech Technical University",
-    "url": "https://www.youtube.com/watch?v=VlidJLuDFss"
+    "url": "https://www.youtube.com/watch?v=VlidJLuDFss",
+    "time": "1:49",
+    "category": "personal"
   },
   {
     "year": 2016,
     "month": "Sep",
     "title": "TRIX - Believe in your dreams (Music Video)",
-    "url": "https://youtu.be/9xpW3o-wOec"
+    "url": "https://youtu.be/9xpW3o-wOec",
+    "time": "3:29",
+    "category": "personal"
   },
   {
     "year": 2016,
     "month": "Jul",
-    "title": "Somewhere in Hawaii (4K Timelapses)",
-    "url": "https://www.youtube.com/watch?v=prjoFkr5Tvg"
+    "title": "Somewhere in Hawaii (4k timelapses)",
+    "url": "https://www.youtube.com/watch?v=prjoFkr5Tvg",
+    "time": "1:53",
+    "category": "personal"
   },
   {
     "year": 2016,
     "month": "Jul",
     "title": "Flying drone in Gatineau Park",
-    "url": "https://www.facebook.com/marek.dlugos/videos/10206831593208874/"
+    "url": "https://www.facebook.com/marek.dlugos/videos/10206831593208874/",
+    "time": "0:55",
+    "category": "personal"
   },
   {
     "year": 2015,
     "month": "Jul",
     "title": "7,686 Miles from Slovakia to Hawaii (TEASER)",
-    "url": "https://www.youtube.com/watch?v=UAp72aqL8iY"
+    "url": "https://www.youtube.com/watch?v=UAp72aqL8iY",
+    "time": "0:52",
+    "category": "personal"
   },
   {
     "year": 2013,
     "month": "Jan",
     "title": "Host me in California (TEASER)",
-    "url": "https://www.youtube.com/watch?v=cQsaCXJeoDY"
+    "url": "https://www.youtube.com/watch?v=cQsaCXJeoDY",
+    "time": "0:46",
+    "category": "personal"
   },
-  
   {
     "year": 2016,
     "month": "Jul",
     "title": "Shopify HQ new floors opening",
-    "url": "https://www.youtube.com/watch?v=SRFHdmK91R8"
+    "url": "https://www.youtube.com/watch?v=SRFHdmK91R8",
+    "time": "0:58",
+    "category": "work"
   },
   {
     "year": 2016,
     "month": "Apr",
     "title": "IceWarp 11.4 Features Overview",
-    "url": "https://www.youtube.com/watch?v=gSHddDS_7os"
+    "url": "https://www.youtube.com/watch?v=gSHddDS_7os",
+    "time": "2:42",
+    "category": "work"
   },
   {
     "year": 2016,
     "month": "Feb",
     "title": "Online editing documents - BETA feature",
-    "url": "https://www.youtube.com/watch?v=ATF8v_X_OVM"
+    "url": "https://www.youtube.com/watch?v=ATF8v_X_OVM",
+    "time": "2:54",
+    "category": "work"
   },
   {
     "year": 2016,
     "month": "Feb",
     "title": "New Prague HQ of IceWarp",
-    "url": "https://www.youtube.com/watch?v=M4Gp0BvOQlI"
+    "url": "https://www.youtube.com/watch?v=M4Gp0BvOQlI",
+    "time": "1:33",
+    "category": "work"
   },
   {
     "year": 2015,
     "month": "Dec",
     "title": "Year 2015 at IceWarp in numbers",
-    "url": "https://www.youtube.com/watch?v=K6STl2Os7B4"
+    "url": "https://www.youtube.com/watch?v=K6STl2Os7B4",
+    "time": "2:27",
+    "category": "work"
   }
 ]
