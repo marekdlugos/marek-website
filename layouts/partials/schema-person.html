@@ -1,0 +1,31 @@
+{{- /*
+  Person + WebSite JSON-LD for the home page. Built as Go maps and rendered
+  with jsonify so quoting and escaping are Hugo's problem, not ours.
+  sameAs comes from data/sharing/socialnetworks.json, the same source the
+  footer and the Sharing page use.
+*/ -}}
+{{- $sameAs := slice -}}
+{{- range hugo.Data.sharing.socialnetworks -}}
+  {{- $sameAs = $sameAs | append .url -}}
+{{- end -}}
+{{- $person := dict
+  "@context" "https://schema.org"
+  "@type" "Person"
+  "@id" (printf "%s#person" site.BaseURL)
+  "name" site.Params.author
+  "url" (site.BaseURL | strings.TrimSuffix "/")
+  "jobTitle" site.Params.jobTitle
+  "description" site.Params.description
+  "knowsAbout" site.Params.knowsAbout
+  "sameAs" $sameAs
+  "worksFor" (dict "@type" "Organization" "name" site.Params.worksFor.name "url" site.Params.worksFor.url)
+-}}
+{{- $website := dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" site.Params.author
+  "url" (site.BaseURL | strings.TrimSuffix "/")
+  "author" (dict "@id" (printf "%s#person" site.BaseURL))
+-}}
+<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
+<script type="application/ld+json">{{ $website | jsonify | safeJS }}</script>

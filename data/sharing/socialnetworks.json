@@ -2,17 +2,20 @@
   {
     "name": "LinkedIn",
     "desc": "Work related content together with my resume.",
-    "url": "https://www.linkedin.com/in/marekdlugos/"
+    "url": "https://www.linkedin.com/in/marekdlugos/",
+    "footer": true
   },
   {
     "name": "Facebook",
     "desc": "Life updates and insights.",
-    "url": "https://www.facebook.com/marek.dlugos"
+    "url": "https://www.facebook.com/marek.dlugos",
+    "footer": true
   },
   {
     "name": "Instagram",
     "desc": "Travels.",
-    "url": "https://www.instagram.com/marekdlugos/"
+    "url": "https://www.instagram.com/marekdlugos/",
+    "footer": true
   },
   {
     "name": "Twitter",
@@ -32,7 +35,8 @@
   {
     "name": "Dribbble",
     "desc": "Design projects.",
-    "url": "https://medium.com/@MarekDlugos"
+    "url": "https://medium.com/@MarekDlugos",
+    "_todo": "URL points at Medium (copy-paste bug); real Dribbble URL needed"
   },
   {
     "name": "Github",

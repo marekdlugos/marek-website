@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.Language.Locale }}">
 {{- partial "head.html" . -}}
 
 <body>
-    <a class="visually-hidden-focusable" href="#main">Skip to main content</a>
+    {{- /* Absolute: a bare "#main" would resolve against <base> to the home page. */}}
+    <a class="visually-hidden-focusable" href="{{ .Permalink }}#main">Skip to main content</a>
     {{- partial "header.html" . -}}
     <main id="main" class="mt-5">
         <div class="container gx-md-3 gx-sm-2">
@@ -13,13 +14,16 @@
     {{- partial "footer.html" . -}}
 
     <div class="fixed-bottom">
-        <div class="progress-container">
-            <div class="progress-bar" id="myBar"></div>
+        <div class="scroll-progress">
+            <div class="scroll-progress-bar" id="scroll-progress"></div>
         </div>
     </div>
 
-    {{ $js := resources.Get "js/bootstrap.bundle.min.js" | resources.Copy "js/bundle.js" }}
-    <script src="{{ $js.RelPermalink }}" defer></script>
+    {{ $js := resources.Get "js/bootstrap.bundle.min.js" | resources.Copy "js/bundle.js" | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+
+    {{ $scroll := resources.Get "js/scroll-progress.js" | js.Build (dict "targetPath" "js/scroll-progress.js" "minify" true) | fingerprint }}
+    <script src="{{ $scroll.RelPermalink }}" integrity="{{ $scroll.Data.Integrity }}" defer></script>
 
 </body>
 

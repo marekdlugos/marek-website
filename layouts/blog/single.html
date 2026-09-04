@@ -8,10 +8,11 @@
             {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
             {{ $dateHuman := . | time.Format ":date_long" }}
             <time datetime="{{ $dateMachine }}" class="text-muted">{{ $dateHuman }}</time>
-          {{ end }} | Written by Marek Dlugos | <a href="{{ .RelPermalink }}/#newsletter">Subscribe to my newsletter</a>
+          {{ end }} | Written by {{ site.Params.author }} | <a href="{{ .Permalink }}#newsletter">Subscribe to my newsletter</a>
         </small>
         <article class="mb-4">
-          {{ $toc := .TableOfContents }}
+          {{/* Anchors must be absolute: <base href> would send "#id" to the home page. */}}
+          {{ $toc := replace .TableOfContents "href=\"#" (printf "href=\"%s#" .Permalink) | safeHTML }}
           {{ if and (gt (len $toc) 0) (gt (strings.Count $toc "<li>") 1) }}
             <div class="toc-container d-none d-lg-block">
               <h5>Table of Contents</h5>

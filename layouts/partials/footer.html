@@ -3,19 +3,15 @@
     <section>
     <div class="row">
       <div class="col-md-7">
-        <small class="text-muted">Made in 🇨🇭 by Marek Dlugos</small>
+        <small class="text-muted">Made in 🇨🇭 by {{ site.Params.author }}</small>
       </div>
       <div class="col-md-5">
         <div class="row">
+          {{- range where hugo.Data.sharing.socialnetworks "footer" true }}
           <div class="col">
-            <small><a href="https://www.linkedin.com/in/marekdlugos/" class="text-decoration-none">LinkedIn</a></small>
+            <small><a href="{{ .url }}" class="text-decoration-none">{{ .name }}</a></small>
           </div>
-          <div class="col">
-            <small><a href="https://www.facebook.com/marek.dlugos" class="text-decoration-none">Facebook</a></small>
-          </div>
-          <div class="col">
-            <small><a href="https://www.instagram.com/marekdlugos/" class="text-decoration-none">Instagram</a></small>
-          </div>
+          {{- end }}
         </div>
       </div>
     </div>
