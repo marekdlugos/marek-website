@@ -3,8 +3,6 @@ author: "Marek Dlugos"
 title: "At Uni, I Did 4 Semesters Abroad. Here Is the Best City"
 date: 2025-01-27T17:06:23+02:00
 description: ""
-featured: false
-layout: "single"
 draft: true
 tags: []
 categories: []

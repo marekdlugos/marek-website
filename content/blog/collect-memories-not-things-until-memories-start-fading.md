@@ -3,8 +3,6 @@ author: "Marek Dlugos"
 title: "Collect memories, not things. Until memories start fading"
 date: 2025-12-22T08:08:25+02:00
 description: "I believed in “collect memories, not things.” Years later, memories faded. This is about souvenirs, photos, and finding better ways to remember."
-featured: true
-layout: "single"
 draft: false
 tags: ["life"]
 categories: ["life"]

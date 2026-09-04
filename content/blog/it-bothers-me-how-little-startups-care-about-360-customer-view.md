@@ -3,8 +3,6 @@ author: "Marek Dlugos"
 title: "It bothers me how little startups care about 360 customer view"
 date: 2025-04-02T19:12:33+02:00
 description: "Having seen a few early on companies, here's my short essay on why I believe having a 360 customer view is really important from the beginning."
-featured: true
-layout: "single"
 draft: false
 tags: ["crm", "sales", "support", "marketing", "growth", "startups"]
 categories: ["other"]

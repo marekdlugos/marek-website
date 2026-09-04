@@ -3,8 +3,6 @@ author: "Marek Dlugos"
 title: "Have I Run Out of Luck?"
 date: 2024-04-08T08:08:25+02:00
 description: "A reflection on luck, timing, and whether the good breaks eventually stop coming."
-featured: false
-layout: "single"
 draft: false
 tags: ["life"]
 categories: ["life"]

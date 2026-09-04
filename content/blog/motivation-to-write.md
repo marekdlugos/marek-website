@@ -3,8 +3,6 @@ author: "Marek Dlugos"
 title: "Motivation to Write"
 date: 2024-10-07T19:12:33+02:00
 description: "Why I started writing and what keeps me going — on finding motivation to publish when no one is asking you to."
-featured: true
-layout: "single"
 draft: false
 tags: ["misc", "writing"]
 categories: ["other"]
