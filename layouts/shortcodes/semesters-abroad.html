@@ -1,0 +1,23 @@
+{{- /* Semesters abroad from data/education/semesters.json.
+       Each row has a term, university, blurb, and either courses or a thesis line. */ -}}
+{{- range $i, $s := hugo.Data.education.semesters }}
+<div class="row {{ if eq $i 0 }}mt-3{{ else }}mt-2{{ end }}">
+  <div class="col-md-3">
+    <h5 class="text-muted">{{ $s.term }}</h5>
+  </div>
+  <div class="col-md-9">
+    <h5>{{ $s.university }}</h5>
+    <small class="text-muted">{{ $s.blurb }}</small>
+    {{- with $s.thesis }}
+    <p>{{ . }}</p>
+    {{- end }}
+    {{- with $s.courses }}
+    <ul>
+      {{- range . }}
+      <li>{{ . }}</li>
+      {{- end }}
+    </ul>
+    {{- end }}
+  </div>
+</div>
+{{- end }}

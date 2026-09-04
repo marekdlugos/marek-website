@@ -1,0 +1,7 @@
+{{- /* Client logo grid from data/work/clients.json.
+       Paths are bare and relative on purpose: they resolve through <base href>. */ -}}
+<div class="row row-cols-auto">
+  {{- range hugo.Data.work.clients }}
+  <div class="col"><img src="{{ .logo }}" alt="{{ .alt }}" height="100" class="p-2 grayscale" /></div>
+  {{- end }}
+</div>

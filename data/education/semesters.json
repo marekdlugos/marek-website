@@ -1,0 +1,44 @@
+[
+  {
+    "term": "Spring 2019",
+    "university": "University of Buenos Aires, Argentina",
+    "blurb": "Semester abroad. Ranked as #1 university in Argentina.",
+    "thesis": "Worked on my bachelor thesis: \"A Modern Wiki Web Application Following User-Centered Design Methods.\""
+  },
+  {
+    "term": "Fall 2018",
+    "university": "Hong Kong University of Science and Technology, Hong Kong",
+    "blurb": "Semester abroad. Ranked as #1 university in Hong Kong.",
+    "courses": [
+      "Negotiation",
+      "Pricing and Revenue Management (MBA class)",
+      "Managerial Microeconomics (MBA class)",
+      "Corporate Finance",
+      "Accounting"
+    ]
+  },
+  {
+    "term": "Spring 2018",
+    "university": "Tel Aviv University, Israel",
+    "blurb": "Semester abroad. Ranked as #1 university in Israel.",
+    "courses": [
+      "Entrepreneurship from A to Z",
+      "US Mergers & Acquisitions",
+      "Licensing of Intellectual Property",
+      "Creative Writing"
+    ]
+  },
+  {
+    "term": "Fall 2016",
+    "university": "Sungkyunkwan University, South Korea",
+    "blurb": "Semester abroad. Ranked as #1 university in South Korea.",
+    "courses": [
+      "Contemporary Entrepreneurship",
+      "Enterprise architectures",
+      "Data Structure and Algorithms",
+      "Computer Networks",
+      "Principles and Practice in Data Mining",
+      "Programming in C/C++"
+    ]
+  }
+]

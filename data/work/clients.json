@@ -1,0 +1,12 @@
+[
+  { "name": "Shopify",          "alt": "Shopify",    "logo": "client-logos/shopify.svg" },
+  { "name": "SAP",              "alt": "SAP",        "logo": "client-logos/sap.svg" },
+  { "name": "UBS",              "alt": "UBS",        "logo": "client-logos/ubs.svg" },
+  { "name": "Philip Morris",    "alt": "Philip Morris", "logo": "client-logos/philip_morris.svg" },
+  { "name": "BNP",              "alt": "BNP",        "logo": "client-logos/bnp.svg" },
+  { "name": "Sanofi",           "alt": "Sanofi",     "logo": "client-logos/sanofi.svg" },
+  { "name": "Avis Budget Group","alt": "ABG",        "logo": "client-logos/avis_budget_group.svg" },
+  { "name": "Marks and Spencer","alt": "M&S",        "logo": "client-logos/marks-and-spencer.svg" },
+  { "name": "Prudential",       "alt": "Prudential", "logo": "client-logos/prudential-plc.svg" },
+  { "name": "Givaudan",         "alt": "Givaudan",   "logo": "client-logos/givaudan.svg" }
+]

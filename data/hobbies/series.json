@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Traveling the South East Asia Series",
+    "image": "hobbies/south-east-asia.png",
+    "alt": "Watch Traveling the South East Asia Series on YouTube",
+    "text": "Since I was always into the video after I finished my semester abroad in South Korea, I have decided to travel and film everything I experience. It was kinda my experiment whether or not I would like to do vlogging on regular basis. I ended up uploading 19 videos on YouTube from my travels through Taiwan, Philippines, Singapore, and Malaysia.",
+    "stats": ["22 videos", "2hr 22min total length", "Produced in 2015"],
+    "url": "https://www.youtube.com/playlist?list=PLfAn5S6hUak_H134_C8py9Cd5L275z-or",
+    "_todo": "Stats say 22 videos but the text says 19. Which is right?"
+  },
+  {
+    "title": "Questions w/ Shopify Interns Series",
+    "image": "hobbies/shopify-interns.png",
+    "alt": "Watch Questions w/ Shopify Interns Series on YouTube",
+    "text": "I’ve filmed 5 episodes of interviews with Shopify Interns during summer 2016 ranging from designers to software engineers so everyone can find themselves in their stories, get inspired and motivated and apply for an internship in some cool companies such as Shopify!",
+    "stats": ["5 videos", "2hr 22min total length", "Produced in 2015"],
+    "url": "https://youtu.be/ApSOemHdUcU?list=PLfAn5S6hUak9NqYmSIPIhspARcNvrllpq",
+    "_todo": "Length and year are copy-pasted from the series above; the text says summer 2016. Real values needed."
+  }
+]
