@@ -149,7 +149,8 @@ commit `public/`.
   ```
 - Blog posts render with the `layouts/blog/single.html` template which uses the Merriweather serif font (`.story-body` class), shows a table of contents when a post has more than one heading, and includes a Kit newsletter signup form at the bottom. Do not add `layout:` — the section template already wins.
 - The table of contents is built from `.Fragments.Headings` via `partials/toc-headings.html`, not from `.TableOfContents`. That skips the empty placeholder entries Hugo emits for heading levels a post does not use, and is not bound by `markup.tableOfContents` start/end levels. Posts head their sections at `###` because `h2` is styled as large as `h1`
-- The contents card is chrome, not prose: it sets `font-family: var(--bs-font-sans-serif)` so it does not inherit the serif `.story-body` face. In its list, the gap between items must stay clearly larger than the gap between two wrapped lines of one item
+- The contents card is chrome, not prose. Prose rules like `.story-body p` and `.story-body ul li` outrank a bare class, so the card's own rules are scoped under `.toc-card` and the label is a `div` rather than a `p`. It also sets `font-family: var(--bs-font-sans-serif)` so it does not inherit the serif face. In its list, the gap between items must stay clearly larger than the gap between two wrapped lines of one item
+- `[id] { scroll-margin-top: 8.5rem }` keeps anchor jumps clear of the fixed navbar, which is 105px at its tallest. Without it every in-page link lands with its target hidden behind the header
 - Opening the card is pure CSS (`:hover`, `:focus-within`). `assets/js/toc.js` only adds the current-section marker, tap toggling and Esc, so the card still works without JavaScript
 - Anchors inside a page must be absolute (`{{ .Permalink }}#id`). A bare `#id` resolves against `<base href>` and jumps to the home page
 - The blog list (`layouts/_default/list.html`) orders posts by publish date (newest first)
