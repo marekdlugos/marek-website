@@ -1,10 +1,46 @@
 baseURL = "https://www.marekdlugos.com/"
-locale = "en-us"
+# `locale` is Hugo's language key; `languageCode` was deprecated in v0.158.
+# Read it in templates via site.Language.Locale.
+locale = "en-US"
 title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering."
-relativeURLS = true
+relativeURLs = true
 publishDir = "docs"
 disableHugoGeneratorInject = true
-SectionPagesMenu = "main"
+sectionPagesMenu = "main"
+
+# Tags and categories are never surfaced in the UI, and the generated term
+# pages would render through the blog list template (blog intro prose and all).
+# Post front matter keeps its tags/categories, so this is a one-line revert.
+disableKinds = ["taxonomy", "term"]
+
+# Site-wide values consumed by layouts. Nothing user-facing should be
+# hardcoded in a template when it belongs here.
+[params]
+  author = "Marek Dlugos"
+  email = "hi@marekdlugos.com"
+  description = "B2B SaaS consultant specializing in product, retention, and revenue growth. Aligning design, engineering, and sales into one execution engine."
+  jobTitle = "AI Solutions & Revenue Growth Consultant"
+  knowsAbout = ["B2B SaaS", "AI agents", "business process automation", "revenue growth", "product management", "customer success"]
+  clearbitKey = "pk_4494011d9a7d418f46e138cdcbff45fa"
+  # Fallback og:image, resolved against baseURL by the embedded opengraph
+  # template. A page can override it with `images:` in its front matter.
+  images = ["marek-dlugos.webp"]
+
+  [params.worksFor]
+    name = "Duvo"
+    url = "https://duvo.com"
+
+  [params.social]
+    twitter = "MarekDlugos"
+
+[services]
+  [services.googleAnalytics]
+    ID = "G-36B0M4RPHF"
+
+[privacy]
+  [privacy.googleAnalytics]
+    # Matches the behaviour of the hand-written snippet this replaces.
+    respectDoNotTrack = false
 
 [module]
   [[module.mounts]]
@@ -14,13 +50,6 @@ SectionPagesMenu = "main"
   [[module.mounts]]
     source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
     target = "assets/js/bootstrap.bundle.min.js"
-
-[minify]
-  minifyOutput = true
-
-[taxonomies]
-  tag = "tags"
-  category = "categories"
 
 # Allow .html files in content/ (Hugo 0.163+ blocks text/html content by default).
 # This site's pages are authored as raw HTML, so we re-enable it.
