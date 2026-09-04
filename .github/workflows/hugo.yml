@@ -37,16 +37,23 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Cache Hugo resource output
+        uses: actions/cache@v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('assets/**', 'package-lock.json') }}
+          restore-keys: hugo-resources-
+
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
-        run: hugo --gc --minify
+        run: hugo --gc --minify --printPathWarnings --printUnusedTemplates
 
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/master'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs
+          path: ./public
 
   deploy:
     if: github.ref == 'refs/heads/master'

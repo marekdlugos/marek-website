@@ -4,7 +4,6 @@ baseURL = "https://www.marekdlugos.com/"
 locale = "en-US"
 title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering."
 relativeURLs = true
-publishDir = "docs"
 disableHugoGeneratorInject = true
 sectionPagesMenu = "main"
 
