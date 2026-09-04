@@ -11,9 +11,12 @@
           {{ end }} | Written by {{ site.Params.author }} | <a href="{{ .Permalink }}#newsletter">Subscribe to my newsletter</a>
         </small>
         <article class="mb-4">
-          {{/* Anchors must be absolute: <base href> would send "#id" to the home page. */}}
-          {{ $toc := replace .TableOfContents "href=\"#" (printf "href=\"%s#" .Permalink) | safeHTML }}
-          {{ if and (gt (len $toc) 0) (gt (strings.Count $toc "<li>") 1) }}
+          {{/* strings.Count takes the substring first, then the string. Reversing
+               them counted the whole TOC inside "<li>", so this never fired.
+               Anchors must be absolute, or <base href> sends "#id" to the home page. */}}
+          {{ $toc := .TableOfContents | string }}
+          {{ if gt (strings.Count "<li>" $toc) 1 }}
+            {{ $toc = replace $toc "href=\"#" (printf "href=\"%s#" .Permalink) | safeHTML }}
             <div class="toc-container d-none d-lg-block">
               <h5>Table of Contents</h5>
               {{ $toc }}
