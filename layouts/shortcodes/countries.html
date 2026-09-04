@@ -1,0 +1,8 @@
+{{- /* Comma-separated country names for one continent.
+       Usage: {{< countries "asia" >}}
+       Countries flagged `home` are shown on the map but are not places visited. */ -}}
+{{- $continent := .Get 0 -}}
+{{- $rows := where (where hugo.Data.hobbies.countries "continent" $continent) "home" "!=" true -}}
+{{- range $i, $c := sort $rows "name" -}}
+<small class="text-muted">{{ if $i }}, {{ end }}{{ $c.name }}</small>
+{{- end -}}

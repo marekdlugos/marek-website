@@ -1,0 +1,364 @@
+[
+  {
+    "name": "Armenia",
+    "continent": "asia",
+    "iso": "AM"
+  },
+  {
+    "name": "Cambodia",
+    "continent": "asia",
+    "iso": "KH"
+  },
+  {
+    "name": "China (Hong Kong, Macau)",
+    "continent": "asia",
+    "iso": [
+      "HK",
+      "MO"
+    ]
+  },
+  {
+    "name": "Georgia",
+    "continent": "asia",
+    "iso": "GE"
+  },
+  {
+    "name": "Indonesia",
+    "continent": "asia",
+    "iso": "ID"
+  },
+  {
+    "name": "Israel",
+    "continent": "asia",
+    "iso": "IL"
+  },
+  {
+    "name": "Jordan",
+    "continent": "asia",
+    "iso": "JO"
+  },
+  {
+    "name": "Kuwait",
+    "continent": "asia",
+    "iso": "KW"
+  },
+  {
+    "name": "Laos",
+    "continent": "asia",
+    "iso": "LA"
+  },
+  {
+    "name": "Malaysia",
+    "continent": "asia",
+    "iso": "MY"
+  },
+  {
+    "name": "Maldives",
+    "continent": "asia",
+    "iso": "MV"
+  },
+  {
+    "name": "Palestine",
+    "continent": "asia",
+    "iso": "PS"
+  },
+  {
+    "name": "Philippines",
+    "continent": "asia",
+    "iso": "PH"
+  },
+  {
+    "name": "Qatar (Doha)",
+    "continent": "asia",
+    "iso": "QA"
+  },
+  {
+    "name": "Saudi Arabia",
+    "continent": "asia",
+    "iso": "SA"
+  },
+  {
+    "name": "Singapore",
+    "continent": "asia",
+    "iso": "SG"
+  },
+  {
+    "name": "South Korea",
+    "continent": "asia",
+    "iso": "KR"
+  },
+  {
+    "name": "Taiwan",
+    "continent": "asia",
+    "iso": "TW"
+  },
+  {
+    "name": "Thailand",
+    "continent": "asia",
+    "iso": "TH"
+  },
+  {
+    "name": "Turkey",
+    "continent": "asia",
+    "iso": "TR"
+  },
+  {
+    "name": "United Arab Emirates",
+    "continent": "asia",
+    "iso": "AE"
+  },
+  {
+    "name": "Vietnam",
+    "continent": "asia",
+    "iso": "VN"
+  },
+  {
+    "name": "Albania",
+    "continent": "europe",
+    "iso": "AL"
+  },
+  {
+    "name": "Austria",
+    "continent": "europe",
+    "iso": "AT"
+  },
+  {
+    "name": "Belgium",
+    "continent": "europe",
+    "iso": "BE"
+  },
+  {
+    "name": "Bulgaria",
+    "continent": "europe",
+    "iso": "BG"
+  },
+  {
+    "name": "Croatia",
+    "continent": "europe",
+    "iso": "HR"
+  },
+  {
+    "name": "Cyprus",
+    "continent": "europe",
+    "iso": "CY"
+  },
+  {
+    "name": "Czech Republic",
+    "continent": "europe",
+    "iso": "CZ"
+  },
+  {
+    "name": "Denmark",
+    "continent": "europe",
+    "iso": "DK"
+  },
+  {
+    "name": "France",
+    "continent": "europe",
+    "iso": "FR"
+  },
+  {
+    "name": "Germany",
+    "continent": "europe",
+    "iso": "DE"
+  },
+  {
+    "name": "Greece",
+    "continent": "europe",
+    "iso": "GR"
+  },
+  {
+    "name": "Hungary",
+    "continent": "europe",
+    "iso": "HU"
+  },
+  {
+    "name": "Iceland",
+    "continent": "europe",
+    "iso": "IS"
+  },
+  {
+    "name": "Ireland",
+    "continent": "europe",
+    "iso": "IE"
+  },
+  {
+    "name": "Italy",
+    "continent": "europe",
+    "iso": "IT"
+  },
+  {
+    "name": "Kosovo",
+    "continent": "europe",
+    "iso": "XK"
+  },
+  {
+    "name": "Liechtenstein",
+    "continent": "europe",
+    "iso": "LI"
+  },
+  {
+    "name": "Lithuania",
+    "continent": "europe",
+    "iso": "LT"
+  },
+  {
+    "name": "Luxembourg",
+    "continent": "europe",
+    "iso": "LU"
+  },
+  {
+    "name": "Malta",
+    "continent": "europe",
+    "iso": "MT"
+  },
+  {
+    "name": "Montenegro",
+    "continent": "europe",
+    "iso": "ME"
+  },
+  {
+    "name": "Netherlands",
+    "continent": "europe",
+    "iso": "NL"
+  },
+  {
+    "name": "North Macedonia",
+    "continent": "europe",
+    "iso": "MK"
+  },
+  {
+    "name": "Poland",
+    "continent": "europe",
+    "iso": "PL"
+  },
+  {
+    "name": "Portugal",
+    "continent": "europe",
+    "iso": "PT"
+  },
+  {
+    "name": "Slovenia",
+    "continent": "europe",
+    "iso": "SI"
+  },
+  {
+    "name": "Spain",
+    "continent": "europe",
+    "iso": "ES"
+  },
+  {
+    "name": "Sweden",
+    "continent": "europe",
+    "iso": "SE"
+  },
+  {
+    "name": "Switzerland",
+    "continent": "europe",
+    "iso": "CH"
+  },
+  {
+    "name": "United Kingdom",
+    "continent": "europe",
+    "iso": "GB"
+  },
+  {
+    "name": "Vatican City",
+    "continent": "europe",
+    "iso": "VA"
+  },
+  {
+    "name": "Argentina",
+    "continent": "latin-america",
+    "iso": "AR"
+  },
+  {
+    "name": "Bahamas",
+    "continent": "latin-america",
+    "iso": "BS"
+  },
+  {
+    "name": "Bolivia",
+    "continent": "latin-america",
+    "iso": "BO"
+  },
+  {
+    "name": "Brazil",
+    "continent": "latin-america",
+    "iso": "BR"
+  },
+  {
+    "name": "Chile",
+    "continent": "latin-america",
+    "iso": "CL"
+  },
+  {
+    "name": "Colombia",
+    "continent": "latin-america",
+    "iso": "CO"
+  },
+  {
+    "name": "Costa Rica",
+    "continent": "latin-america",
+    "iso": "CR"
+  },
+  {
+    "name": "Dominican Republic",
+    "continent": "latin-america",
+    "iso": "DO"
+  },
+  {
+    "name": "Ecuador",
+    "continent": "latin-america",
+    "iso": "EC"
+  },
+  {
+    "name": "Mexico",
+    "continent": "latin-america",
+    "iso": "MX"
+  },
+  {
+    "name": "Panama",
+    "continent": "latin-america",
+    "iso": "PA"
+  },
+  {
+    "name": "Peru",
+    "continent": "latin-america",
+    "iso": "PE"
+  },
+  {
+    "name": "Uruguay",
+    "continent": "latin-america",
+    "iso": "UY"
+  },
+  {
+    "name": "Canada (Ottawa, Toronto, Montreal)",
+    "continent": "north-america",
+    "iso": "CA"
+  },
+  {
+    "name": "USA (Florida, Hawaii, NYC, Puerto Rico, SF)",
+    "continent": "north-america",
+    "iso": [
+      "US",
+      "PR"
+    ]
+  },
+  {
+    "name": "Morocco",
+    "continent": "africa",
+    "iso": "MA"
+  },
+  {
+    "name": "Mauritius",
+    "continent": "africa",
+    "iso": "MU"
+  },
+  {
+    "name": "Slovakia",
+    "continent": "europe",
+    "iso": "SK",
+    "home": true
+  }
+]
