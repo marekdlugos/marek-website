@@ -144,24 +144,152 @@ h5 {
   margin-top: 0 !important;
 }
 
-/* Floating TOC styling */
-.toc-container {
+/* Table of contents.
+   A thin rail of dashes in the left margin, one per heading, that opens a
+   card on hover, keyboard focus or tap. Opening is pure CSS so the card
+   still works if the script fails; assets/js/toc.js only adds the current
+   section, tap toggling and Esc. */
+
+.toc {
   position: fixed;
-  top: 500px;
-  left: 20px;
-  width: 250px;
-  max-height: 80vh;
-  overflow-y: auto;
-  background-color: #f8f9fa; /* Bootstrap light background */
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: .25rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  top: 50%;
+  left: 1.5rem;
+  transform: translateY(-50%);
+  z-index: 1030;
 }
 
-/* Ensure TOC hides on mobile and tablet sizes */
+/* No room for it beside the text, and no hover to open it with. */
 @media (max-width: 991.98px) {
-  .toc-container {
+  .toc {
+    display: none;
+  }
+}
+
+.toc-rail {
+  display: block;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.toc-rail:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.toc-dash {
+  display: block;
+  height: 2px;
+  margin: 7px 0;
+  border-radius: 1px;
+  background-color: #d4d4d8;
+  transition: background-color 0.15s ease;
+}
+
+.toc-dash--l3 {
+  width: 22px;
+}
+
+/* Subheadings read as subordinate: shorter and indented. */
+.toc-dash--l4 {
+  width: 13px;
+  margin-left: 9px;
+}
+
+.toc-dash.is-current {
+  background-color: #18181b;
+}
+
+.toc-card {
+  position: absolute;
+  font-family: var(--bs-font-sans-serif);
+  top: 50%;
+  left: calc(100% + 0.75rem);
+  width: 260px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 0.9rem 1rem 1rem;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.11);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-4px, -50%);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.toc:hover .toc-card,
+.toc:focus-within .toc-card,
+.toc.is-open .toc-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -50%);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.toc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The gap between two items has to read as larger than the gap between two
+   wrapped lines of one item, or a wrapped heading looks like two headings. */
+.toc-item + .toc-item {
+  margin-top: 0.85rem;
+}
+
+.toc-item a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 0.15rem 0.4rem;
+  margin: -0.15rem -0.4rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  line-height: 1.25;
+  color: #71717a;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.toc-item--l4 a {
+  padding-left: 1rem;
+  font-size: 0.8rem;
+}
+
+.toc-item a:hover,
+.toc-item a:focus-visible {
+  color: #18181b;
+}
+
+.toc-item a.is-current {
+  background-color: #f4f4f5;
+  color: #18181b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toc-card,
+  .toc-dash,
+  .toc-item a {
+    transition: none;
+  }
+}
+
+@media print {
+  .toc {
     display: none;
   }
 }

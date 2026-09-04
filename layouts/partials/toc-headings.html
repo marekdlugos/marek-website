@@ -1,0 +1,20 @@
+{{- /*
+  Flattens Hugo's nested .Fragments.Headings into a plain slice of
+  {id, level, title}, dropping the empty placeholder entries Hugo inserts
+  for heading levels a post skips. Recursive: it calls itself for children.
+
+  Returns: slice of dicts. Call with a .Fragments.Headings value.
+*/ -}}
+{{- $out := slice -}}
+{{- range . -}}
+  {{- $h := . -}}
+  {{- with $h.Title -}}
+    {{- $out = $out | append (dict "id" $h.ID "level" $h.Level "title" .) -}}
+  {{- end -}}
+  {{- with $h.Headings -}}
+    {{- range partial "toc-headings.html" . -}}
+      {{- $out = $out | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

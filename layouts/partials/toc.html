@@ -1,0 +1,32 @@
+{{- /*
+  Table of contents: a thin rail in the left margin that opens a card on
+  hover, focus or tap. Hidden below 992px.
+
+  Opening is pure CSS, so the card still works without JavaScript;
+  assets/js/toc.js only adds scroll tracking, tap toggling and Esc.
+
+  Call with a page: {{ partial "toc.html" . }}
+*/ -}}
+{{- $page := . -}}
+{{- $items := slice -}}
+{{- with .Fragments }}{{ $items = partial "toc-headings.html" .Headings }}{{ end -}}
+{{- if gt (len $items) 1 }}
+<nav class="toc" aria-label="Table of contents" data-toc>
+  <button type="button" class="toc-rail" aria-expanded="false" aria-controls="toc-card"
+          aria-label="Table of contents">
+    {{- range $items }}
+    <span class="toc-dash toc-dash--l{{ .level }}" data-toc-dash="{{ .id }}"></span>
+    {{- end }}
+  </button>
+  <div class="toc-card" id="toc-card">
+    <p class="toc-label">Contents</p>
+    <ul class="toc-list">
+      {{- range $items }}
+      <li class="toc-item toc-item--l{{ .level }}">
+        <a href="{{ $page.Permalink }}#{{ .id }}" data-toc-link="{{ .id }}">{{ .title | safeHTML }}</a>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</nav>
+{{- end }}

@@ -23,6 +23,7 @@ Personal website of Marek Dlugos (https://www.marekdlugos.com/). Built with **Hu
 ├── assets/
 │   ├── js/
 │   │   ├── scroll-progress.js  # Fills the bottom progress bar
+│   │   ├── toc.js              # Table of contents: current section, tap, Esc
 │   │   └── world-map.js        # amCharts init; country codes injected at build time
 │   └── sass/
 │       ├── main.scss    # Main stylesheet (selective Bootstrap imports + custom styles)
@@ -59,7 +60,9 @@ Personal website of Marek Dlugos (https://www.marekdlugos.com/). Built with **Hu
 │   │   ├── head.html    # <head>: meta, embedded SEO partials, CSS, analytics
 │   │   ├── header.html  # Sticky navbar with Bootstrap collapse
 │   │   ├── footer.html  # Footer with social links from data
-│   │   └── schema-person.html  # Person + WebSite JSON-LD, home page only
+│   │   ├── schema-person.html  # Person + WebSite JSON-LD, home page only
+│   │   ├── toc.html            # Blog table of contents (rail + card)
+│   │   └── toc-headings.html   # Recursive: flattens .Fragments.Headings
 │   └── shortcodes/
 │       ├── dated-list.html      # Generic dated row list; takes (folder, file)
 │       ├── client-logos.html    # data/work/clients.json
@@ -144,7 +147,10 @@ commit `public/`.
   tags: ["life"]
   categories: ["life"]
   ```
-- Blog posts render with the `layouts/blog/single.html` template which uses the Merriweather serif font (`.story-body` class), auto-generates a TOC for posts with more than one list entry, and includes a Kit newsletter signup form at the bottom. Do not add `layout:` — the section template already wins.
+- Blog posts render with the `layouts/blog/single.html` template which uses the Merriweather serif font (`.story-body` class), shows a table of contents when a post has more than one heading, and includes a Kit newsletter signup form at the bottom. Do not add `layout:` — the section template already wins.
+- The table of contents is built from `.Fragments.Headings` via `partials/toc-headings.html`, not from `.TableOfContents`. That skips the empty placeholder entries Hugo emits for heading levels a post does not use, and is not bound by `markup.tableOfContents` start/end levels. Posts head their sections at `###` because `h2` is styled as large as `h1`
+- The contents card is chrome, not prose: it sets `font-family: var(--bs-font-sans-serif)` so it does not inherit the serif `.story-body` face. In its list, the gap between items must stay clearly larger than the gap between two wrapped lines of one item
+- Opening the card is pure CSS (`:hover`, `:focus-within`). `assets/js/toc.js` only adds the current-section marker, tap toggling and Esc, so the card still works without JavaScript
 - Anchors inside a page must be absolute (`{{ .Permalink }}#id`). A bare `#id` resolves against `<base href>` and jumps to the home page
 - The blog list (`layouts/_default/list.html`) orders posts by publish date (newest first)
 - External links in Markdown automatically get `target="_blank"` via the custom link renderer
