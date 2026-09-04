@@ -1,0 +1,46 @@
+[
+  {
+    "year": 2016,
+    "month": "Feb",
+    "title": "The Journey of My Talent",
+    "medium": "Kosice, Slovakia"
+  },
+  {
+    "year": 2014,
+    "month": "Nov",
+    "title": "5 Tips on How to Change Your Life and Life Around You",
+    "medium": "LEAF Proeduco, Kosice, Slovakia"
+  },
+  {
+    "year": 2014,
+    "month": "Jun",
+    "title": "Developing Hybrid Mobile Apps With Ionic",
+    "medium": "WebElement, Presov, Slovakia"
+  },
+  {
+    "year": 2013,
+    "month": "Mar",
+    "title": "Host Me in California",
+    "medium": "JuniorInternet, Prague, Czechia"
+  },
+  {
+    "year": 2012,
+    "month": "Nov",
+    "title": "Give Young People the Opportunity",
+    "medium": "TEDx, Kosice, Slovakia",
+    "note": "timing did not work",
+    "struck": true
+  },
+  {
+    "year": 2011,
+    "month": "Sep",
+    "title": "Web Design & Web Development",
+    "medium": "High School, Orava, Slovakia"
+  },
+  {
+    "year": 2010,
+    "month": "Nov",
+    "title": "Web Design & Web Development",
+    "medium": "Elementary School, Poprad, Slovakia"
+  }
+]
