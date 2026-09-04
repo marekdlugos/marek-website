@@ -1,0 +1,10 @@
+/*
+ * Design tokens. Filled in during Phase 1 of the design-system rebuild.
+ *
+ * Rules:
+ * - Every visual value on the site derives from a token declared here.
+ * - Stock Tailwind namespaces are wiped with `--*: initial` so the only utility
+ *   vocabulary that compiles is the one defined below.
+ */
+@theme {
+}

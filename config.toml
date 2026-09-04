@@ -7,6 +7,10 @@ relativeURLs = true
 disableHugoGeneratorInject = true
 sectionPagesMenu = "main"
 
+# The design system is a Hugo theme that lives in this repo (themes/marek-ds).
+# Site templates in layouts/ override theme templates of the same name.
+theme = "marek-ds"
+
 # Tags and categories are never surfaced in the UI, and the generated term
 # pages would render through the blog list template (blog intro prose and all).
 # Post front matter keeps its tags/categories, so this is a one-line revert.
@@ -41,16 +45,59 @@ disableKinds = ["taxonomy", "term"]
     # Matches the behaviour of the hand-written snippet this replaces.
     respectDoNotTrack = false
 
+# Tailwind v4 pipeline. Hugo writes the rendered class inventory to
+# hugo_stats.json; the theme's main.css sources it and Tailwind emits only the
+# utilities that actually appear in the built HTML.
+[build]
+  [build.buildStats]
+    enable = true
+
+  # Rebuild CSS in `hugo server` when the class inventory changes.
+  [[build.cachebusters]]
+    source = 'assets/notwatching/hugo_stats\.json'
+    target = 'css'
+
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = 'css'
+
 [module]
   [[module.mounts]]
     source = "assets"
     target = "assets"
 
+  # Bootstrap JS mount. Removed in the design-system cutover (Phase 1).
   [[module.mounts]]
     source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
     target = "assets/js/bootstrap.bundle.min.js"
 
-# Allow .html files in content/ (Hugo 0.163+ blocks text/html content by default).
-# This site's pages are authored as raw HTML, so we re-enable it.
+  # Mounted out of the watched tree so regenerating it does not trigger a rebuild loop.
+  [[module.mounts]]
+    source = "hugo_stats.json"
+    target = "assets/notwatching/hugo_stats.json"
+    disableWatch = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # Owner-authored content; needed so shortcodes can pass rendered HTML
+      # through .Inner and Markdown may carry the odd inline element.
+      unsafe = true
+    [markup.goldmark.parser]
+      # A standalone image line becomes a block, so the image render hook can
+      # wrap it in <figure>.
+      wrapStandAloneImageWithinParagraph = false
+    [markup.goldmark.renderHooks.image]
+      # The theme ships its own render-image.html.
+      useEmbedded = "never"
+
 [security]
+  # Allow .html files in content/ (Hugo 0.163+ blocks text/html content by
+  # default). Removed once every content page is Markdown (end of Phase 2).
   allowContent = ['.']
+
+  [security.exec]
+    # Setting this replaces Hugo's default list, so the defaults are repeated.
+    # css.TailwindCSS launches the Tailwind CLI through node; tailwindcss itself
+    # leaves Hugo's default list in 0.165, so both are listed explicitly.
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^git$', '^npx$', '^postcss$', '^node$', '^tailwindcss$']

@@ -3,3 +3,7 @@ public
 node_modules
 resources
 .hugo_build.lock
+
+# Rendered class inventory for Tailwind; regenerated on every build.
+# Tailwind honours .gitignore, so main.css references it explicitly via @source.
+hugo_stats.json

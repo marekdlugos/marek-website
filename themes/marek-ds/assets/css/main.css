@@ -1,0 +1,18 @@
+/*
+ * marek-ds stylesheet entry point.
+ *
+ * Hugo runs the Tailwind CLI from the project root, so the paths below are
+ * project-relative even though this file lives inside the theme.
+ *
+ * source(none): do not auto-scan the repository for class names. Only the
+ * rendered HTML inventory Hugo writes to hugo_stats.json counts. This keeps
+ * AGENTS.md, content/, data/ and static/podcast/ from generating CSS.
+ */
+@import "tailwindcss" source(none);
+@source "hugo_stats.json";
+
+/* Layer 1: tokens. The single place a designer edits. */
+@import "./theme.css";
+
+/* Layer 2: base element styles (font-face, html/body, focus, motion defaults). */
+@import "./base.css";

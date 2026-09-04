@@ -25,6 +25,22 @@
     {{ $scroll := resources.Get "js/scroll-progress.js" | js.Build (dict "targetPath" "js/scroll-progress.js" "minify" true) | fingerprint }}
     <script src="{{ $scroll.RelPermalink }}" integrity="{{ $scroll.Data.Integrity }}" defer></script>
 
+    {{- /* Phase 0 of the design-system rebuild: compile the theme's Tailwind CSS
+         so the pipeline is proven in CI, but do not link it. Bootstrap and
+         Tailwind must never load on the same page. Removed at the Phase 1 cutover. */}}
+    {{ with (templates.Defer (dict "key" "global")) }}
+      {{ with resources.Get "css/main.css" }}
+        {{- /* Hugo caches transformed resources by source, not by what Tailwind
+             scans, so a class added to a template would ship stale CSS. Stamp
+             the class inventory's hash into the source name to bust that cache. */}}
+        {{ $stamp := "nostats" }}
+        {{ with resources.Get "notwatching/hugo_stats.json" }}{{ $stamp = .Content | md5 }}{{ end }}
+        {{ $src := resources.FromString (printf "css/main.%v.css" $stamp) .Content }}
+        {{ $css := $src | css.TailwindCSS (dict "minify" true) | fingerprint }}
+        <!-- design-system css: {{ $css.RelPermalink }} -->
+      {{ end }}
+    {{ end }}
+
 </body>
 
 </html>

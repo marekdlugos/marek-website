@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "hugo server -D --disableFastRender",
+    "build": "hugo --gc --minify --printPathWarnings --printUnusedTemplates",
+    "format": "prettier --write --no-error-on-unmatched-pattern \"layouts/**/*.html\" \"themes/**/layouts/**/*.html\" \"themes/**/assets/css/**/*.css\"",
+    "format:check": "prettier --check --no-error-on-unmatched-pattern \"layouts/**/*.html\" \"themes/**/layouts/**/*.html\" \"themes/**/assets/css/**/*.css\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,11 @@
     "bootstrap": "^5.3.3"
   },
   "devDependencies": {
-    "@popperjs/core": "^2.9.3"
+    "@popperjs/core": "^2.9.3",
+    "@tailwindcss/cli": "^4.3.3",
+    "prettier": "^3.9.6",
+    "prettier-plugin-go-template": "^0.0.15",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4.3.3"
   }
 }

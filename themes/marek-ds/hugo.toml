@@ -1,0 +1,17 @@
+# marek-ds: the design system for marekdlugos.com, packaged as a Hugo theme.
+#
+# This file is the theme's manifest. The site imports it via `theme = "marek-ds"`
+# in the root config.toml. Everything the theme needs from the site is declared
+# under [params.ds]; theme templates read nothing else from site config.
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.163.0"
+
+[params]
+  [params.ds]
+    # Newsletter form endpoint. Leave empty to hide the newsletter component.
+    # The site overrides this in its own config.
+    [params.ds.newsletter]
+      action = ""

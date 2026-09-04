@@ -1,0 +1,6 @@
+/*
+ * Base element styles. Filled in during Phase 1 of the design-system rebuild.
+ * Lives in Tailwind's `base` layer so utilities always win over it.
+ */
+@layer base {
+}
