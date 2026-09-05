@@ -1,6 +1,83 @@
 /*
- * Base element styles. Filled in during Phase 1 of the design-system rebuild.
- * Lives in Tailwind's `base` layer so utilities always win over it.
+ * Base element styles. Lives in Tailwind's `base` layer so utilities always
+ * win over it. Values reference tokens from theme.css, never literals.
  */
+
+/* Inter 4, subset to Latin + Latin Extended (covers Slovak and Czech),
+   served from the theme's static/fonts. The variable file carries the weight
+   axis (100-900) and the optical-size axis, so large headings get the
+   display cut without a second font. */
 @layer base {
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/fonts/InterVariable.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
+  }
+
+  html {
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    font-feature-settings: "liga", "calt";
+    letter-spacing: var(--tracking-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-surface);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  a {
+    text-decoration-thickness: from-font;
+    text-underline-offset: 0.15em;
+  }
+
+  /* The header is sticky, so an anchor jump would otherwise land its target
+     underneath it. Applies to every anchor target: headings, #main, forms. */
+  [id] {
+    scroll-margin-top: var(--spacing-scroll-offset);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Cross-document view transitions: page-to-page navigation cross-fades in
+   browsers that support it. Phase 3 assigns view-transition-name to elements
+   that should morph; until then only the root transitions. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
 }

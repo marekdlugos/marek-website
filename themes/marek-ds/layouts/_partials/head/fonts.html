@@ -1,0 +1,10 @@
+{{- /* Preload the roman face; @font-face lives in assets/css/base.css.
+  The italic face loads on demand only where italic text appears.
+*/}}
+<link
+  rel="preload"
+  href="{{ "fonts/InterVariable.woff2" | relURL }}"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>

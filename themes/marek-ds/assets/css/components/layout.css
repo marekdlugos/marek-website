@@ -1,0 +1,44 @@
+/*
+ * The breakout grid. The one layout utilities cannot express.
+ *
+ * <main class="layout-grid"> lays every child in the prose column by default.
+ * A child opts out with .breakout-wide (media, galleries, logo walls) or
+ * .breakout-full (edge to edge). Column widths come from the --container-*
+ * tokens, gutters from --spacing-gutter.
+ *
+ *   |gutter|  wide  |   prose   |  wide  |gutter|
+ *   full-start      prose-start prose-end       full-end
+ */
+@layer components {
+  .layout-grid {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(var(--spacing-gutter), 1fr)
+      [wide-start] minmax(
+        0,
+        calc((var(--container-wide) - var(--container-prose)) / 2)
+      )
+      [prose-start] min(
+        100% - 2 * var(--spacing-gutter),
+        var(--container-prose)
+      )
+      [prose-end] minmax(
+        0,
+        calc((var(--container-wide) - var(--container-prose)) / 2)
+      )
+      [wide-end] minmax(var(--spacing-gutter), 1fr)
+      [full-end];
+  }
+
+  .layout-grid > * {
+    grid-column: prose;
+  }
+
+  .layout-grid > .breakout-wide {
+    grid-column: wide;
+  }
+
+  .layout-grid > .breakout-full {
+    grid-column: full;
+  }
+}

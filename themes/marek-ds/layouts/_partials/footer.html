@@ -1,0 +1,24 @@
+{{- /* Site footer. Link items come from the footer/links.html hook, which the
+  site overrides to supply {name, url} dicts from its own data.
+*/}}
+{{- $links := partial "footer/links.html" . }}
+<footer class="mx-auto w-full max-w-track px-gutter">
+  <div
+    class="flex flex-wrap justify-between gap-x-8 gap-y-3 border-t border-hairline py-8 text-sm text-muted"
+  >
+    <p>Made in 🇨🇭 by {{ site.Params.ds.author }}</p>
+    {{ with $links }}
+      <ul class="flex flex-wrap gap-x-5 gap-y-1">
+        {{ range . }}
+          <li>
+            <a
+              class="no-underline transition-colors duration-fast hover:text-ink"
+              href="{{ .url }}"
+              >{{ .name }}</a
+            >
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </div>
+</footer>

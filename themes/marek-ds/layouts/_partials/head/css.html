@@ -1,0 +1,31 @@
+{{- /* Builds the theme stylesheet with Tailwind and links it.
+
+  Hugo caches transformed resources by their source, not by what Tailwind
+  scans. A class added to a template would therefore ship stale CSS on the
+  next build. Stamping the class inventory's hash into the source name makes
+  the cache key change whenever the rendered classes do.
+
+  Must be called inside templates.Defer (see head.html).
+*/}}
+{{- with resources.Get "css/main.css" }}
+  {{- $stamp := "nostats" }}
+  {{- with resources.Get "notwatching/hugo_stats.json" }}
+    {{- $stamp = .Content | md5 }}
+  {{- end }}
+  {{- $src := resources.FromString (printf "css/main.%s.css" $stamp) .Content }}
+  {{- $opts := dict "minify" (not hugo.IsDevelopment) }}
+  {{- with $src | css.TailwindCSS $opts }}
+    {{- if hugo.IsDevelopment }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" />
+    {{- else }}
+      {{- with . | fingerprint }}
+        <link
+          rel="stylesheet"
+          href="{{ .RelPermalink }}"
+          integrity="{{ .Data.Integrity }}"
+          crossorigin="anonymous"
+        />
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}

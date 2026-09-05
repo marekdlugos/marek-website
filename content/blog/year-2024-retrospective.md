@@ -12,7 +12,7 @@ Year 2024 started the best way possible. In the last 24 hours of 2023, I found m
 
 But first, how did I even get here?
 
-### Leaving my employer
+## Leaving my employer
 
 To find out how I ended up in Brazil we have to go back in time a little bit. In December of 2019 I moved to Switzerland to transition my career from product design to sales, hired by a local software company.
 
@@ -22,11 +22,11 @@ Having achieved this, and given the size of the company, I did not see much more
 
 Consequently, it has always been one of my dreams, to use the time between the jobs to travel. I find it a bit unpractical to go to Peru for a 2-week paid time off when you're based in Europe—way too much time spent traveling. So on December 30, 2023 (coincidentally on my [late sister's birthday](https://marekdlugos.medium.com/today-is-my-sisters-second-birthday-since-she-died-c7f39570c2ca) - who also loved to travel by the way) I hopped on a plane to Istanbul, Turkey to explore the city for a couple of hours, followed by another plane to Sao Paolo.
 
-### Four months of travel
+## Four months of travel
 
 The number of memories I made, the people I met, and beautiful places I have seen are countless. I first explored Sao Paolo and Rio de Janeiro. Then, making a quick pit stop in Buenos Aires to refresh my memories as I studied there back in 2019, I hit Ushuaia. The world's southernmost city is located in Patagonia - having spent about a month exploring Patagonia. Then in Chile, I visited the Eastern Island, the capital of Chile, and headed North towards Bolivia, Peru, Ecuador, Colombia, Panama, Costa Rica, the Dominican Republic, Puerto Rico, and Miami before I returned back to Europe.
 
-### Going places and having a good time
+## Going places and having a good time
 
 The rest of the year was marked with going to various conferences and trips. I was fortunate to spend some more time with my family and friends too. Even reconnected in Europe with friends that I met on my trip to South America. Some of those people became truly close and instrumental in my life. Other friends flew from around the world to come visit me in Switzerland and I was able to show them around.
 
@@ -34,7 +34,7 @@ Besides refreshing my old hobbies like doing via ferratas (lesson learned from t
 
 Last but not least, I tried to work on my skills. I thought I would achieve more, but I still managed to squeeze in a 3 month long very intensive (Mon-Fri 6h/day) German course finished with world renowned B2 Goethe Certificate (there are only C1 and C2 levels which are higher). I briefly refreshed my designing skills, video-editing skills, and coding skills (and found out how fast can ChatGPT help you move forward!). Lastly, I forced myself to pass the AI Specialist Salesforce certification.
 
-### 2024 in summary
+## 2024 in summary
 
 - ✅ I soft-launched this blog!
 - January - April I explored 11 countries:
@@ -61,7 +61,7 @@ Last but not least, I tried to work on my skills. I thought I would achieve more
 - ✅ At the end of 2023 I finally got myself to invest some money which generated a solid interest during 2024.
 - ✅ I got myself to pass the first Salesforce certification - the AI Specialist.
 
-#### Things that did not work so well in 2024
+### Things that did not work so well in 2024
 
 - ❌ It turned out to be slightly more difficult to meet my potential significant other than I thought, but I am staying positive on this front.
 - ❌ I told myself I would obtain at least one cloud certification but haven't made it a priority.

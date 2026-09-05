@@ -1,0 +1,33 @@
+{{- /* Document head. Site-specific additions (analytics tags, rel=me links,
+  structured data) go in the site's own _partials/head/site.html override.
+*/}}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ .Title }}</title>
+<meta
+  name="description"
+  content="{{ .Description | default site.Params.description }}"
+/>
+{{ with .Keywords }}
+  <meta name="keywords" content="{{ delimit . " " }}" />
+{{ end }}
+{{- /* Hugo's embedded templates; og:image resolves from site params.images. */}}
+{{ partial "opengraph.html" . }}
+{{ partial "twitter_cards.html" . }}
+{{- /* TEMPORARY: raw-HTML content pages still use bare relative image paths.
+  Removed once every page resolves images through the theme's components.
+*/}}
+<base href="{{ site.BaseURL }}" />
+<link rel="canonical" href="{{ .Permalink }}" />
+{{ partial "head/fonts.html" . }}
+{{- /* Tailwind must run after every page has rendered, so the class inventory
+  in hugo_stats.json is complete. templates.Defer does exactly that.
+*/}}
+{{ with (templates.Defer (dict "key" "global")) }}
+  {{ partial "head/css.html" . }}
+{{ end }}
+<link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/png" />
+{{ if hugo.IsProduction }}
+  {{ partial "google_analytics.html" . }}
+{{ end }}
+{{ partial "head/site.html" . }}

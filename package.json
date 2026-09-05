@@ -20,11 +20,7 @@
     "url": "https://github.com/marekdlugos/marek-website/issues"
   },
   "homepage": "https://github.com/marekdlugos/marek-website#readme",
-  "dependencies": {
-    "bootstrap": "^5.3.3"
-  },
   "devDependencies": {
-    "@popperjs/core": "^2.9.3",
     "@tailwindcss/cli": "^4.3.3",
     "prettier": "^3.9.6",
     "prettier-plugin-go-template": "^0.0.15",

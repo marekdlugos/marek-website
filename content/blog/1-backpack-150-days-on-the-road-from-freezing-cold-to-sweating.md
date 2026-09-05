@@ -20,7 +20,7 @@ The reason why I am mentioning it is that traveling South East Asia with a small
 
 Embarking on this new adventure that was supposed to last twice the time was a whole new challenge. The destinations and the weather changing from freezing cold mountains to sweating on the beach, I decided to share the way I decided to approach it and possibly inspire others.
 
-### The backpack
+## The backpack
 
 The way I thought before leaving home was that I will likely spend a lot of time carrying a backpack on my back so I might as well get a good one, but I couldn't decide which one! Weirdly, the offer is so much different in Europe than it is in the US and the prices range from $70 to $400.
 
@@ -34,11 +34,11 @@ Having them all delivered to my home, it was *incredible* to feel the price diff
 
 Narrowing it down to the two Ospray backpacks, I saw people online switching from the 55 version to the 40 version, however, even after this trip I would not do the same. Unfortunately, they both have their pros and cons. The catch is that the 55 version comes with two backpacks that can be attached to each other if needed. A larger backpack and a small day pack. That's the feature I loved about this investment the most honestly. The ability to leave most of my stuff behind or not have to unpack the backpack while going on a shorter day trip was how I operated most of the times. Taking only the smaller day pack with me on hikes or using smaller backpack for the things I want to keep close to me (e.g. on the plane where I would stove the larger one into the overhead compartment while the smaller one could easy fit under the seat in front of me). The only big disadvantage I see is the lack of the laptop compartment in the bigger back. Because if I'd like to travel somewhere where I don't need as much stuff with me, I would basically be forced to take the smaller day pack with me too to pack my laptop.
 
-### What did I need to pack for
+## What did I need to pack for
 
 A freezing cold weather all the way down at the end of the world in Ushuaia, Argentina, but also sweating hot beaches in Caribbean.
 
-### What was in my backpack
+## What was in my backpack
 
 First of all, I got a bunch of packing cubes from China, but only really used three to organize my stuff. On top, my backpack offered a couple of compartments for smaller stuff.
 
@@ -51,7 +51,7 @@ Here's my high-level organization:
 - A pocket for my laptop in the smaller day pack.
 - A pocket for things that I wanted easily accessible in the smaller day pack (for sunglasses, a passport, a pen...)
 
-#### How many clothes did I take?
+### How many clothes did I take?
 
 Everyday wear:
 - X number of t-shirts

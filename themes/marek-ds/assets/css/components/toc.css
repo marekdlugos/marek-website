@@ -1,0 +1,146 @@
+/*
+ * Table of contents rail: a column of dashes in the left margin that opens a
+ * card on hover, focus or tap. Opening is pure CSS, so it works without
+ * JavaScript; assets/js/toc.js adds the current-section marker, tap toggling
+ * and Esc. Ported from the Bootstrap-era stylesheet with literals replaced
+ * by tokens.
+ */
+@layer components {
+  .toc {
+    position: fixed;
+    top: 50%;
+    left: 1.5rem;
+    transform: translateY(-50%);
+    z-index: 30;
+  }
+
+  /* No room beside the text below the wide breakpoint, and no hover to open it with. */
+  @media (max-width: 63.99rem) {
+    .toc {
+      display: none;
+    }
+  }
+
+  @media print {
+    .toc {
+      display: none;
+    }
+  }
+
+  .toc-rail {
+    display: block;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .toc-dash {
+    display: block;
+    height: 2px;
+    margin: 7px 0;
+    border-radius: 1px;
+    background-color: var(--color-hairline);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .toc-dash--l2 {
+    width: 22px;
+  }
+
+  /* Subheadings read as subordinate: shorter and indented. */
+  .toc-dash--l3 {
+    width: 13px;
+    margin-left: 9px;
+  }
+
+  .toc-dash.is-current {
+    background-color: var(--color-ink);
+  }
+
+  .toc-card {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 0.75rem);
+    width: 260px;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 0.9rem 1rem 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-4px, -50%);
+    transition:
+      opacity var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out),
+      visibility var(--duration-fast);
+  }
+
+  .toc:hover .toc-card,
+  .toc:focus-within .toc-card,
+  .toc.is-open .toc-card {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%);
+  }
+
+  .toc-label {
+    margin: 0 0 0.7rem;
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .toc-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* The gap between two items has to read as larger than the gap between two
+     wrapped lines of one item, or a wrapped heading looks like two headings. */
+  .toc-item {
+    line-height: 1.25;
+  }
+
+  .toc-item + .toc-item {
+    margin-top: 0.85rem;
+  }
+
+  .toc-item a {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 0.15rem 0.4rem;
+    margin: -0.15rem -0.4rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    line-height: 1.25;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .toc-item--l3 a {
+    padding-left: 1rem;
+    font-size: var(--text-xs);
+  }
+
+  .toc-item a:hover,
+  .toc-item a:focus-visible {
+    color: var(--color-ink);
+  }
+
+  .toc-item a.is-current {
+    background-color: var(--color-surface-2);
+    color: var(--color-ink);
+  }
+}

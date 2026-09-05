@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    {{- /* TEMPORARY: absolute because a bare "#main" would resolve against
+      <base href> to the home page. Reverts to "#main" when <base> goes.
+    */}}
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2"
+      href="{{ .Permalink }}#main"
+      >Skip to main content</a
+    >
+    {{ partial "header.html" . }}
+    <main id="main" class="layout-grid flex-1 py-section">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </body>
+</html>

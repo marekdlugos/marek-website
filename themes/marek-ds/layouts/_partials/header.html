@@ -1,0 +1,33 @@
+{{- /* Site header: brand left, main menu right. No JavaScript; on narrow
+  screens the items wrap onto a second line instead of hiding behind a
+  hamburger. Menu entries come from site.Menus.main.
+*/}}
+{{- $page := . }}
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-sm">
+  <div
+    class="mx-auto flex max-w-track flex-wrap items-baseline justify-between gap-x-8 gap-y-1 px-gutter py-5"
+  >
+    <a class="text-sm font-medium text-ink no-underline" href="/"
+      >{{ site.Params.ds.author }}</a
+    >
+    <nav aria-label="Main">
+      <ul class="flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">
+        {{ range site.Menus.main }}
+          {{- $active := or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }}
+          <li>
+            <a
+              class="{{ if $active }}
+                text-ink underline
+              {{ else }}
+                text-ink-2 hover:text-ink no-underline
+              {{ end }} transition-colors duration-fast"
+              href="{{ .URL }}"
+              {{ if $active }}aria-current="page"{{ end }}
+              >{{ .Name }}</a
+            >
+          </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>

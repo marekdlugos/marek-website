@@ -16,3 +16,13 @@
 
 /* Layer 2: base element styles (font-face, html/body, focus, motion defaults). */
 @import "./base.css";
+
+/* Layer 3: the few things utilities cannot express. Each file says why it exists. */
+@import "./components/layout.css";
+@import "./components/prose.css";
+@import "./components/toc.css";
+@import "./components/scroll-progress.css";
+
+/* TEMPORARY: Bootstrap-grid stand-in for content pages awaiting migration.
+   File and import are deleted together at the end of Phase 2. */
+@import "./components/legacy.css";

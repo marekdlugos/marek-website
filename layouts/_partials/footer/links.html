@@ -1,0 +1,8 @@
+{{- /* Site override of the theme's footer/links.html hook: the social
+  networks flagged footer: true in data/sharing/socialnetworks.json.
+*/}}
+{{- $links := slice }}
+{{- range where hugo.Data.sharing.socialnetworks "footer" true }}
+  {{- $links = $links | append (dict "name" .name "url" .url) }}
+{{- end }}
+{{- return $links }}

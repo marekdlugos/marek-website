@@ -1,0 +1,16 @@
+{{- /* Site override of the theme's head/site.html hook. Everything here is
+  specific to marekdlugos.com and reads site params the theme may not.
+*/}}
+<link rel="author" href="{{ "humans.txt" | relURL }}" />
+<link rel="me" href="https://www.facebook.com/marek.dlugos/" type="text/html" />
+<link rel="me" href="mailto:{{ site.Params.email }}" />
+{{ if hugo.IsProduction }}
+  <script
+    async
+    src="https://tag.clearbitscripts.com/v1/{{ site.Params.clearbitKey }}/tags.js"
+    referrerpolicy="strict-origin-when-cross-origin"
+  ></script>
+{{ end }}
+{{ if .IsHome }}
+  {{ partial "schema-person.html" . }}
+{{ end }}

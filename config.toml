@@ -36,6 +36,11 @@ disableKinds = ["taxonomy", "term"]
   [params.social]
     twitter = "MarekDlugos"
 
+  # Inputs to the marek-ds theme. Theme templates read only this table (plus
+  # description and images, which Hugo's own embedded templates also read).
+  [params.ds]
+    author = "Marek Dlugos"
+
 [services]
   [services.googleAnalytics]
     ID = "G-36B0M4RPHF"
@@ -65,11 +70,6 @@ disableKinds = ["taxonomy", "term"]
   [[module.mounts]]
     source = "assets"
     target = "assets"
-
-  # Bootstrap JS mount. Removed in the design-system cutover (Phase 1).
-  [[module.mounts]]
-    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-    target = "assets/js/bootstrap.bundle.min.js"
 
   # Mounted out of the watched tree so regenerating it does not trigger a rebuild loop.
   [[module.mounts]]

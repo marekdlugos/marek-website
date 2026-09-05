@@ -3,7 +3,8 @@
   with jsonify so quoting and escaping are Hugo's problem, not ours.
   sameAs comes from data/sharing/socialnetworks.json, the same source the
   footer and the Sharing page use.
-*/ -}}
+  */
+-}}
 {{- $sameAs := slice -}}
 {{- range hugo.Data.sharing.socialnetworks -}}
   {{- $sameAs = $sameAs | append .url -}}
