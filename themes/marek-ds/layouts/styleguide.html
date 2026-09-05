@@ -21,12 +21,13 @@
     (dict "class" "text-2xl font-semibold tracking-tight" "label" "text-2xl · h1")
     (dict "class" "text-xl font-semibold tracking-tight" "label" "text-xl · h2")
     (dict "class" "text-lg font-medium tracking-tight" "label" "text-lg · h3, dek")
-    (dict "class" "text-base" "label" "text-base · body")
+    (dict "class" "text-base" "label" "text-base · long-form prose")
+    (dict "class" "text-md" "label" "text-md · supporting text")
     (dict "class" "text-sm text-muted" "label" "text-sm · meta")
     (dict "class" "text-xs text-muted uppercase tracking-wide font-medium" "label" "text-xs · eyebrow")
   }}
   <section class="breakout-wide mt-section" id="type">
-    {{ partial "components/section-header.html" (dict "eyebrow" "Tokens" "title" "Type scale" "dek" "Fluid sizes: each step grows with the viewport between the phone and desktop values in theme.css.") }}
+    {{ partial "components/section-header.html" (dict "eyebrow" "Tokens" "title" "Type scale" "dek" "Fluid sizes, and a hierarchy: text may never sit on a rung at or above the heading it belongs to. An entry titled at lg carries its body at md, never at base.") }}
     <ul class="mt-block divide-y divide-hairline">
       {{ range $type }}
         <li class="grid gap-y-1 py-5 md:grid-cols-[10rem_1fr] md:gap-x-8">

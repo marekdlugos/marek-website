@@ -117,17 +117,21 @@ Plain **Markdown** paragraphs.
 
 **The container rule.** A container shortcode (`section`, `label-body`) holds EITHER Markdown OR nested shortcodes, never both. Hugo runs nested shortcode HTML through the Markdown renderer, where a blank line followed by indented markup becomes a code block. `components/inner.html` detects which kind it got: content starting with `<` passes through; anything else renders as Markdown inside `.prose`. To put text beside components, wrap it in `{{</* prose */>}}…{{</* /prose */>}}`.
 
-`width="wide"` puts a section in the 64rem track (lists, grids, media); the default is the 40rem prose column.
+`width="wide"` puts a section in the content track (`--container-wide`, 75rem), which the header and footer share, so a section heading lines up with the wordmark. The default is the reading measure (`--container-measure`, 42rem).
 
 ## Design system conventions (the harness)
 
 - **Utilities live only in templates** (`themes/**/layouts`, `layouts/**`). `content/**` and `data/**` contain no class attributes and no raw HTML. Check: `grep -rn 'class=' content/` returns nothing.
-- **Tokens come only from `themes/marek-ds/assets/css/theme.css`.** No hex colours, px font sizes or ad-hoc durations anywhere else. Stock Tailwind namespaces are wiped there, so `text-3xl`, `text-neutral-500` or `rounded-2xl` do not exist; only `text-xs|sm|base|lg|xl|2xl`, `text-ink|ink-2|muted`, `bg-surface|surface-2`, `border-hairline`, `rounded-sm|md|lg|pill`, `font-light|normal|medium|semibold`, `tracking-body|tight|wide`, `max-w-prose|wide|track`, `p-gutter`, `mt-block`, `mt-section`, `duration-fast|base|slow`, `ease-out|in-out`. To change the type scale, edit `--text-*` and nothing else.
+- **Tokens come only from `themes/marek-ds/assets/css/theme.css`.** No hex colours, px font sizes or ad-hoc durations anywhere else. Stock Tailwind namespaces are wiped there, so `text-3xl`, `text-neutral-500` or `rounded-2xl` do not exist; only `text-xs|sm|md|base|lg|xl|2xl`, `text-ink|ink-2|muted`, `bg-surface|surface-2`, `border-hairline`, `rounded-sm|md|lg|pill`, `font-light|normal|medium|semibold`, `tracking-body|tight|display|wide`, `max-w-measure|wide|track`, `p-gutter`, `mt-block`, `mt-section`, `duration-fast|base|slow`, `ease-out|in-out`. To change the type scale, edit `--text-*` and nothing else.
+- **The hierarchy rule.** The scale is a ladder and text may never sit on a rung at or above the heading it belongs to: `2xl` display, `xl` section title, `lg` entry title and dek, `base` long-form reading only, `md` supporting text inside a component, `sm` meta, `xs` captions. A timeline entry titled at `lg` carries its bullets at `md`, never at `base`.
+- **Watch for stock utilities that shadow a token.** Most Tailwind utilities come from a namespace that `--*: initial` empties, but a few are static and cannot be overridden by a token. `max-w-prose` is one, which is why the measure token is `--container-measure` and the utility is `max-w-measure`. When a new token's utility does not take effect, check for a stock utility of the same name before debugging anything else.
+- **Two-column components share one label column.** `--spacing-label` sets the width for both `label-body` and `timeline-entry`, so labels and dates line up down a page that mixes them.
 - **Arbitrary values `[...]` need a same-line `{{/* why */}}` comment.** Review grep: `\[[^\]]*\]` in layouts.
 - **One component = one partial** in `_partials/components/` with a doc comment listing props and defaults. Variants are props, never copies. Shortcodes are thin wrappers that parse params and call a partial.
 - **Hand-written CSS only in `assets/css/components/*.css`**, inside `@layer components`, for what utilities cannot express: Markdown output (`.prose`), the named-line breakout grid, the TOC rail, scroll-driven animation. Each file's header says why it exists. Never style one element both ways. `@apply` is banned.
 - **Images** live in `assets/images/` or page bundles and render through `components/picture.html` (WebP variants, srcset, dimensions, lazy). `static/` holds only favicon, robots, CNAME, humans.txt and the legacy podcast page.
 - **Motion** uses `duration-*` and `ease-*` tokens; anything that moves respects `prefers-reduced-motion` (global reset in base.css).
+- **Scroll-linked behaviour is JavaScript, not scroll timelines.** `assets/js/scroll.js` publishes `--scroll-progress` and toggles `data-compact` on the header from one passive, rAF-throttled listener. CSS scroll-driven animations would express both with no script, but Firefox has no support and Safari only from 26, and these are behaviours the design asks for on every visit rather than decoration that may degrade to nothing. Reveal effects that are safe to skip are still fair game for scroll timelines.
 - **Every component appears on `/styleguide/`** (`themes/marek-ds/layouts/styleguide.html`). A component without a styleguide entry is incomplete.
 - **Tailwind class scanning** reads `hugo_stats.json` (rendered HTML), so classes built with `printf` in templates are fine; classes toggled only by JavaScript are not. Prefer a `data-*` attribute styled in components CSS.
 - **Extraction**: `git subtree split --prefix=themes/marek-ds -b marek-ds-main` when a second site or publication appears. Not before.
@@ -164,6 +168,6 @@ Plain **Markdown** paragraphs.
 ## Important Notes
 
 - The theme's `head/css.html` stamps the class inventory's hash into the stylesheet's source name. Without it Hugo's resource cache would serve stale CSS after a template-only class change. Do not "simplify" it away.
-- Every page has exactly one `<h1>`, rendered by `page-hero`. Section titles are `<h2>`, labels and entry titles `<h3>`.
+- Every page has exactly one `<h1>`, rendered by `page-hero`. Section titles are `<h2>`, labels and entry titles `<h3>`. Pages whose first visible heading is their opening section (Education & Awards, Hobbies, Sharing) set `hideTitle: true`, which keeps the h1 for assistive tech without showing it.
 - `static/podcast/` is a standalone legacy page with its own stack. Leave it alone.
 - Do not commit `public/`, `resources/` or `hugo_stats.json`.

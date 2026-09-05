@@ -1,8 +1,14 @@
-{{- /* {{< label-body label="…" id="…" level=3 >}}
-…Markdown, or nested shortcodes (not both)… {{< /label-body >}} */}}
+{{- /* label-body label="…" id="…" level=3 measure="full|prose"
+  …Markdown, or nested shortcodes (not both)…
+  /label-body
+
+  measure="prose" caps the content column at the reading measure, so a photo
+  and the paragraph under it come out the same width.
+*/}}
 {{- partial "components/label-body.html" (dict
   "label" (.Get "label")
   "id" (.Get "id")
   "level" (.Get "level")
+  "measure" (.Get "measure")
   "body" (partial "components/inner.html" (dict "inner" .Inner "page" .Page)))
 }}

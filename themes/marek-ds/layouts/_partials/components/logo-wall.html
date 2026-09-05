@@ -1,16 +1,16 @@
 {{- /* components/logo-wall.html
-  A row of client logos, desaturated so they read as one set.
+  A wall of client logos, desaturated so they read as one set. They flow from
+  the left and wrap onto as many rows as they need, with enough air between
+  them that the wall reads as a list of names rather than one dense block.
 
   Props:
   logos  []dict, required: { img resource | src string, alt string }
 */}}
-<ul
-  class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 grayscale"
->
+<ul class="flex flex-wrap items-center gap-x-14 gap-y-10 grayscale">
   {{ range .logos }}
     <li>
       <img
-        class="h-8 w-auto md:h-10"
+        class="h-10 w-auto md:h-12"
         src="{{ with .img }}
           {{ .RelPermalink }}
         {{ else }}

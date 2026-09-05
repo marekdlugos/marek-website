@@ -1,21 +1,27 @@
 {{- /* components/label-body.html
-  Two-column split: a small label on the left, content on the right.
+  Two-column split: a small label on the left, content on the right. The label
+  column is --spacing-label wide, the same column the timeline uses, so the two
+  components line up down the page.
 
   Props:
-  label  string, required
-  body   template.HTML, required (wrap Markdown output in .prose before passing)
-  level  int, heading level of the label, default 3
-  id     string, optional
+  label    string, required
+  body     template.HTML, required
+  level    int, heading level of the label, default 3
+  id       string, optional
+  measure  "full" (default: content fills the column) | "prose" (content is
+  capped at the reading measure, so a photo and the paragraph under
+  it share one width)
 */}}
 <div
-  class="grid gap-y-3 md:grid-cols-[1fr_3fr] md:gap-x-10"
+  class="grid gap-y-4 md:grid-cols-[var(--spacing-label)_1fr] md:gap-x-10"
   {{ with .id }}id="{{ . }}"{{ end }}
 >
-  {{- /* [1fr_3fr]: a 1:3 label-to-body ratio; no token fits a ratio. */}}
   {{ partial "components/heading.html" (dict
     "level" (.level | default 3)
     "text" .label
-    "class" "text-sm font-medium tracking-wide text-muted uppercase md:pt-1.5")
+    "class" "text-sm font-medium tracking-wide text-muted uppercase md:pt-2")
   }}
-  <div>{{ .body }}</div>
+  <div class="{{ if eq .measure "prose" }}max-w-measure{{ end }} space-y-6">
+    {{ .body }}
+  </div>
 </div>

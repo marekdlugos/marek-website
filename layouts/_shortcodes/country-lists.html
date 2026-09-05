@@ -1,5 +1,8 @@
 {{- /* Countries visited, grouped by continent, from data/hobbies/countries.json.
   Countries flagged `home` are shown on the map but are not places visited.
+
+  Each list is joined with `delimit` rather than printed inside the loop, so
+  no template whitespace can leak in front of a comma or break a line.
 */}}
 {{- $continents := slice
   (dict "slug" "asia" "name" "Asia")
@@ -8,18 +11,16 @@
   (dict "slug" "north-america" "name" "North America")
   (dict "slug" "africa" "name" "Africa")
 }}
-<div class="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-5">
+<div class="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
   {{- range $continents }}
     {{- $rows := where (where hugo.Data.hobbies.countries "continent" .slug) "home" "!=" true }}
+    {{- $names := slice }}
+    {{- range sort $rows "name" }}{{ $names = $names | append .name }}{{ end }}
     <div>
       <h3 class="text-sm font-medium tracking-wide text-muted uppercase">
         {{ .name }}
       </h3>
-      <p class="mt-2 text-sm text-ink-2">
-        {{- range $i, $c := sort $rows "name" }}
-          {{ if $i }},{{ end }}{{ $c.name }}
-        {{ end -}}
-      </p>
+      <p class="mt-3 text-md text-ink-2">{{ delimit $names ", " }}</p>
     </div>
   {{- end }}
 </div>

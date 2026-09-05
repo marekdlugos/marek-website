@@ -11,6 +11,10 @@
   cta       dict{label, href, external}, optional: button at the bottom
   variant   "quiet" (default: bare, hover surface) | "media" (bordered, image on top)
   level     int, heading level of the title, default 3
+
+  The quiet variant paints its hover surface outside its own box with a
+  negative margin, so the text still aligns with the grid column. card-grid
+  keeps the columns far enough apart to clear that bleed.
 */}}
 {{- $variant := .variant | default "quiet" }}
 {{- $stretch := and .href (not .links) }}
@@ -30,21 +34,25 @@
     {{ partial "components/picture.html" (dict
       "img" . "alt" $.imageAlt
       "class" "aspect-video w-full object-cover"
-      "sizes" "(min-width: 48rem) 32rem, 100vw")
+      "sizes" "(min-width: 48rem) 36rem, 100vw")
     }}
   {{ end }}
   <div class="{{ if eq $variant "media" }}p-6{{ end }} flex flex-1 flex-col">
-    {{ partial "components/heading.html" (dict "level" (.level | default 3) "text" $title "class" "font-semibold tracking-tight") }}
+    {{ partial "components/heading.html" (dict
+      "level" (.level | default 3)
+      "text" $title
+      "class" "text-lg font-medium tracking-tight")
+    }}
     {{ with .text }}
-      <div class="mt-2 text-sm text-ink-2">{{ . | markdownify }}</div>
+      <div class="prose mt-4 text-md text-ink-2">{{ . | markdownify }}</div>
     {{ end }}
     {{ with .meta }}
-      <ul class="mt-4 divide-y divide-hairline text-sm text-muted">
+      <ul class="mt-5 divide-y divide-hairline text-sm text-muted">
         {{ range . }}<li class="py-2">{{ . }}</li>{{ end }}
       </ul>
     {{ end }}
     {{ with .links }}
-      <ul class="mt-4 flex flex-col gap-1.5">
+      <ul class="mt-5 flex flex-col gap-2">
         {{ range . }}
           <li>{{ partial "components/arrow-link.html" . }}</li>
         {{ end }}

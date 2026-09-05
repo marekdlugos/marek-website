@@ -2,6 +2,11 @@
   One timeline entry: date column left, title, subtitle, meta, body, bullets,
   nested child entries and expandable detail rows on the right.
 
+  The date column is --spacing-label wide, the same column label-body uses, so
+  a label and a date line up down the page. Supporting text sits at `md`, a
+  clear step below the `lg` title it belongs to; nested children step down
+  again and sit on a rule, so they read as belonging to their parent.
+
   Props:
   entry  dict, required:
   from, to     strings, shown as "from — to" (to optional)
@@ -17,34 +22,40 @@
 */}}
 {{- $e := .entry }}
 {{- $level := int (.level | default 3) }}
+{{- $nested := gt $level 3 }}
 {{- $date := $e.date }}
 {{- if not $date }}
   {{- $date = $e.from }}
   {{- with $e.to }}{{ $date = printf "%s — %s" $e.from . }}{{ end }}
 {{- end }}
-<div class="grid gap-y-2 md:grid-cols-[8rem_1fr] md:gap-x-8">
-  {{- /* [8rem_1fr]: fixed date column from the education mockup; no token fits it. */}}
-  <p class="text-sm text-muted md:pt-1.5 md:text-right">{{ $date }}</p>
+<div class="grid gap-y-1 md:grid-cols-[var(--spacing-label)_1fr] md:gap-x-10">
+  <p class="text-sm text-muted md:pt-2 md:text-right">{{ $date }}</p>
   <div>
-    {{ partial "components/heading.html" (dict "level" $level "text" $e.title "class" (cond (le $level 3) "text-lg font-medium tracking-tight" "font-medium tracking-tight")) }}
+    {{ partial "components/heading.html" (dict
+      "level" $level
+      "text" $e.title
+      "class" (cond $nested "text-md font-semibold tracking-tight" "text-lg font-medium tracking-tight"))
+    }}
     {{ with $e.subtitle }}
-      <p class="text-ink-2">{{ . }}</p>
+      <p class="{{ if $nested }}text-md{{ else }}text-lg{{ end }} text-ink-2">
+        {{ . }}
+      </p>
     {{ end }}
     {{ with $e.meta }}
       <p class="mt-1 text-sm text-muted">{{ . }}</p>
     {{ end }}
     {{ with $e.body }}
-      <div class="prose mt-3">{{ . | markdownify }}</div>
+      <div class="prose mt-4 max-w-measure text-md">{{ . | markdownify }}</div>
     {{ end }}
     {{ with $e.bullets }}
-      <div class="prose mt-3">
+      <div class="prose mt-4 max-w-measure text-md">
         <ul>
           {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
         </ul>
       </div>
     {{ end }}
     {{ with $e.children }}
-      <ol class="mt-block space-y-block">
+      <ol class="mt-block space-y-block border-l border-hairline pl-6">
         {{ range . }}
           <li>
             {{ partial "components/timeline-entry.html" (dict "entry" . "level" (add $level 1)) }}
@@ -53,7 +64,7 @@
       </ol>
     {{ end }}
     {{ with $e.details }}
-      <div class="mt-block border-b border-hairline">
+      <div class="mt-6 max-w-measure border-b border-hairline">
         {{ range . }}{{ partial "components/disclosure.html" . }}{{ end }}
       </div>
     {{ end }}

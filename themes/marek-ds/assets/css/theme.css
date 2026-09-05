@@ -6,9 +6,24 @@
  * vocabulary that compiles is the one below: `text-3xl`, `text-neutral-500`
  * or `rounded-2xl` simply do not exist. That constraint is the harness.
  *
- * Reference points (measured): cdevroe.com body 22.4px / 1.55 on a ~60ch
- * measure in #111; Apple and OpenAI track body text slightly tight and
- * display headings tighter, at weights 500-600, never 700.
+ * THE HIERARCHY RULE. Each step below is a rung, and text may never sit on a
+ * rung at or above the heading it belongs to:
+ *
+ *   2xl  display, one per page (h1)
+ *   xl   section title (h2)
+ *   lg   entry title (h3), dek
+ *   base long-form reading only: article prose, .prose
+ *   md   supporting text inside a component: entry bodies, bullets, card copy
+ *   sm   meta: dates, bylines, navigation
+ *   xs   captions, eyebrows
+ *
+ * So a timeline entry titled at `lg` carries its bullets at `md`, never at
+ * `base`. Long-form prose gets `base` because it is the thing being read; a
+ * supporting paragraph beside a heading does not.
+ *
+ * Reference points (measured): cdevroe.com body 22.4px / 1.55 in #111; Apple
+ * and OpenAI set supporting copy at 17px and track body slightly tight, with
+ * display headings tighter still, at weights 500-600, never 700.
  */
 @theme {
   /* ---- Typography ------------------------------------------------------ */
@@ -17,24 +32,26 @@
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Fluid type scale. Body runs 20px on a phone to 22px on a desktop. */
   --text-*: initial;
   --text-xs: 0.8rem;
-  --text-xs--line-height: 1.4; /* captions */
+  --text-xs--line-height: 1.4; /* captions, eyebrows */
   --text-sm: 0.9rem;
-  --text-sm--line-height: 1.45; /* meta, nav, dates */
+  --text-sm--line-height: 1.45; /* meta, dates, navigation */
+  --text-md: 1.0625rem;
+  --text-md--line-height: 1.6; /* supporting text inside components */
   --text-base: clamp(1.25rem, 1.2rem + 0.22vw, 1.375rem);
-  --text-base--line-height: 1.55; /* body */
-  --text-lg: clamp(1.375rem, 1.28rem + 0.44vw, 1.625rem);
-  --text-lg--line-height: 1.3; /* h3, dek */
-  --text-xl: clamp(1.75rem, 1.55rem + 0.88vw, 2.25rem);
-  --text-xl--line-height: 1.2; /* h2 */
-  --text-2xl: clamp(2.25rem, 1.85rem + 1.75vw, 3.25rem);
-  --text-2xl--line-height: 1.15; /* h1: 36px on a phone, 52px on a desktop */
+  --text-base--line-height: 1.55; /* long-form prose, 20px to 22px */
+  --text-lg: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --text-lg--line-height: 1.25; /* entry titles, dek */
+  --text-xl: clamp(1.875rem, 1.4rem + 2vw, 2.75rem);
+  --text-xl--line-height: 1.1; /* section titles, 30px to 44px */
+  --text-2xl: clamp(2.5rem, 1.5rem + 4.2vw, 4.5rem);
+  --text-2xl--line-height: 1.03; /* display, 40px to 72px */
 
   --tracking-*: initial;
   --tracking-body: -0.01em;
-  --tracking-tight: -0.03em; /* display headings */
+  --tracking-tight: -0.025em; /* section titles */
+  --tracking-display: -0.035em; /* the one h1 */
   --tracking-wide: 0.08em; /* uppercase eyebrows */
 
   --font-weight-*: initial;
@@ -46,15 +63,21 @@
   /* ---- Measure and layout ---------------------------------------------- */
   /* Drive max-w-* and the named lines of the breakout grid (layout.css). */
   --container-*: initial;
-  --container-prose: 40rem; /* 640px: 55-60 characters at 22px */
-  --container-wide: 64rem; /* 1024px: media and galleries */
-  --container-track: 90rem; /* 1440px: the whole page track */
+  /* Named "measure", the typographic term, and deliberately not "prose":
+     Tailwind ships a static .max-w-prose utility of its own (65ch) that a
+     token cannot override, so that name would silently lose. */
+  --container-measure: 42rem; /* 672px: 60-65 characters at 22px */
+  --container-wide: 75rem; /* 1200px: the content track */
+  --container-track: 75rem; /* header and footer share the content track */
 
   /* Rhythm. Added on top of Tailwind's default 0.25rem spacing scale. */
   --spacing-section: clamp(4rem, 3rem + 4vw, 7rem);
   --spacing-block: 2.5rem;
   --spacing-gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
   --spacing-scroll-offset: 6rem; /* keeps anchor targets clear of the sticky header */
+  /* One label column for every two-column component, so a label-body split
+     and a timeline line up down the page. */
+  --spacing-label: 11rem;
 
   /* ---- Colour ------------------------------------------------------------ */
   /* Monochrome. Semantic names so dark mode is a :root override later. */

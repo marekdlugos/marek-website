@@ -3,13 +3,14 @@ title: "Education & Awards"
 date: 2020-04-13T18:05:30+02:00
 description: "Education and awards of Marek Dlugos — academic background and competition wins in web development."
 keywords: "marek, dlugos, marek dlugos, growth, product, design, startups"
+hideTitle: true
 menu:
   main:
     weight: 25
 ---
 
 {{< section title="Education" width="wide" >}}
-{{< label-body label="The Story" >}}
+{{< label-body label="The Story" measure="prose" >}}
 High-quality technical education abroad has been my aim for a long time, which is why I left my home country after graduating from the best tech high school in Slovakia (according to the INEKO ranking).
 
 Followed by applying for the Ivy League universities. The University of Cambridge, according to rankings, the 4th best university in the world, invited me for interviews where I exceeded their expectations in Computer Science but didn't persuade them with my math skills.

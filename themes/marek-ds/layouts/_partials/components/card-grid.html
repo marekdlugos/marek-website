@@ -1,6 +1,10 @@
 {{- /* components/card-grid.html
   Responsive grid of cards.
 
+  The gaps are wide because a quiet card paints a hover surface that bleeds
+  past its column (see card.html); the gap has to clear that bleed on both
+  sides, or two neighbouring hover states touch.
+
   Props:
   cols   2 (default) | 3
   items  []dict, optional: card props, see components/card.html
@@ -12,7 +16,7 @@
     md:grid-cols-3
   {{ else }}
     md:grid-cols-2
-  {{ end }} grid gap-x-8 gap-y-10"
+  {{ end }} grid gap-x-16 gap-y-16"
 >
   {{ range .items }}{{ partial "components/card.html" . }}{{ end }}
   {{ .body }}

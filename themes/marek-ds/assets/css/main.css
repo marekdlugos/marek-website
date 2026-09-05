@@ -19,6 +19,7 @@
 
 /* Layer 3: the few things utilities cannot express. Each file says why it exists. */
 @import "./components/layout.css";
+@import "./components/header.css";
 @import "./components/prose.css";
 @import "./components/toc.css";
 @import "./components/scroll-progress.css";

@@ -1,0 +1,43 @@
+/*
+ * Site header. Starts generous — a large wordmark and a wide, roomy menu —
+ * then compacts once the reader scrolls, so the page keeps the room it needs
+ * without losing the navigation.
+ *
+ * The compact state is an attribute set by assets/js/scroll.js; see that file
+ * for why it is not a CSS scroll-driven animation. Transition durations are
+ * collapsed under prefers-reduced-motion by base.css, so the change snaps
+ * instead of gliding for readers who ask for that.
+ */
+@layer components {
+  .site-header-inner {
+    padding-block: 2.25rem;
+    border-bottom: 1px solid transparent;
+    transition:
+      padding-block var(--duration-base) var(--ease-out),
+      border-color var(--duration-base) var(--ease-out);
+  }
+
+  .site-brand {
+    font-size: var(--text-lg);
+    line-height: 1.1;
+    transition: font-size var(--duration-base) var(--ease-out);
+  }
+
+  .site-nav {
+    font-size: var(--text-md);
+    transition: font-size var(--duration-base) var(--ease-out);
+  }
+
+  [data-compact] .site-header-inner {
+    padding-block: 0.85rem;
+    border-bottom-color: var(--color-hairline);
+  }
+
+  [data-compact] .site-brand {
+    font-size: var(--text-md);
+  }
+
+  [data-compact] .site-nav {
+    font-size: var(--text-sm);
+  }
+}

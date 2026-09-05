@@ -5,7 +5,7 @@
   entries  []dict, required: see components/timeline-entry.html
   level    int, heading level of entry titles, default 3
 */}}
-<ol class="space-y-block">
+<ol class="space-y-section">
   {{ range .entries }}
     <li>
       {{ partial "components/timeline-entry.html" (dict "entry" . "level" ($.level | default 3)) }}

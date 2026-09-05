@@ -5,6 +5,8 @@
   amCharts stays a CDN global. All four scripts are deferred, and deferred scripts
   run in document order, so AmCharts, the world map data and the theme are all
   defined before our init script runs. Hidden on phones: no room to pan a map.
+  The map is decorative; the country lists below carry the same information as
+  text, so it is kept out of the accessibility tree.
 */}}
 {{- $isos := slice }}
 {{- range hugo.Data.hobbies.countries }}
@@ -27,8 +29,9 @@
 <div
   id="mapdiv"
   aria-hidden="true"
-  class="hidden h-112 w-full overflow-hidden rounded-lg sm:block"
+  class="hidden aspect-[2/1] w-full overflow-hidden rounded-lg sm:block"
 ></div>
+{{- /* aspect-[2/1]: a world map's own proportion; no token describes a ratio. */}}
 <script
   src="{{ $map.RelPermalink }}"
   integrity="{{ $map.Data.Integrity }}"

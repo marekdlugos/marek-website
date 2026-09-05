@@ -1,27 +1,31 @@
 {{- /* components/dated-list.html
   Rows of dated items: writing, interviews, talks, awards, assignments.
 
+  The date label is assembled into a variable rather than printed from
+  adjacent template actions, so the space between month and year cannot be
+  eaten by template whitespace trimming or by a formatter.
+
   Props:
   rows  []dict, required: { year, month?, title, url?, medium?, note?, struck?, label? }
   label replaces the date column when set (e.g. a duration).
 */}}
 <ul class="divide-y divide-hairline">
   {{ range .rows }}
-    <li class="grid gap-x-6 gap-y-1 py-3 md:grid-cols-[7rem_1fr]">
-      {{- /* [7rem_1fr]: fixed date column; no token fits it. */}}
-      <p class="text-sm text-muted md:pt-1">
-        {{- with .label }}
-          {{ . }}
-        {{ else }}
-          {{ with .month }}{{ . }}{{ end }}{{ .year }}
-        {{ end -}}
-      </p>
+    {{- $row := . }}
+    {{- $date := $row.label }}
+    {{- if not $date }}
+      {{- $date = printf "%v" $row.year }}
+      {{- with $row.month }}{{ $date = printf "%s %v" . $row.year }}{{ end }}
+    {{- end }}
+    <li class="grid gap-x-8 gap-y-1 py-3 text-md md:grid-cols-[7rem_1fr]">
+      {{- /* [7rem_1fr]: the date column inside a list, narrower than the page label column. */}}
+      <p class="text-sm text-muted md:pt-1">{{ $date }}</p>
       <p>
         {{- $title := .title }}
         {{- if .struck }}{{ $title = printf "<s>%s</s>" $title }}{{ end }}
         {{- with .url }}
           <a href="{{ . }}" target="_blank" rel="noopener"
-            >{{ $title | safeHTML }}</a
+            >{{- $title | safeHTML -}}{{- partial "icons/external.svg" -}}</a
           >
         {{- else }}
           {{ $title | safeHTML }}

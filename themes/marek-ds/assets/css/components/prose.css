@@ -5,7 +5,7 @@
  */
 @layer components {
   .prose {
-    max-width: var(--container-prose);
+    max-width: var(--container-measure);
   }
 
   .prose > * + * {

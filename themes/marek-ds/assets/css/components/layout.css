@@ -16,15 +16,15 @@
       [full-start] minmax(var(--spacing-gutter), 1fr)
       [wide-start] minmax(
         0,
-        calc((var(--container-wide) - var(--container-prose)) / 2)
+        calc((var(--container-wide) - var(--container-measure)) / 2)
       )
       [prose-start] min(
         100% - 2 * var(--spacing-gutter),
-        var(--container-prose)
+        var(--container-measure)
       )
       [prose-end] minmax(
         0,
-        calc((var(--container-wide) - var(--container-prose)) / 2)
+        calc((var(--container-wide) - var(--container-measure)) / 2)
       )
       [wide-end] minmax(var(--spacing-gutter), 1fr)
       [full-end];

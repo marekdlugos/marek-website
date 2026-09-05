@@ -7,16 +7,24 @@
   dek        string, optional: one-sentence subtitle under the title
   meta       template.HTML, optional: small muted line (byline, date)
   actions    []dict, optional: button props, see components/button.html
-  image      resource, optional: portrait shown beside the text (wide breakout)
+  image      resource, optional: portrait shown beside the text
   imageAlt   string, required when image is set
-  weight     "semibold" (default) | "normal" | "light": display weight of the title
+  width      "wide" (default: the content track, aligning the h1 with every
+  section heading) | "prose" (articles, where the body is prose)
+  weight     "medium" (default) | "normal" | "light" | "semibold"
   hideTitle  bool: keep the h1 for assistive tech but do not show it
 */}}
-{{- $weights := dict "semibold" "font-semibold" "normal" "font-normal" "light" "font-light" }}
-{{- $weight := index $weights (.weight | default "semibold") }}
+{{- $weights := dict
+  "light" "font-light"
+  "normal" "font-normal"
+  "medium" "font-medium"
+  "semibold" "font-semibold"
+}}
+{{- $weight := index $weights (.weight | default "medium") }}
+{{- $wide := ne .width "prose" }}
 <header
-  class="{{ if .image }}
-    breakout-wide grid gap-block md:grid-cols-[3fr_2fr] md:items-center
+  class="{{ if $wide }}breakout-wide{{ end }} {{ if .image }}
+    grid gap-block md:grid-cols-[3fr_2fr] md:items-center
   {{ end }}"
 >
   {{- /* [3fr_2fr]: text-to-portrait ratio from the home mockup; no token fits a ratio. */}}
@@ -24,15 +32,17 @@
     <h1
       class="{{ $weight }} {{ if .hideTitle }}
         sr-only
-      {{ end }} text-2xl tracking-tight text-balance"
+      {{ end }} text-2xl tracking-display text-balance"
     >
       {{ .title | safeHTML }}
     </h1>
     {{ with .dek }}
-      <p class="mt-4 text-lg text-pretty text-ink-2">{{ . | safeHTML }}</p>
+      <p class="mt-5 max-w-measure text-lg text-pretty text-ink-2">
+        {{ . | safeHTML }}
+      </p>
     {{ end }}
     {{ with .meta }}
-      <p class="mt-4 text-sm text-muted">{{ . | safeHTML }}</p>
+      <p class="mt-5 text-sm text-muted">{{ . | safeHTML }}</p>
     {{ end }}
     {{ with .actions }}
       <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -46,7 +56,7 @@
     {{ partial "components/picture.html" (dict
       "img" . "alt" $.imageAlt
       "class" "w-full rounded-lg"
-      "sizes" "(min-width: 48rem) 24rem, 100vw"
+      "sizes" "(min-width: 48rem) 28rem, 100vw"
       "loading" "eager")
     }}
   {{ end }}

@@ -1,4 +1,6 @@
-{{- /* Podcast episodes from data/hobbies/podcast.json. */}}
+{{- /* Podcast episodes from data/hobbies/podcast.json. The guest's name is the
+  meta, so it stays on the right of every row.
+*/}}
 {{- $items := slice }}
 {{- range hugo.Data.hobbies.podcast }}
   {{- $items = $items | append (dict "title" .name "href" .url "meta" (printf "with %s" .with) "external" true) }}

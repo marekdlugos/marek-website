@@ -6,9 +6,12 @@
   - prose:   hero, prose content (plain Markdown pages).
   - default: hero, then the content as-is: a sequence of section shortcodes.
 
-  The hero title is `headline` when set, otherwise the page title.
+  The hero title is `headline` when set, otherwise the page title. `dek` adds
+  a subtitle; `hideTitle` keeps the h1 for assistive tech without showing it,
+  for pages whose first visible heading is their opening section.
 */}}
 {{ define "main" }}
+  {{- $reading := or .Params.article .Params.prose }}
   {{- $meta := "" }}
   {{- if .Params.article }}
     {{- $subscribe := "" }}
@@ -21,9 +24,11 @@
     "title" (.Params.headline | default .Title)
     "dek" .Params.dek
     "meta" $meta
-    "weight" .Params.heroWeight)
+    "weight" .Params.heroWeight
+    "hideTitle" .Params.hideTitle
+    "width" (cond $reading "prose" "wide"))
   }}
-  {{- if or .Params.article .Params.prose }}
+  {{- if $reading }}
     {{- $toc := "" }}
     {{- if .Params.article }}
       {{- $toc = partial "toc.html" . | string | strings.TrimSpace }}

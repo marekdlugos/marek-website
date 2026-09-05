@@ -1,17 +1,21 @@
-{{- /* Site header: brand left, main menu right. No JavaScript; on narrow
+{{- /* Site header: wordmark left, main menu right. No JavaScript; on narrow
   screens the items wrap onto a second line instead of hiding behind a
-  hamburger. Menu entries come from site.Menus.main.
+  hamburger. It starts generous and compacts on scroll (see header.css and
+  assets/js/scroll.js).
+  Menu entries come from site.Menus.main.
 */}}
 {{- $page := . }}
-<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-sm">
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-sm" data-header>
   <div
-    class="mx-auto flex max-w-track flex-wrap items-baseline justify-between gap-x-8 gap-y-1 px-gutter py-5"
+    class="site-header-inner mx-auto flex max-w-track flex-wrap items-baseline justify-between gap-x-10 gap-y-2 px-gutter"
   >
-    <a class="text-sm font-medium text-ink no-underline" href="/"
+    <a
+      class="site-brand font-semibold tracking-tight text-ink no-underline"
+      href="/"
       >{{ site.Params.ds.author }}</a
     >
-    <nav aria-label="Main">
-      <ul class="flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">
+    <nav class="site-nav" aria-label="Main">
+      <ul class="flex flex-wrap gap-x-8 gap-y-2 font-medium">
         {{ range site.Menus.main }}
           {{- $active := or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }}
           <li>

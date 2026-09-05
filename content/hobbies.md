@@ -3,6 +3,7 @@ title: "Hobbies"
 date: 2020-04-15T20:09:07+02:00
 description: "Hobbies and interests of Marek Dlugos — running, travel, photography, and more."
 keywords: "marek, dlugos, marek dlugos, growth, product, design, startups"
+hideTitle: true
 menu:
   main:
     weight: 30
@@ -15,7 +16,7 @@ menu:
 {{< /section >}}
 
 {{< section title="Sharing" width="wide" >}}
-{{< label-body label="Interviews" >}}
+{{< label-body label="Interviews" measure="prose" >}}
 {{< figure src="hobbies/marek-dlugos-podcast.jpg" alt="Marek Dlugos Podcast" >}}
 {{< prose >}}
 I was fortunate to meet a lot of very interesting people along the way and now I am happy to bring 5 interviews with some of them! I guess I might be able to say it is quality content, unfortunately, it is only available in the Slovak language.

@@ -3,6 +3,7 @@ title: "Sharing"
 date: 2020-04-14T12:44:18+02:00
 description: "Talks, articles, and resources shared by Marek Dlugos on B2B SaaS, AI, and technology."
 keywords: "marek, dlugos, marek dlugos, growth, product, design, startups"
+hideTitle: true
 menu:
   main:
     weight: 40
