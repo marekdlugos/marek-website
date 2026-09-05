@@ -5,10 +5,3 @@ static/podcast/
 content/
 hugo_stats.json
 package-lock.json
-
-# Legacy Bootstrap-era templates. Every one of these is rewritten or deleted
-# during the design-system rebuild; remove these lines at the end of Phase 2.
-layouts/_default/
-layouts/partials/
-layouts/shortcodes/
-layouts/index.html

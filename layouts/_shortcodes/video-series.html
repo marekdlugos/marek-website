@@ -1,0 +1,18 @@
+{{- /* Video series from data/hobbies/series.json as media cards. */}}
+{{- $items := slice }}
+{{- range hugo.Data.hobbies.series }}
+  {{- $img := resources.Get (printf "images/%s" .image) }}
+  {{- if not $img }}
+    {{ errorf "video-series: images/%s not found" .image }}
+  {{ end }}
+  {{- $items = $items | append (dict
+    "variant" "media"
+    "title" .title
+    "text" .text
+    "image" $img
+    "imageAlt" .alt
+    "meta" .stats
+    "cta" (dict "label" "Watch on YouTube" "href" .url "external" true))
+  }}
+{{- end }}
+{{- partial "components/card-grid.html" (dict "cols" 2 "items" $items) }}

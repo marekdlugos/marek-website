@@ -1,0 +1,7 @@
+{{- /* {{< videos-list "personal|work" >}} lists data/hobbies/videos.json by
+category. */}}
+{{- $items := slice }}
+{{- range where hugo.Data.hobbies.videos "category" (.Get 0) }}
+  {{- $items = $items | append (dict "title" .title "href" .url "meta" (string .year) "external" true) }}
+{{- end }}
+{{- partial "components/link-list.html" (dict "items" $items) }}

@@ -1,0 +1,16 @@
+{{- /* Home page: hero with portrait and actions, then the newsletter band. */}}
+{{ define "main" }}
+  {{- $portrait := resources.Get "images/marek-dlugos.webp" }}
+  {{- /* Publish the original at a stable path; params.images points social cards at it. */}}
+  {{- $_ := $portrait.RelPermalink }}
+  {{ partial "components/page-hero.html" (dict
+    "title" .Params.headline
+    "weight" "normal"
+    "image" $portrait
+    "imageAlt" site.Params.ds.author
+    "actions" (slice
+    (dict "href" "/work/" "label" "My work")
+    (dict "kind" "pill" "label" .Params.status "dot" true)))
+  }}
+  {{ partial "components/newsletter.html" . }}
+{{ end }}

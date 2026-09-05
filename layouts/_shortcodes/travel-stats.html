@@ -1,0 +1,7 @@
+{{- /* Travel headline numbers. The country count comes from the data, not typed in. */}}
+{{- $count := len (where hugo.Data.hobbies.countries "home" "!=" true) }}
+{{- partial "components/stat-row.html" (dict "stats" (slice
+  (dict "value" $count "label" "Countries visited")
+  (dict "value" "2" "label" "Journeys around the world")
+  (dict "label" "My Flight Radar profile" "href" "https://my.flightradar24.com/marekdlugos" "external" true)))
+}}

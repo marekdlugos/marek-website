@@ -1,0 +1,28 @@
+{{- /* Degrees from data/education/degrees.json as a timeline. A degree flagged
+  `semesters: true` nests the semesters abroad from data/education/semesters.json
+  under it, each with its courses in an expandable row.
+*/}}
+{{- $semesters := slice }}
+{{- range hugo.Data.education.semesters }}
+  {{- $details := slice }}
+  {{- with .courses }}
+    {{- $lines := apply . "printf" "- %s" "." }}
+    {{- $details = $details | append (dict "label" "Selected courses" "body" (delimit $lines "\n")) }}
+  {{- end }}
+  {{- $semesters = $semesters | append (dict
+    "date" .term
+    "title" .university
+    "meta" .blurb
+    "body" .thesis
+    "details" $details)
+  }}
+{{- end }}
+{{- $entries := slice }}
+{{- range hugo.Data.education.degrees }}
+  {{- $entry := . }}
+  {{- if .semesters }}
+    {{ $entry = merge . (dict "children" $semesters) }}
+  {{ end }}
+  {{- $entries = $entries | append $entry }}
+{{- end }}
+{{- partial "components/timeline.html" (dict "entries" $entries "level" 3) }}

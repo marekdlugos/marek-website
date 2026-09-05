@@ -1,0 +1,36 @@
+{{- /* components/dated-list.html
+  Rows of dated items: writing, interviews, talks, awards, assignments.
+
+  Props:
+  rows  []dict, required: { year, month?, title, url?, medium?, note?, struck?, label? }
+  label replaces the date column when set (e.g. a duration).
+*/}}
+<ul class="divide-y divide-hairline">
+  {{ range .rows }}
+    <li class="grid gap-x-6 gap-y-1 py-3 md:grid-cols-[7rem_1fr]">
+      {{- /* [7rem_1fr]: fixed date column; no token fits it. */}}
+      <p class="text-sm text-muted md:pt-1">
+        {{- with .label }}
+          {{ . }}
+        {{ else }}
+          {{ with .month }}{{ . }}{{ end }}{{ .year }}
+        {{ end -}}
+      </p>
+      <p>
+        {{- $title := .title }}
+        {{- if .struck }}{{ $title = printf "<s>%s</s>" $title }}{{ end }}
+        {{- with .url }}
+          <a href="{{ . }}" target="_blank" rel="noopener"
+            >{{ $title | safeHTML }}</a
+          >
+        {{- else }}
+          {{ $title | safeHTML }}
+        {{- end }}
+        {{- with .medium }}<span class="text-muted">, {{ . }}</span>{{ end }}
+        {{- with .note }}
+          <span class="block text-sm text-muted">{{ . }}</span>
+        {{ end }}
+      </p>
+    </li>
+  {{ end }}
+</ul>

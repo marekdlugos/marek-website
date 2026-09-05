@@ -1,6 +1,0 @@
-{{- /* Client logo grid from data/work/clients.json. Logo paths are relative to static/. */ -}}
-<div class="row row-cols-auto">
-  {{- range hugo.Data.work.clients }}
-  <div class="col"><img src="{{ .logo | relURL }}" alt="{{ .alt }}" height="100" class="p-2 grayscale" /></div>
-  {{- end }}
-</div>

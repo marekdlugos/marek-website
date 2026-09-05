@@ -1,0 +1,48 @@
+{{- /* components/picture.html
+  Responsive <img> from a Hugo image resource: WebP variants, srcset, sizes,
+  intrinsic dimensions, lazy loading. SVG and GIF pass through untouched.
+
+  Props:
+  img      resource, required
+  alt      string, required
+  sizes    string, default "(min-width: 64rem) 40rem, 100vw" (the prose column)
+  class    string, optional
+  loading  "lazy" (default) | "eager"
+  widths   []int, default 640 960 1440 1920
+*/}}
+{{- $img := .img }}
+{{- $loading := .loading | default "lazy" }}
+{{- if in (slice "svg" "gif") $img.MediaType.SubType }}
+  <img
+    class="{{ .class }}"
+    src="{{ $img.RelPermalink }}"
+    alt="{{ .alt }}"
+    loading="{{ $loading }}"
+    decoding="async"
+  />
+{{- else }}
+  {{- $widths := .widths | default (slice 640 960 1440 1920) }}
+  {{- $set := slice }}
+  {{- range $widths }}
+    {{- if le . $img.Width }}
+      {{- $r := $img.Process (printf "resize %dx webp q85" .) }}
+      {{- $set = $set | append (printf "%s %dw" $r.RelPermalink .) }}
+    {{- end }}
+  {{- end }}
+  {{- $fallbackWidth := 1440 }}
+  {{- if lt $img.Width $fallbackWidth }}
+    {{ $fallbackWidth = $img.Width }}
+  {{ end }}
+  {{- $fallback := $img.Process (printf "resize %dx webp q85" $fallbackWidth) }}
+  <img
+    class="{{ .class }}"
+    src="{{ $fallback.RelPermalink }}"
+    {{ with $set }}srcset="{{ delimit . ", " }}"{{ end }}
+    sizes="{{ .sizes | default "(min-width: 64rem) 40rem, 100vw" }}"
+    width="{{ $fallback.Width }}"
+    height="{{ $fallback.Height }}"
+    alt="{{ .alt }}"
+    loading="{{ $loading }}"
+    decoding="async"
+  />
+{{- end }}

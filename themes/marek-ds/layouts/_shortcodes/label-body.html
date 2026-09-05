@@ -1,0 +1,8 @@
+{{- /* {{< label-body label="…" id="…" level=3 >}}
+…Markdown, or nested shortcodes (not both)… {{< /label-body >}} */}}
+{{- partial "components/label-body.html" (dict
+  "label" (.Get "label")
+  "id" (.Get "id")
+  "level" (.Get "level")
+  "body" (partial "components/inner.html" (dict "inner" .Inner "page" .Page)))
+}}

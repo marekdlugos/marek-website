@@ -1,0 +1,4 @@
+{{- /* {{< projects group="highlighted|other" >}}
+Cards from data/projects/projects.json, filtered by group. */}}
+{{- $items := where hugo.Data.projects.projects "group" (.Get "group") }}
+{{- partial "components/card-grid.html" (dict "cols" 2 "items" $items) }}

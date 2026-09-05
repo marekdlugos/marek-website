@@ -1,0 +1,4 @@
+{{- /* {{< dated-list "sharing" "interviews" >}} reads
+data/sharing/interviews.json. Row fields: year, month?, title, url?, medium?,
+note?, struck?. */}}
+{{- partial "components/dated-list.html" (dict "rows" (index hugo.Data (.Get 0) (.Get 1))) }}

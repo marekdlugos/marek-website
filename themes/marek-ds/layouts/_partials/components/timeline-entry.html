@@ -1,0 +1,61 @@
+{{- /* components/timeline-entry.html
+  One timeline entry: date column left, title, subtitle, meta, body, bullets,
+  nested child entries and expandable detail rows on the right.
+
+  Props:
+  entry  dict, required:
+  from, to     strings, shown as "from — to" (to optional)
+  date         string, alternative single date label
+  title        string, required
+  subtitle     string, optional
+  meta         string, optional: small muted line
+  body         markdown, optional
+  bullets      []markdown, optional
+  children     []entry, optional: nested entries one heading level down
+  details      []dict{label, body}, optional: expandable rows
+  level  int, heading level of the title, default 3
+*/}}
+{{- $e := .entry }}
+{{- $level := int (.level | default 3) }}
+{{- $date := $e.date }}
+{{- if not $date }}
+  {{- $date = $e.from }}
+  {{- with $e.to }}{{ $date = printf "%s — %s" $e.from . }}{{ end }}
+{{- end }}
+<div class="grid gap-y-2 md:grid-cols-[8rem_1fr] md:gap-x-8">
+  {{- /* [8rem_1fr]: fixed date column from the education mockup; no token fits it. */}}
+  <p class="text-sm text-muted md:pt-1.5 md:text-right">{{ $date }}</p>
+  <div>
+    {{ partial "components/heading.html" (dict "level" $level "text" $e.title "class" (cond (le $level 3) "text-lg font-medium tracking-tight" "font-medium tracking-tight")) }}
+    {{ with $e.subtitle }}
+      <p class="text-ink-2">{{ . }}</p>
+    {{ end }}
+    {{ with $e.meta }}
+      <p class="mt-1 text-sm text-muted">{{ . }}</p>
+    {{ end }}
+    {{ with $e.body }}
+      <div class="prose mt-3">{{ . | markdownify }}</div>
+    {{ end }}
+    {{ with $e.bullets }}
+      <div class="prose mt-3">
+        <ul>
+          {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+        </ul>
+      </div>
+    {{ end }}
+    {{ with $e.children }}
+      <ol class="mt-block space-y-block">
+        {{ range . }}
+          <li>
+            {{ partial "components/timeline-entry.html" (dict "entry" . "level" (add $level 1)) }}
+          </li>
+        {{ end }}
+      </ol>
+    {{ end }}
+    {{ with $e.details }}
+      <div class="mt-block border-b border-hairline">
+        {{ range . }}{{ partial "components/disclosure.html" . }}{{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>

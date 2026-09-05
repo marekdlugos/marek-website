@@ -1,0 +1,25 @@
+{{- /* Countries visited, grouped by continent, from data/hobbies/countries.json.
+  Countries flagged `home` are shown on the map but are not places visited.
+*/}}
+{{- $continents := slice
+  (dict "slug" "asia" "name" "Asia")
+  (dict "slug" "europe" "name" "Europe")
+  (dict "slug" "latin-america" "name" "Latin America")
+  (dict "slug" "north-america" "name" "North America")
+  (dict "slug" "africa" "name" "Africa")
+}}
+<div class="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-5">
+  {{- range $continents }}
+    {{- $rows := where (where hugo.Data.hobbies.countries "continent" .slug) "home" "!=" true }}
+    <div>
+      <h3 class="text-sm font-medium tracking-wide text-muted uppercase">
+        {{ .name }}
+      </h3>
+      <p class="mt-2 text-sm text-ink-2">
+        {{- range $i, $c := sort $rows "name" }}
+          {{ if $i }},{{ end }}{{ $c.name }}
+        {{ end -}}
+      </p>
+    </div>
+  {{- end }}
+</div>

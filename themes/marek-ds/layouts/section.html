@@ -4,7 +4,7 @@
 {{ define "main" }}
   {{ partial "components/page-hero.html" (dict "title" .Title) }}
   {{ with .Content }}
-    <div class="prose">{{ . }}</div>
+    <div class="prose mt-block">{{ . }}</div>
   {{ end }}
   {{- $items := slice }}
   {{- range .Pages.ByPublishDate.Reverse }}

@@ -1,0 +1,21 @@
+{{- /* components/inner.html
+  Renders the inner content of a container shortcode.
+
+  Hugo passes nested shortcode output through the Markdown renderer along with
+  the surrounding text, where a blank line followed by indented markup turns
+  into a code block. So a container holds EITHER Markdown OR component output,
+  never both. Content that begins with a tag passes through untouched; anything
+  else is rendered as Markdown and wrapped in .prose.
+
+  Props:
+  inner  string, required: the shortcode's .Inner
+  page   page, required: the shortcode's .Page
+*/}}
+{{- $inner := trim .inner "\n\r\t " }}
+{{- if hasPrefix $inner "<" }}
+  {{- $inner | safeHTML }}
+{{- else if $inner }}
+  <div class="prose">
+    {{ $inner | .page.RenderString (dict "display" "block") }}
+  </div>
+{{- end }}

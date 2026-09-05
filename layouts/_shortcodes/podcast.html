@@ -1,0 +1,6 @@
+{{- /* Podcast episodes from data/hobbies/podcast.json. */}}
+{{- $items := slice }}
+{{- range hugo.Data.hobbies.podcast }}
+  {{- $items = $items | append (dict "title" .name "href" .url "meta" (printf "with %s" .with) "external" true) }}
+{{- end }}
+{{- partial "components/link-list.html" (dict "items" $items) }}

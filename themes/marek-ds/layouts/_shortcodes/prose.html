@@ -1,0 +1,5 @@
+{{- /* {{< prose >}}…Markdown…{{< /prose >}}
+Explicit Markdown block for use beside components inside a container. */}}
+<div class="prose">
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</div>

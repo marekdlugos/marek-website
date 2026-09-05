@@ -1,0 +1,26 @@
+{{- /* components/section-header.html
+  Eyebrow, heading and dek that open a section.
+
+  Props:
+  title    string, required
+  eyebrow  string, optional: small uppercase label above the title
+  dek      string, optional: one-sentence subtitle
+  level    int, default 2
+  id       string, optional: id on the heading
+*/}}
+<div class="max-w-prose">
+  {{ with .eyebrow }}
+    <p class="mb-3 text-xs font-medium tracking-wide text-muted uppercase">
+      {{ . }}
+    </p>
+  {{ end }}
+  {{ partial "components/heading.html" (dict
+    "level" (.level | default 2)
+    "text" .title
+    "id" .id
+    "class" "text-xl font-semibold tracking-tight text-balance")
+  }}
+  {{ with .dek }}
+    <p class="mt-3 text-lg text-pretty text-ink-2">{{ . | safeHTML }}</p>
+  {{ end }}
+</div>

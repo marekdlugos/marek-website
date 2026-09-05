@@ -1,0 +1,15 @@
+{{- /* {{< figure src="photo.jpg" alt="…" caption="…" width="normal|wide|full" >}}
+src resolves against the page bundle first, then the site's assets/images/, and
+is used as an external URL when it starts with http. */}}
+{{- $src := .Get "src" }}
+{{- $img := or (.Page.Resources.Get $src) (resources.Get (printf "images/%s" $src)) }}
+{{- if and (not $img) (not (hasPrefix $src "http")) }}
+  {{- errorf "figure: image %q not found in the page bundle or assets/images (%s)" $src .Position }}
+{{- end }}
+{{- partial "components/figure.html" (dict
+  "img" $img
+  "src" $src
+  "alt" (.Get "alt")
+  "caption" (.Get "caption")
+  "width" (.Get "width"))
+}}

@@ -1,0 +1,47 @@
+{{- /* components/figure.html
+  An image with an optional caption, at one of three widths.
+
+  Props:
+  img      resource, required (or src for an external URL)
+  src      string, optional external URL used when img is not set
+  alt      string, required
+  caption  markdown, optional
+  width    "normal" (prose column, default) | "wide" | "full"
+*/}}
+{{- $width := .width | default "normal" }}
+{{- $sizes := dict
+  "normal" "(min-width: 64rem) 40rem, 100vw"
+  "wide" "(min-width: 64rem) 64rem, 100vw"
+  "full" "100vw"
+}}
+<figure
+  class="{{ if eq $width "wide" }}
+    breakout-wide
+  {{ else if eq $width "full" }}
+    breakout-full
+  {{ end }}"
+>
+  {{ if .img }}
+    {{ partial "components/picture.html" (dict
+      "img" .img "alt" .alt
+      "class" (cond (eq $width "full") "w-full" "w-full rounded-lg")
+      "sizes" (index $sizes $width))
+    }}
+  {{ else }}
+    <img
+      class="w-full rounded-lg"
+      src="{{ .src }}"
+      alt="{{ .alt }}"
+      loading="lazy"
+    />
+  {{ end }}
+  {{ with .caption }}
+    <figcaption
+      class="{{ if eq $width "full" }}
+        px-gutter
+      {{ end }} mt-3 text-sm text-muted"
+    >
+      {{ . | markdownify }}
+    </figcaption>
+  {{ end }}
+</figure>

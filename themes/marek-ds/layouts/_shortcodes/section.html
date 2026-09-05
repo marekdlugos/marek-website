@@ -1,0 +1,13 @@
+{{- /* {{< section title="…" eyebrow="…" dek="…" id="…" width="normal|wide|full" level=2 >}}
+…Markdown, or nested shortcodes (not both)…
+{{< /section >}}
+See components/inner.html for the Markdown-or-components rule. */}}
+{{- partial "components/section.html" (dict
+  "title" (.Get "title")
+  "eyebrow" (.Get "eyebrow")
+  "dek" (.Get "dek")
+  "id" (.Get "id")
+  "width" (.Get "width")
+  "level" (.Get "level")
+  "body" (partial "components/inner.html" (dict "inner" .Inner "page" .Page)))
+}}

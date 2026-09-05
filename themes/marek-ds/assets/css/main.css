@@ -22,7 +22,3 @@
 @import "./components/prose.css";
 @import "./components/toc.css";
 @import "./components/scroll-progress.css";
-
-/* TEMPORARY: Bootstrap-grid stand-in for content pages awaiting migration.
-   File and import are deleted together at the end of Phase 2. */
-@import "./components/legacy.css";

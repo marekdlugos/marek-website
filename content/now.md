@@ -1,0 +1,18 @@
+---
+title: "Now"
+prose: true
+date: 2024-07-12T12:44:18+02:00
+description: "Personal website of Marek Dlugos — Helping companies to succeed. Background in revenue growth, product, design, and software engineering."
+keywords: "marek, dlugos, marek dlugos, growth, product, design, startups"
+menu:
+  main:
+    weight: 50
+---
+
+Last update: Oct 7, 2024, from my home in Lausanne, Switzerland.
+
+Current priorities:
+
+- Run a half-marathon in under 2 hours.
+- Find a new job.
+- Move to the German speaking part of Switzerland.

@@ -1,0 +1,145 @@
+{{- /* Styleguide: every token and component with sample data. The site renders
+  it from a draft page with `layout: styleguide`, so it never reaches production.
+  Sample images come from site.Params.ds.styleguide.image.
+*/}}
+{{ define "main" }}
+  {{- $img := "" }}
+  {{- with site.Params.ds.styleguide }}
+    {{ with .image }}{{ $img = resources.Get . }}{{ end }}
+  {{ end }}
+  {{- $lorem := "Design is not just what it looks like and feels like. Design is how it works." }}
+  {{- $md := "## A heading inside prose\n\nBody copy runs at roughly 60 characters per line with a line height of 1.55. It has **strong emphasis**, *italics*, `inline code` and [a link](https://example.com).\n\n### A third-level heading\n\n- The first item in a list\n- The second item, which is long enough to wrap onto a second line so the spacing between items can be judged\n- The third item\n\n> A quotation sits on a hairline, in the secondary ink.\n\n1. Ordered\n2. List" }}
+
+  {{ partial "components/page-hero.html" (dict
+    "title" "Styleguide"
+    "dek" "Every token and component of marek-ds, rendered with sample data. Change theme.css and watch this page."
+    "actions" (slice (dict "href" "#components" "label" "Jump to components" "variant" "outline")))
+  }}
+
+  {{- /* ---- Type ------------------------------------------------------------ */}}
+  {{ $type := slice
+    (dict "class" "text-2xl font-semibold tracking-tight" "label" "text-2xl · h1")
+    (dict "class" "text-xl font-semibold tracking-tight" "label" "text-xl · h2")
+    (dict "class" "text-lg font-medium tracking-tight" "label" "text-lg · h3, dek")
+    (dict "class" "text-base" "label" "text-base · body")
+    (dict "class" "text-sm text-muted" "label" "text-sm · meta")
+    (dict "class" "text-xs text-muted uppercase tracking-wide font-medium" "label" "text-xs · eyebrow")
+  }}
+  <section class="breakout-wide mt-section" id="type">
+    {{ partial "components/section-header.html" (dict "eyebrow" "Tokens" "title" "Type scale" "dek" "Fluid sizes: each step grows with the viewport between the phone and desktop values in theme.css.") }}
+    <ul class="mt-block divide-y divide-hairline">
+      {{ range $type }}
+        <li class="grid gap-y-1 py-5 md:grid-cols-[10rem_1fr] md:gap-x-8">
+          <span class="text-xs text-muted">{{ .label }}</span>
+          <span class="{{ .class }}">{{ $lorem }}</span>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+
+  {{- /* ---- Colour ---------------------------------------------------------- */}}
+  <section class="breakout-wide mt-section" id="colour">
+    {{ partial "components/section-header.html" (dict "eyebrow" "Tokens" "title" "Colour" "dek" "Monochrome. Semantic names so a dark scheme is a later variable swap.") }}
+    <ul class="mt-block grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-7">
+      {{ range slice "surface" "surface-2" "ink" "ink-2" "muted" "hairline" "positive" }}
+        <li>
+          <div
+            class="bg-{{ . }} aspect-square rounded-lg border border-hairline"
+          ></div>
+          <p class="mt-2 text-sm">{{ . }}</p>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+
+  {{- /* ---- Spacing --------------------------------------------------------- */}}
+  <section class="breakout-wide mt-section" id="spacing">
+    {{ partial "components/section-header.html" (dict "eyebrow" "Tokens" "title" "Rhythm" "dek" "Three named spaces on top of Tailwind's 0.25rem scale.") }}
+    <ul class="mt-block space-y-4">
+      {{ range slice "gutter" "block" "section" }}
+        <li class="flex items-center gap-4 text-sm">
+          <span class="w-20 text-muted">{{ . }}</span>
+          <span class="w-{{ . }} h-3 bg-ink-2"></span>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+
+  {{- /* ---- Components ------------------------------------------------------ */}}
+  <section class="breakout-wide mt-section" id="components">
+    {{ partial "components/section-header.html" (dict "eyebrow" "Components" "title" "Buttons, pills and links") }}
+    <div class="mt-block flex flex-wrap items-center gap-4">
+      {{ partial "components/button.html" (dict "href" "#" "label" "Primary") }}
+      {{ partial "components/button.html" (dict "href" "#" "label" "Outline" "variant" "outline") }}
+      {{ partial "components/button.html" (dict "href" "#" "label" "Quiet" "variant" "quiet") }}
+      {{ partial "components/status-pill.html" (dict "label" "Available for new projects" "dot" true) }}
+      {{ partial "components/arrow-link.html" (dict "href" "#" "label" "Arrow link") }}
+      {{ partial "components/arrow-link.html" (dict "href" "https://example.com" "label" "External link" "external" true) }}
+    </div>
+  </section>
+
+  {{ partial "components/section.html" (dict
+    "eyebrow" "Components"
+    "title" "Section header with eyebrow and dek"
+    "dek" "This whole block is the section component: header plus body."
+    "width" "wide"
+    "body" (partial "components/label-body.html" (dict "label" "Label body" "body" (printf `<div class="prose">%s</div>` ($md | .RenderString (dict "display" "block"))))))
+  }}
+
+  {{ $entries := slice
+    (dict "from" "2015" "to" "2019" "title" "Bachelor's Degree in Software Engineering" "subtitle" "Czech Technical University, Czechia" "meta" "Ranked as #1 tech university in the Czech Republic."
+    "children" (slice
+    (dict "date" "Spring 2019" "title" "University of Buenos Aires, Argentina" "meta" "Ranked as #1 university in Argentina." "body" "Worked on my bachelor thesis."
+    "details" (slice (dict "label" "Selected courses" "body" "- Negotiation\n- Pricing and Revenue Management")))))
+    (dict "from" "2011" "to" "2015" "title" "Focus on Information & Network Technologies" "subtitle" "High School of Electrical Engineering, Slovakia"
+    "details" (slice (dict "label" "Selected subjects" "body" "- Server Technologies\n- Operating Systems")))
+  }}
+  {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Timeline" "dek" "Nested entries and expandable rows." "width" "wide"
+    "body" (partial "components/timeline.html" (dict "entries" $entries)))
+  }}
+
+  {{ $cards := slice
+    (dict "title" "Quiet card" "text" $lorem "href" "#")
+    (dict "title" "Quiet card with links" "text" $lorem "links" (slice (dict "label" "Visit the website" "href" "https://example.com" "external" true) (dict "label" "Read the story" "href" "#")))
+  }}
+  {{ with $img }}
+    {{ $cards = $cards | append (dict "variant" "media" "title" "Media card" "text" $lorem "image" . "imageAlt" "Sample" "meta" (slice "19 videos" "2hr 22min total length") "cta" (dict "label" "Watch on YouTube" "href" "https://example.com" "external" true)) }}
+  {{ end }}
+  {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Cards" "width" "wide"
+    "body" (partial "components/card-grid.html" (dict "cols" 3 "items" $cards)))
+  }}
+
+  {{ $rows := slice
+    (dict "year" 2024 "month" "Dec" "title" "A dated item with a link" "url" "https://example.com" "medium" "Some Medium")
+    (dict "year" 2023 "title" "A dated item without a link" "note" "A note underneath")
+    (dict "year" 2022 "month" "Mar" "title" "A cancelled item" "struck" true)
+    (dict "label" "3 months" "title" "A labelled item")
+  }}
+  {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Dated list and link list" "width" "wide"
+    "body" (print
+    (partial "components/dated-list.html" (dict "rows" $rows))
+    (partial "components/link-list.html" (dict "items" (slice (dict "title" "A link list row" "href" "#" "meta" "September 4, 2026") (dict "title" "An external row" "href" "https://example.com" "meta" "2019" "external" true))))))
+  }}
+
+  {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Stat row" "width" "wide"
+    "body" (partial "components/stat-row.html" (dict "stats" (slice (dict "value" "70" "label" "Countries visited") (dict "value" "2" "label" "Journeys around the world") (dict "label" "A linked stat" "href" "https://example.com" "external" true)))))
+  }}
+
+  {{ with $img }}
+    {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Logo wall" "width" "wide"
+      "body" (partial "components/logo-wall.html" (dict "logos" (slice (dict "img" . "alt" "One") (dict "img" . "alt" "Two") (dict "img" . "alt" "Three")))))
+    }}
+    {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Figure widths" "dek" "The same image at prose, wide and full width." "width" "full"
+      "body" (print
+      (partial "components/figure.html" (dict "img" . "alt" "Sample" "caption" "Normal: the prose column." "width" "normal"))
+      (partial "components/figure.html" (dict "img" . "alt" "Sample" "caption" "Wide." "width" "wide"))
+      (partial "components/figure.html" (dict "img" . "alt" "Sample" "caption" "Full bleed." "width" "full"))))
+    }}
+  {{ end }}
+
+  {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Prose" "dek" "Markdown output, styled by prose.css."
+    "body" (printf `<div class="prose">%s</div>` ($md | .RenderString (dict "display" "block"))))
+  }}
+
+  {{ partial "components/newsletter.html" . }}
+{{ end }}

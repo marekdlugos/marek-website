@@ -81,3 +81,12 @@
     navigation: auto;
   }
 }
+
+/* Emphasis inside display text stays within the weight scale: the home
+   headline is weight 400 with semibold spans, never bold. */
+@layer base {
+  strong,
+  b {
+    font-weight: var(--font-weight-semibold);
+  }
+}

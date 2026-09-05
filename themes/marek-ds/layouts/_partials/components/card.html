@@ -1,0 +1,59 @@
+{{- /* components/card.html
+  Props:
+  title     string, required
+  text      markdown, optional
+  href      string, optional: makes the whole card a link (ignored when links is set)
+  external  bool, optional
+  image     resource, optional (media variant)
+  imageAlt  string, required with image
+  meta      []string, optional: short facts, one per hairline row
+  links     []dict{label, href, external}, optional: arrow links under the text
+  cta       dict{label, href, external}, optional: button at the bottom
+  variant   "quiet" (default: bare, hover surface) | "media" (bordered, image on top)
+  level     int, heading level of the title, default 3
+*/}}
+{{- $variant := .variant | default "quiet" }}
+{{- $stretch := and .href (not .links) }}
+{{- $title := .title }}
+{{- if $stretch }}
+  {{- $target := cond (eq .external true) ` target="_blank" rel="noopener"` "" }}
+  {{- $title = printf `<a class="no-underline after:absolute after:inset-0" href="%s"%s>%s</a>` .href $target .title }}
+{{- end }}
+<article
+  class="group {{ if eq $variant "media" }}
+    overflow-hidden rounded-lg border border-hairline
+  {{ else }}
+    -m-5 rounded-lg p-5 transition-colors duration-base hover:bg-surface-2
+  {{ end }} relative flex flex-col"
+>
+  {{ with .image }}
+    {{ partial "components/picture.html" (dict
+      "img" . "alt" $.imageAlt
+      "class" "aspect-video w-full object-cover"
+      "sizes" "(min-width: 48rem) 32rem, 100vw")
+    }}
+  {{ end }}
+  <div class="{{ if eq $variant "media" }}p-6{{ end }} flex flex-1 flex-col">
+    {{ partial "components/heading.html" (dict "level" (.level | default 3) "text" $title "class" "font-semibold tracking-tight") }}
+    {{ with .text }}
+      <div class="mt-2 text-sm text-ink-2">{{ . | markdownify }}</div>
+    {{ end }}
+    {{ with .meta }}
+      <ul class="mt-4 divide-y divide-hairline text-sm text-muted">
+        {{ range . }}<li class="py-2">{{ . }}</li>{{ end }}
+      </ul>
+    {{ end }}
+    {{ with .links }}
+      <ul class="mt-4 flex flex-col gap-1.5">
+        {{ range . }}
+          <li>{{ partial "components/arrow-link.html" . }}</li>
+        {{ end }}
+      </ul>
+    {{ end }}
+    {{ with .cta }}
+      <div class="mt-6">
+        {{ partial "components/button.html" (merge (dict "variant" "primary") .) }}
+      </div>
+    {{ end }}
+  </div>
+</article>

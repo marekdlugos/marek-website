@@ -1,0 +1,15 @@
+{{- /* components/heading.html
+  Renders a heading at a dynamic level, which Go templates cannot express in
+  markup directly.
+
+  Props:
+  level  int, default 2
+  text   string, may contain inline HTML
+  class  string, optional
+  id     string, optional
+*/}}
+{{- $level := .level | default 2 }}
+{{- $attrs := "" }}
+{{- with .id }}{{ $attrs = printf "%s id=%q" $attrs . }}{{ end }}
+{{- with .class }}{{ $attrs = printf "%s class=%q" $attrs . }}{{ end }}
+{{- printf "<h%d%s>%s</h%d>" (int $level) $attrs .text (int $level) | safeHTML }}

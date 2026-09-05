@@ -3,20 +3,22 @@
   and portrait.
 
   Props:
-  title      string, required
+  title      string, required; may contain inline HTML such as <strong>
   dek        string, optional: one-sentence subtitle under the title
   meta       template.HTML, optional: small muted line (byline, date)
-  actions    []dict, optional: button props, see components/button.html
+  actions    []dict, optional: button props (components/button.html), or
+  { kind: "pill", label, dot } for a status pill
   image      resource, optional: portrait shown beside the text (wide breakout)
   imageAlt   string, required when image is set
-  weight     "semibold" (default) | "light": display weight of the title
+  weight     "semibold" (default) | "normal" | "light": display weight of the title
   hideTitle  bool: keep the h1 for assistive tech but do not show it
 */}}
-{{- $weight := cond (eq .weight "light") "font-light" "font-semibold" }}
+{{- $weights := dict "semibold" "font-semibold" "normal" "font-normal" "light" "font-light" }}
+{{- $weight := index $weights (.weight | default "semibold") }}
 <header
   class="{{ if .image }}
     breakout-wide grid gap-block md:grid-cols-[3fr_2fr] md:items-center
-  {{ end }} mb-block"
+  {{ end }}"
 >
   {{- /* [3fr_2fr]: text-to-portrait ratio from the home mockup; no token fits a ratio. */}}
   <div>
@@ -34,20 +36,23 @@
       <p class="mt-4 text-sm text-muted">{{ . | safeHTML }}</p>
     {{ end }}
     {{ with .actions }}
-      <div class="mt-8 flex flex-wrap gap-3">
+      <div class="mt-8 flex flex-wrap items-center gap-3">
         {{ range . }}
-          {{ partial "components/button.html" . }}
+          {{ if eq .kind "pill" }}
+            {{ partial "components/status-pill.html" . }}
+          {{ else }}
+            {{ partial "components/button.html" . }}
+          {{ end }}
         {{ end }}
       </div>
     {{ end }}
   </div>
   {{ with .image }}
-    <img
-      class="w-full rounded-lg"
-      src="{{ .RelPermalink }}"
-      width="{{ .Width }}"
-      height="{{ .Height }}"
-      alt="{{ $.imageAlt }}"
-    />
+    {{ partial "components/picture.html" (dict
+      "img" . "alt" $.imageAlt
+      "class" "w-full rounded-lg"
+      "sizes" "(min-width: 48rem) 24rem, 100vw"
+      "loading" "eager")
+    }}
   {{ end }}
 </header>

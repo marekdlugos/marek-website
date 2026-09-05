@@ -1,0 +1,23 @@
+[
+  {
+    "from": "2015",
+    "to": "2019",
+    "title": "Bachelor's Degree in Software Engineering",
+    "subtitle": "Czech Technical University, Czechia",
+    "meta": "Ranked as #1 tech university in the Czech Republic.",
+    "semesters": true
+  },
+  {
+    "from": "2011",
+    "to": "2015",
+    "title": "Focus on Information & Network Technologies",
+    "subtitle": "High School of Electrical Engineering, Slovakia",
+    "meta": "Ranked as #1 high school in Slovakia.",
+    "details": [
+      {
+        "label": "Selected subjects",
+        "body": "- Server Technologies\n- Software Applications\n- Operating Systems\n- Hardware Architecture\n- Network Technologies (Cisco CCNA)\n- Programming in C and Java\n- Database Applications\n- Electronics"
+      }
+    ]
+  }
+]

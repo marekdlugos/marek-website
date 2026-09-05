@@ -1,0 +1,12 @@
+{{- /* Markdown link render hook. External links open in a new tab and carry a
+  small outward arrow so the reader knows they are leaving.
+*/}}
+{{- $external := or (hasPrefix .Destination "http://") (hasPrefix .Destination "https://") (hasPrefix .Destination "//") }}
+<a
+  href="{{ .Destination | safeURL }}"
+  {{ with .Title }}title="{{ . }}"{{ end }}
+  {{ if $external }}target="_blank" rel="noopener"{{ end }}
+  >{{ .Text | safeHTML }}{{ if $external }}
+    {{ partial "icons/external.svg" }}
+  {{ end }}</a
+>

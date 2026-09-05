@@ -1,0 +1,20 @@
+{{- /* components/arrow-link.html
+  Props:
+  label     string, required
+  href      string, required
+  external  bool, optional: opens in a new tab, arrow points up-right
+*/}}
+<a
+  class="group/link inline-flex items-center gap-1.5 text-sm font-medium text-ink no-underline hover:underline"
+  href="{{ .href }}"
+  {{ if .external }}target="_blank" rel="noopener"{{ end }}
+  >{{ .label }}<span
+    class="text-muted transition-transform duration-fast group-hover/link:translate-x-0.5"
+    aria-hidden="true"
+    >{{ if .external }}
+      {{ partial "icons/arrow-up-right.svg" }}
+    {{ else }}
+      {{ partial "icons/arrow-right.svg" }}
+    {{ end }}</span
+  ></a
+>

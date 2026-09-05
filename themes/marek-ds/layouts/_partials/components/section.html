@@ -1,0 +1,27 @@
+{{- /* components/section.html
+  A page section: optional header, then a body. Sections stack in the main
+  grid and own their top margin.
+
+  Props:
+  body     template.HTML, required
+  title    string, optional (renders section-header when set)
+  eyebrow  string, optional
+  dek      string, optional
+  level    int, heading level of the title, default 2
+  id       string, optional: id on the <section>
+  width    "normal" (prose column, default) | "wide" | "full"
+*/}}
+{{- $width := .width | default "normal" }}
+<section
+  {{ with .id }}id="{{ . }}"{{ end }}
+  class="{{ if eq $width "wide" }}
+    breakout-wide
+  {{ else if eq $width "full" }}
+    breakout-full
+  {{ end }} mt-section"
+>
+  {{ if .title }}
+    {{ partial "components/section-header.html" (dict "title" .title "eyebrow" .eyebrow "dek" .dek "level" .level) }}
+  {{ end }}
+  <div class="{{ if .title }}mt-block{{ end }} space-y-block">{{ .body }}</div>
+</section>

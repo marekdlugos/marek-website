@@ -28,7 +28,7 @@ disableKinds = ["taxonomy", "term"]
   clearbitKey = "pk_4494011d9a7d418f46e138cdcbff45fa"
   # Fallback og:image, resolved against baseURL by the embedded opengraph
   # template. A page can override it with `images:` in its front matter.
-  images = ["marek-dlugos.webp"]
+  images = ["images/marek-dlugos.webp"]
 
   [params.worksFor]
     name = "Duvo"
@@ -46,6 +46,9 @@ disableKinds = ["taxonomy", "term"]
       action = "https://app.kit.com/forms/7335918/subscriptions"
       heading = "Occasional updates delivered to your inbox 📩"
       copy = "Join over 200 people receiving updates from my life and what I am currently up to."
+
+    [params.ds.styleguide]
+      image = "images/marek-dlugos.webp"
 
 [services]
   [services.googleAnalytics]
@@ -98,10 +101,6 @@ disableKinds = ["taxonomy", "term"]
       useEmbedded = "never"
 
 [security]
-  # Allow .html files in content/ (Hugo 0.163+ blocks text/html content by
-  # default). Removed once every content page is Markdown (end of Phase 2).
-  allowContent = ['.']
-
   [security.exec]
     # Setting this replaces Hugo's default list, so the defaults are repeated.
     # css.TailwindCSS launches the Tailwind CLI through node; tailwindcss itself

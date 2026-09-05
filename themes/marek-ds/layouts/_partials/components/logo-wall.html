@@ -1,0 +1,24 @@
+{{- /* components/logo-wall.html
+  A row of client logos, desaturated so they read as one set.
+
+  Props:
+  logos  []dict, required: { img resource | src string, alt string }
+*/}}
+<ul
+  class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 grayscale"
+>
+  {{ range .logos }}
+    <li>
+      <img
+        class="h-8 w-auto md:h-10"
+        src="{{ with .img }}
+          {{ .RelPermalink }}
+        {{ else }}
+          {{ $.src }}
+        {{ end }}"
+        alt="{{ .alt }}"
+        loading="lazy"
+      />
+    </li>
+  {{ end }}
+</ul>

@@ -1,0 +1,22 @@
+{{- /* components/disclosure.html
+  An expandable row built on <details>, so it works without JavaScript.
+
+  Props:
+  label  string, required
+  body   markdown, required
+  open   bool, optional: expanded by default
+*/}}
+<details class="group border-t border-hairline" {{ if .open }}open{{ end }}>
+  <summary
+    class="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-ink [&::-webkit-details-marker]:hidden"
+  >
+    {{- /* [&::-webkit-details-marker]: Safari ignores list-none on summary. */}}
+    <span>{{ .label }}</span>
+    <span
+      class="text-muted transition-transform duration-fast group-open:rotate-45"
+      aria-hidden="true"
+      >{{ partial "icons/plus.svg" }}</span
+    >
+  </summary>
+  <div class="prose pb-4">{{ .body | markdownify }}</div>
+</details>

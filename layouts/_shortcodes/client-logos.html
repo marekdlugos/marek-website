@@ -1,0 +1,11 @@
+{{- /* Client logo wall from data/work/clients.json; logos live in assets/images/. */}}
+{{- $logos := slice }}
+{{- range hugo.Data.work.clients }}
+  {{- $client := . }}
+  {{- with resources.Get (printf "images/%s" $client.logo) }}
+    {{- $logos = $logos | append (dict "img" . "alt" $client.alt) }}
+  {{- else }}
+    {{- errorf "client-logos: images/%s not found" $client.logo }}
+  {{- end }}
+{{- end }}
+{{- partial "components/logo-wall.html" (dict "logos" $logos) }}
