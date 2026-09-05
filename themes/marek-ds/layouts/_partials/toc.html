@@ -1,6 +1,6 @@
 {{- /*
   Table of contents: a thin rail in the left margin that opens a card on
-  hover, focus or tap. Hidden below 992px.
+  hover, focus or tap. Hidden below the wide breakpoint (see toc.css).
 
   Opening is pure CSS, so the card still works without JavaScript;
   assets/js/toc.js only adds scroll tracking, tap toggling and Esc.
@@ -34,7 +34,7 @@
       <ul class="toc-list">
         {{- range $items }}
           <li class="toc-item toc-item--l{{ .level }}">
-            <a href="{{ $page.Permalink }}#{{ .id }}" data-toc-link="{{ .id }}"
+            <a href="#{{ .id }}" data-toc-link="{{ .id }}"
               >{{ .title | safeHTML }}</a
             >
           </li>

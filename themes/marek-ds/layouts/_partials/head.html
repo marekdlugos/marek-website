@@ -14,10 +14,6 @@
 {{- /* Hugo's embedded templates; og:image resolves from site params.images. */}}
 {{ partial "opengraph.html" . }}
 {{ partial "twitter_cards.html" . }}
-{{- /* TEMPORARY: raw-HTML content pages still use bare relative image paths.
-  Removed once every page resolves images through the theme's components.
-*/}}
-<base href="{{ site.BaseURL }}" />
 <link rel="canonical" href="{{ .Permalink }}" />
 {{ partial "head/fonts.html" . }}
 {{- /* Tailwind must run after every page has rendered, so the class inventory

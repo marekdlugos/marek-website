@@ -4,12 +4,9 @@
     {{ partial "head.html" . }}
   </head>
   <body class="flex min-h-dvh flex-col">
-    {{- /* TEMPORARY: absolute because a bare "#main" would resolve against
-      <base href> to the home page. Reverts to "#main" when <base> goes.
-    */}}
     <a
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2"
-      href="{{ .Permalink }}#main"
+      href="#main"
       >Skip to main content</a
     >
     {{ partial "header.html" . }}

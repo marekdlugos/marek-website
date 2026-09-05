@@ -13,9 +13,7 @@
     {{- if .Params.article }}
       {{- $subscribe := "" }}
       {{- with site.Params.ds.newsletter }}
-        {{- with .action }}
-          {{ $subscribe = printf "%s#newsletter" $.Permalink }}
-        {{ end }}
+        {{- with .action }}{{ $subscribe = "#newsletter" }}{{ end }}
       {{- end }}
       {{- $meta = partial "components/byline.html" (dict "date" .Date "subscribe" $subscribe) }}
     {{- end }}

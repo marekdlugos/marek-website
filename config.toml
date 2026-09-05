@@ -3,7 +3,8 @@ baseURL = "https://www.marekdlugos.com/"
 # Read it in templates via site.Language.Locale.
 locale = "en-US"
 title = "Marek Dlugos — Revenue Growth, Product, Design, Software Engineering."
-relativeURLs = true
+# Served from the root of a fixed domain; root-relative URLs need no rewriting.
+relativeURLs = false
 disableHugoGeneratorInject = true
 sectionPagesMenu = "main"
 
