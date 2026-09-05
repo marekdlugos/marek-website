@@ -8,9 +8,7 @@
     "weight" "normal"
     "image" $portrait
     "imageAlt" site.Params.ds.author
-    "actions" (slice
-    (dict "href" "/work/" "label" "My work")
-    (dict "kind" "pill" "label" .Params.status "dot" true)))
+    "actions" (slice (dict "href" "/work/" "label" "My work")))
   }}
   {{ partial "components/newsletter.html" . }}
 {{ end }}

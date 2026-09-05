@@ -5,7 +5,7 @@ date: 2026-04-02T00:00:00+02:00
 description: "Privacy Policy for marekdlugos.com — how your data is collected, used, and protected."
 ---
 
-**Last updated:** April 2, 2026
+**Last updated:** September 5, 2026
 
 This privacy policy describes how marekdlugos.com ("this website") collects, uses, and shares information when you visit. By using this website, you acknowledge and agree to the practices described below.
 
@@ -47,23 +47,13 @@ Blog posts on this website include a newsletter signup form powered by Kit (form
 
 This information is used solely to send you occasional newsletter emails. You can unsubscribe at any time using the link included in every email. For more information, see [Kit's Privacy Policy](https://kit.com/privacy).
 
-### 2.4 Google Fonts
-
-This website uses Google Fonts, a font hosting service provided by Google LLC. When you visit a page, your browser downloads the required font files directly from Google's servers. In this process, Google receives:
-
-- Your IP address
-- The page URL you are visiting
-- Browser and device information
-
-For more information, see [Google Fonts Privacy](https://developers.google.com/fonts/faq/privacy) and [Google's Privacy Policy](https://policies.google.com/privacy).
-
 ## 3. Cookies
 
 This website uses cookies set by Google Analytics to distinguish unique users and track sessions. These cookies are stored on your device and expire after a set period. You can control or delete cookies through your browser settings. Please note that disabling cookies may affect website functionality.
 
 ## 4. Third-Party Services
 
-The third-party services listed above (Google Analytics, Clearbit, Kit, and Google Fonts) process data on their own servers and under their own privacy policies. This website does not sell, rent, or share your personal data with any other third parties.
+The third-party services listed above (Google Analytics, Clearbit, and Kit) process data on their own servers and under their own privacy policies. This website does not sell, rent, or share your personal data with any other third parties.
 
 ## 5. Data Retention
 

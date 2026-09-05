@@ -5,5 +5,4 @@ description: "Marek Dlugos — B2B SaaS consultant driving product, retention, a
 keywords: "marek, dlugos, marek dlugos, growth, product, design, startups"
 # Rendered by layouts/home.html through the theme's page-hero component.
 headline: "I drive <strong>product, retention, and revenue</strong> in B2B SaaS — by aligning design, engineering, and sales into <strong>one execution engine</strong>."
-status: "Available for new projects"
 ---

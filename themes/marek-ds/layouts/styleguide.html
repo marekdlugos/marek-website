@@ -41,7 +41,7 @@
   <section class="breakout-wide mt-section" id="colour">
     {{ partial "components/section-header.html" (dict "eyebrow" "Tokens" "title" "Colour" "dek" "Monochrome. Semantic names so a dark scheme is a later variable swap.") }}
     <ul class="mt-block grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-7">
-      {{ range slice "surface" "surface-2" "ink" "ink-2" "muted" "hairline" "positive" }}
+      {{ range slice "surface" "surface-2" "ink" "ink-2" "muted" "hairline" }}
         <li>
           <div
             class="bg-{{ . }} aspect-square rounded-lg border border-hairline"
@@ -67,12 +67,11 @@
 
   {{- /* ---- Components ------------------------------------------------------ */}}
   <section class="breakout-wide mt-section" id="components">
-    {{ partial "components/section-header.html" (dict "eyebrow" "Components" "title" "Buttons, pills and links") }}
+    {{ partial "components/section-header.html" (dict "eyebrow" "Components" "title" "Buttons and links") }}
     <div class="mt-block flex flex-wrap items-center gap-4">
       {{ partial "components/button.html" (dict "href" "#" "label" "Primary") }}
       {{ partial "components/button.html" (dict "href" "#" "label" "Outline" "variant" "outline") }}
       {{ partial "components/button.html" (dict "href" "#" "label" "Quiet" "variant" "quiet") }}
-      {{ partial "components/status-pill.html" (dict "label" "Available for new projects" "dot" true) }}
       {{ partial "components/arrow-link.html" (dict "href" "#" "label" "Arrow link") }}
       {{ partial "components/arrow-link.html" (dict "href" "https://example.com" "label" "External link" "external" true) }}
     </div>

@@ -6,8 +6,7 @@
   title      string, required; may contain inline HTML such as <strong>
   dek        string, optional: one-sentence subtitle under the title
   meta       template.HTML, optional: small muted line (byline, date)
-  actions    []dict, optional: button props (components/button.html), or
-  { kind: "pill", label, dot } for a status pill
+  actions    []dict, optional: button props, see components/button.html
   image      resource, optional: portrait shown beside the text (wide breakout)
   imageAlt   string, required when image is set
   weight     "semibold" (default) | "normal" | "light": display weight of the title
@@ -38,11 +37,7 @@
     {{ with .actions }}
       <div class="mt-8 flex flex-wrap items-center gap-3">
         {{ range . }}
-          {{ if eq .kind "pill" }}
-            {{ partial "components/status-pill.html" . }}
-          {{ else }}
-            {{ partial "components/button.html" . }}
-          {{ end }}
+          {{ partial "components/button.html" . }}
         {{ end }}
       </div>
     {{ end }}
