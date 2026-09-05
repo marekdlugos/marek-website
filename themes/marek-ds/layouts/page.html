@@ -1,0 +1,44 @@
+{{- /* Generic single page.
+
+  Three modes, chosen by front matter (the blog section sets `article: true`
+  through a cascade in its _index.md):
+  - article: hero with byline, table of contents, prose content, newsletter.
+  - prose:   hero, prose content.
+  - default: raw content. Used by the pages that still carry their own markup;
+  they move to shortcode-composed sections in Phase 2.
+*/}}
+{{ define "main" }}
+  {{- if or .Params.article .Params.prose }}
+    {{- $meta := "" }}
+    {{- if .Params.article }}
+      {{- $subscribe := "" }}
+      {{- with site.Params.ds.newsletter }}
+        {{- with .action }}
+          {{ $subscribe = printf "%s#newsletter" $.Permalink }}
+        {{ end }}
+      {{- end }}
+      {{- $meta = partial "components/byline.html" (dict "date" .Date "subscribe" $subscribe) }}
+    {{- end }}
+    {{ partial "components/page-hero.html" (dict "title" .Title "meta" $meta) }}
+    {{- $toc := "" }}
+    {{- if .Params.article }}
+      {{- $toc = partial "toc.html" . | string | strings.TrimSpace }}
+    {{- end }}
+    {{ $toc | safeHTML }}
+    <article class="prose">{{ .Content }}</article>
+    {{- if $toc }}
+      {{- with resources.Get "js/toc.js" | js.Build (dict "targetPath" "js/toc.js" "minify" true) | fingerprint }}
+        <script
+          src="{{ .RelPermalink }}"
+          integrity="{{ .Data.Integrity }}"
+          defer
+        ></script>
+      {{- end }}
+    {{- end }}
+    {{- if .Params.article }}
+      {{ partial "components/newsletter.html" . }}
+    {{- end }}
+  {{- else }}
+    {{ .Content }}
+  {{- end }}
+{{ end }}

@@ -1,0 +1,52 @@
+{{- /* components/newsletter.html
+  Two-column newsletter band: heading and copy left, email form right.
+  Renders nothing unless site.Params.ds.newsletter.action is set.
+
+  Reads: site.Params.ds.newsletter { action, heading, copy }
+
+  The form posts normally without JavaScript; assets/js/newsletter.js
+  upgrades it to submit in place and show the confirmation inline.
+*/}}
+{{- with site.Params.ds.newsletter }}
+  {{- if .action }}
+    <section
+      id="newsletter"
+      class="breakout-wide mt-section grid gap-8 border-y border-hairline py-block md:grid-cols-2 md:items-center"
+      data-newsletter
+    >
+      <div>
+        <h2 class="text-lg font-semibold tracking-tight text-balance">
+          {{ .heading }}
+        </h2>
+        {{ with .copy }}
+          <p class="mt-2 text-pretty text-ink-2">{{ . }}</p>
+        {{ end }}
+      </div>
+      <form class="flex flex-wrap gap-3" action="{{ .action }}" method="post">
+        <label class="sr-only" for="newsletter-email">Email address</label>
+        <input
+          id="newsletter-email"
+          class="min-w-0 flex-1 rounded-md border border-hairline bg-surface px-4 py-2.5 text-ink placeholder:text-muted focus:border-ink focus:outline-none"
+          type="email"
+          name="email_address"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        />
+        {{ partial "components/button.html" (dict "tag" "button" "label" "Subscribe") }}
+        <p
+          class="basis-full text-sm text-muted"
+          data-newsletter-status
+          hidden
+        ></p>
+      </form>
+    </section>
+    {{- with resources.Get "js/newsletter.js" | js.Build (dict "targetPath" "js/newsletter.js" "minify" true) | fingerprint }}
+      <script
+        src="{{ .RelPermalink }}"
+        integrity="{{ .Data.Integrity }}"
+        defer
+      ></script>
+    {{- end }}
+  {{- end }}
+{{- end }}

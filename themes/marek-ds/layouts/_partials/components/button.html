@@ -1,0 +1,28 @@
+{{- /* components/button.html
+  Props:
+  label     string, required
+  href      string, required unless tag is "button"
+  variant   "primary" (ink fill, default) | "outline" (hairline border) | "quiet" (underlined text)
+  tag       "a" (default) | "button": renders a <button> for forms
+  type      button type when tag is "button", default "submit"
+  external  bool: open in a new tab
+*/}}
+{{- $variants := dict
+  "primary" "bg-ink text-surface hover:bg-ink-2"
+  "outline" "border border-hairline text-ink hover:border-ink"
+  "quiet" "text-ink-2 underline hover:text-ink"
+}}
+{{- $variant := .variant | default "primary" }}
+{{- $class := printf "inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium no-underline transition-colors duration-fast %s" (index $variants $variant) }}
+{{- if eq .tag "button" }}
+  <button class="{{ $class }}" type="{{ .type | default "submit" }}">
+    {{ .label }}
+  </button>
+{{- else }}
+  <a
+    class="{{ $class }}"
+    href="{{ .href }}"
+    {{ if .external }}target="_blank" rel="noopener"{{ end }}
+    >{{ .label }}</a
+  >
+{{- end }}

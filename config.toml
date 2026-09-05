@@ -41,6 +41,11 @@ disableKinds = ["taxonomy", "term"]
   [params.ds]
     author = "Marek Dlugos"
 
+    [params.ds.newsletter]
+      action = "https://app.kit.com/forms/7335918/subscriptions"
+      heading = "Occasional updates delivered to your inbox 📩"
+      copy = "Join over 200 people receiving updates from my life and what I am currently up to."
+
 [services]
   [services.googleAnalytics]
     ID = "G-36B0M4RPHF"

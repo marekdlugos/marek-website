@@ -1,0 +1,20 @@
+{{- /* Generic list page: hero, the section's own intro (its _index.md body),
+  then the pages newest first as a link list with their dates.
+*/}}
+{{ define "main" }}
+  {{ partial "components/page-hero.html" (dict "title" .Title) }}
+  {{ with .Content }}
+    <div class="prose">{{ . }}</div>
+  {{ end }}
+  {{- $items := slice }}
+  {{- range .Pages.ByPublishDate.Reverse }}
+    {{- $items = $items | append (dict
+      "title" .Title
+      "href" .RelPermalink
+      "meta" (.Date | time.Format ":date_long"))
+    }}
+  {{- end }}
+  <div class="mt-block">
+    {{ partial "components/link-list.html" (dict "items" $items) }}
+  </div>
+{{ end }}

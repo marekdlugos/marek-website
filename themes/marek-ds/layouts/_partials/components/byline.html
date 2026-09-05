@@ -1,0 +1,22 @@
+{{- /* components/byline.html
+  Article meta line: date, author, optional subscribe link. Returns HTML for
+  the page-hero `meta` prop.
+
+  Props:
+  date       time, optional
+  subscribe  string, optional: href of the newsletter form
+*/}}
+{{- with .date }}
+  <time datetime="{{ . | time.Format "2006-01-02T15:04:05-07:00" }}"
+    >{{ . | time.Format ":date_long" }}</time
+  >
+  ·
+{{ end }}
+Written by
+{{ site.Params.ds.author }}
+{{- with .subscribe }}
+  ·
+  <a class="underline hover:text-ink" href="{{ . }}"
+    >Subscribe to my newsletter</a
+  >
+{{- end }}

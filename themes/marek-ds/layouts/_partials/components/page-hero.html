@@ -1,0 +1,53 @@
+{{- /* components/page-hero.html
+  The opening block of every page: one h1, optional dek, meta line, actions
+  and portrait.
+
+  Props:
+  title      string, required
+  dek        string, optional: one-sentence subtitle under the title
+  meta       template.HTML, optional: small muted line (byline, date)
+  actions    []dict, optional: button props, see components/button.html
+  image      resource, optional: portrait shown beside the text (wide breakout)
+  imageAlt   string, required when image is set
+  weight     "semibold" (default) | "light": display weight of the title
+  hideTitle  bool: keep the h1 for assistive tech but do not show it
+*/}}
+{{- $weight := cond (eq .weight "light") "font-light" "font-semibold" }}
+<header
+  class="{{ if .image }}
+    breakout-wide grid gap-block md:grid-cols-[3fr_2fr] md:items-center
+  {{ end }} mb-block"
+>
+  {{- /* [3fr_2fr]: text-to-portrait ratio from the home mockup; no token fits a ratio. */}}
+  <div>
+    <h1
+      class="{{ $weight }} {{ if .hideTitle }}
+        sr-only
+      {{ end }} text-2xl tracking-tight text-balance"
+    >
+      {{ .title | safeHTML }}
+    </h1>
+    {{ with .dek }}
+      <p class="mt-4 text-lg text-pretty text-ink-2">{{ . | safeHTML }}</p>
+    {{ end }}
+    {{ with .meta }}
+      <p class="mt-4 text-sm text-muted">{{ . | safeHTML }}</p>
+    {{ end }}
+    {{ with .actions }}
+      <div class="mt-8 flex flex-wrap gap-3">
+        {{ range . }}
+          {{ partial "components/button.html" . }}
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+  {{ with .image }}
+    <img
+      class="w-full rounded-lg"
+      src="{{ .RelPermalink }}"
+      width="{{ .Width }}"
+      height="{{ .Height }}"
+      alt="{{ $.imageAlt }}"
+    />
+  {{ end }}
+</header>

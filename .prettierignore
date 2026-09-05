@@ -11,6 +11,4 @@ package-lock.json
 layouts/_default/
 layouts/partials/
 layouts/shortcodes/
-layouts/blog/
 layouts/index.html
-layouts/404.html

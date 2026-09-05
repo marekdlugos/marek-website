@@ -1,0 +1,6 @@
+{{ define "main" }}
+  {{ partial "components/page-hero.html" (dict
+    "title" "Ooops. The page you are looking for does not exist."
+    "actions" (slice (dict "href" "/" "label" "Back to the home page" "variant" "primary")))
+  }}
+{{ end }}
