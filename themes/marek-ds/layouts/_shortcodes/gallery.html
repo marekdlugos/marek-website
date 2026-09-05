@@ -1,0 +1,57 @@
+{{- /* Photo gallery shortcode: gallery width="wide|full" layout="justified|grid" caption="…".
+  The inner content lists one image per line as "path | alt text"; the alt is
+  optional. Images resolve against the page bundle first, then assets/images/.
+  The justified layout sizes each item by its aspect ratio so rows fill the
+  width with one to three photos; the grid layout is a plain two- or
+  three-column grid.
+*/}}
+{{- $width := .Get "width" | default "wide" }}
+{{- $layout := .Get "layout" | default "justified" }}
+{{- $items := slice }}
+{{- range split (trim .Inner "\n\r\t ") "\n" }}
+  {{- $line := trim . " \t" }}
+  {{- if $line }}
+    {{- $parts := split $line "|" }}
+    {{- $src := trim (index $parts 0) " " }}
+    {{- $alt := "" }}
+    {{- if gt (len $parts) 1 }}{{ $alt = trim (index $parts 1) " " }}{{ end }}
+    {{- $img := or ($.Page.Resources.Get $src) (resources.Get (printf "images/%s" $src)) }}
+    {{- if not $img }}
+      {{- errorf "gallery: image %q not found in the page bundle or assets/images (%s)" $src $.Position }}
+    {{- end }}
+    {{- $items = $items | append (dict "img" $img "alt" $alt) }}
+  {{- end }}
+{{- end }}
+<figure
+  class="{{ if eq $width "wide" }}
+    breakout-wide
+  {{ else if eq $width "full" }}
+    breakout-full
+  {{ end }}"
+>
+  {{- if eq $layout "grid" }}
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-3">
+      {{- range $items }}
+        {{ partial "components/picture.html" (dict "img" .img "alt" .alt "class" "aspect-square w-full rounded-md object-cover" "sizes" "(min-width: 64rem) 21rem, 50vw") }}
+      {{- end }}
+    </div>
+  {{- else }}
+    <div class="flex flex-wrap gap-3">
+      {{- range $items }}
+        {{- $ratio := div (float .img.Width) (float .img.Height) }}
+        {{- /* Inline style carries data-derived values: the photo's own aspect ratio. */}}
+        <div
+          class="min-w-0"
+          style="aspect-ratio: {{ .img.Width }} / {{ .img.Height }}; flex: {{ $ratio }} 1 {{ mul $ratio 12 }}rem"
+        >
+          {{ partial "components/picture.html" (dict "img" .img "alt" .alt "class" "h-full w-full rounded-md object-cover" "sizes" "(min-width: 64rem) 32rem, 100vw") }}
+        </div>
+      {{- end }}
+    </div>
+  {{- end }}
+  {{- with .Get "caption" }}
+    <figcaption class="{{ if eq $width "full" }}px-gutter{{ end }}">
+      {{ . | markdownify }}
+    </figcaption>
+  {{- end }}
+</figure>

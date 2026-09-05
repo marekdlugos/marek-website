@@ -1,0 +1,16 @@
+{{- /* {{< youtube VIDEO_ID >}}
+Replaces Hugo's embedded shortcode: privacy-enhanced domain, lazy loading, and a
+wide figure so the video breaks out of the prose column. */}}
+{{- $id := .Get "id" | default (.Get 0) }}
+<figure class="breakout-wide">
+  <div class="aspect-video overflow-hidden rounded-lg bg-surface-2">
+    <iframe
+      class="h-full w-full"
+      src="https://www.youtube-nocookie.com/embed/{{ $id }}"
+      title="YouTube video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+</figure>

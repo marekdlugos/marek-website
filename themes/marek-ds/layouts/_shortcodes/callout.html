@@ -1,0 +1,7 @@
+{{- /* {{< callout >}}…Markdown…{{< /callout >}}
+An aside set off from the running text by a rule in ink. */}}
+<aside class="border-l-2 border-ink pl-5 text-ink-2">
+  <div class="prose">
+    {{ .Inner | .Page.RenderString (dict "display" "block") }}
+  </div>
+</aside>

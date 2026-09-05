@@ -1,0 +1,30 @@
+{{- /* Markdown image render hook.
+
+  ![Alt text](photo.jpg "Optional caption")
+
+  Resolves the image against the page bundle first, then the site's
+  assets/images/, and renders responsive WebP variants through
+  components/picture.html. A standalone image becomes a figure and its title
+  becomes the caption. Unresolvable paths (external URLs) fall back to a
+  plain img. Wider layouts use the figure shortcode.
+*/}}
+{{- $src := .Destination }}
+{{- $img := or (.Page.Resources.Get $src) (resources.Get (printf "images/%s" (strings.TrimPrefix "/" $src))) }}
+{{- if not $img }}
+  <img
+    src="{{ $src | safeURL }}"
+    alt="{{ .PlainText }}"
+    {{ with .Title }}title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async"
+  />
+{{- else if .IsBlock }}
+  <figure>
+    {{ partial "components/picture.html" (dict "img" $img "alt" .PlainText "class" "w-full rounded-lg") }}
+    {{ with .Title }}
+      <figcaption>{{ . | markdownify }}</figcaption>
+    {{ end }}
+  </figure>
+{{- else }}
+  {{ partial "components/picture.html" (dict "img" $img "alt" .PlainText "class" "inline-block rounded-sm") }}
+{{- end }}

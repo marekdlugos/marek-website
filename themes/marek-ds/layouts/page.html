@@ -29,7 +29,9 @@
       {{- $toc = partial "toc.html" . | string | strings.TrimSpace }}
     {{- end }}
     {{ $toc | safeHTML }}
-    <article class="prose mt-block">{{ .Content }}</article>
+    <article class="prose layout-grid breakout-full mt-block">
+      {{ .Content }}
+    </article>
     {{- if $toc }}
       {{- with resources.Get "js/toc.js" | js.Build (dict "targetPath" "js/toc.js" "minify" true) | fingerprint }}
         <script

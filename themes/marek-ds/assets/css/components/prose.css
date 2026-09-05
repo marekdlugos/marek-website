@@ -135,3 +135,22 @@
     color: var(--color-muted);
   }
 }
+
+/* An article is itself a breakout grid, so figures and galleries inside it
+   can span the wide or full track while text stays in the prose column. */
+@layer components {
+  .prose.layout-grid {
+    max-width: none;
+  }
+
+  .prose figure {
+    margin-top: var(--spacing-block);
+    margin-bottom: var(--spacing-block);
+  }
+
+  .prose figcaption {
+    margin-top: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+}
