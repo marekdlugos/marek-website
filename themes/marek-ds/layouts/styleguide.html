@@ -83,7 +83,7 @@
     "title" "Section header with eyebrow and dek"
     "dek" "This whole block is the section component: header plus body."
     "width" "wide"
-    "body" (partial "components/label-body.html" (dict "label" "Label body" "body" (printf `<div class="prose">%s</div>` ($md | .RenderString (dict "display" "block"))))))
+    "body" (partial "components/label-body.html" (dict "label" "Label body" "body" (printf `<div class="prose">%s</div>` ($md | .RenderString (dict "display" "block")) | safeHTML))))
   }}
 
   {{ $entries := slice
@@ -118,7 +118,7 @@
   {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Dated list and link list" "width" "wide"
     "body" (print
     (partial "components/dated-list.html" (dict "rows" $rows))
-    (partial "components/link-list.html" (dict "items" (slice (dict "title" "A link list row" "href" "#" "meta" "September 4, 2026") (dict "title" "An external row" "href" "https://example.com" "meta" "2019" "external" true))))))
+    (partial "components/link-list.html" (dict "items" (slice (dict "title" "A link list row" "href" "#" "meta" "September 4, 2026") (dict "title" "An external row" "href" "https://example.com" "meta" "2019" "external" true)))) | safeHTML))
   }}
 
   {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Stat row" "width" "wide"
@@ -133,12 +133,12 @@
       "body" (print
       (partial "components/figure.html" (dict "img" . "alt" "Sample" "caption" "Normal: the prose column." "width" "normal"))
       (partial "components/figure.html" (dict "img" . "alt" "Sample" "caption" "Wide." "width" "wide"))
-      (partial "components/figure.html" (dict "img" . "alt" "Sample" "caption" "Full bleed." "width" "full"))))
+      (partial "components/figure.html" (dict "img" . "alt" "Sample" "caption" "Full bleed." "width" "full")) | safeHTML))
     }}
   {{ end }}
 
   {{ partial "components/section.html" (dict "eyebrow" "Components" "title" "Prose" "dek" "Markdown output, styled by prose.css."
-    "body" (printf `<div class="prose">%s</div>` ($md | .RenderString (dict "display" "block"))))
+    "body" (printf `<div class="prose">%s</div>` ($md | .RenderString (dict "display" "block")) | safeHTML))
   }}
 
   {{ with .Content }}
