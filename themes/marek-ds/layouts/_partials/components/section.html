@@ -23,5 +23,8 @@
   {{ if .title }}
     {{ partial "components/section-header.html" (dict "title" .title "eyebrow" .eyebrow "dek" .dek "level" .level) }}
   {{ end }}
-  <div class="{{ if .title }}mt-header{{ end }} space-y-block">{{ .body }}</div>
+  {{- /* space-y-16, not space-y-block: a prose block running straight into a
+    timeline or a figure needs more air than two bullets in a list do.
+  */}}
+  <div class="{{ if .title }}mt-14{{ end }} space-y-16">{{ .body }}</div>
 </section>

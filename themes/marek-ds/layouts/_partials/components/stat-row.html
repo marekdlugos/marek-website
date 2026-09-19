@@ -1,20 +1,38 @@
 {{- /* components/stat-row.html
   A row of headline numbers. An item without a value renders as an arrow link.
 
+  The row is distributed rather than left-packed: the first item aligns left,
+  the last right, anything between is centred. Left-packing every column put
+  the middle number a third of the way across the track and read as three
+  left-aligned things rather than one balanced row.
+
   Props:
   stats  []dict, required: { value?, label, href?, external? }
 */}}
+{{- $last := sub (len .stats) 1 }}
 <ul class="grid gap-8 sm:grid-cols-3">
-  {{ range .stats }}
-    <li>
-      {{ if .value }}
+  {{ range $i, $s := .stats }}
+    {{- $align := "" }}
+    {{- if eq $i $last }}
+      {{ $align = "sm:text-right" }}
+    {{ else if gt $i 0 }}
+      {{ $align = "sm:text-center" }}
+    {{ end }}
+    <li class="{{ $align }}">
+      {{ if $s.value }}
         <span class="block text-xl font-medium tracking-tight">
-          {{ .value }}
+          {{ $s.value }}
         </span>
-        <span class="mt-1 block text-md text-muted">{{ .label }}</span>
+        <span class="mt-1 block text-md text-muted">{{ $s.label }}</span>
       {{ else }}
-        <span class="flex h-full items-center sm:justify-end">
-          {{ partial "components/arrow-link.html" . }}
+        <span
+          class="{{ if eq $i $last }}
+            sm:justify-end
+          {{ else if gt $i 0 }}
+            sm:justify-center
+          {{ end }} flex h-full items-center"
+        >
+          {{ partial "components/arrow-link.html" $s }}
         </span>
       {{ end }}
     </li>

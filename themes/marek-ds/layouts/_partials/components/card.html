@@ -15,6 +15,10 @@
   The quiet variant paints its hover surface outside its own box with a
   negative margin, so the text still aligns with the grid column. card-grid
   keeps the columns far enough apart to clear that bleed.
+
+  The bleed is 1rem, which is the FLOOR of --spacing-gutter. Any larger and a
+  card overhangs the viewport at narrow widths, which showed up as a 2px
+  horizontal scroll on /side-projects/ and /sharing/ at 390px.
 */}}
 {{- $variant := .variant | default "quiet" }}
 {{- $stretch := and .href (not .links) }}
@@ -27,7 +31,7 @@
   class="group {{ if eq $variant "media" }}
     overflow-hidden rounded-lg border border-hairline
   {{ else }}
-    -m-5 rounded-lg p-5 transition-colors duration-base hover:bg-surface-2
+    -m-4 rounded-lg p-4 transition-colors duration-base hover:bg-surface-2
   {{ end }} relative flex flex-col"
 >
   {{ with .image }}
@@ -44,7 +48,7 @@
       "class" "text-lg font-medium tracking-tight")
     }}
     {{ with .text }}
-      <div class="prose mt-4 text-md text-ink-2">{{ . | markdownify }}</div>
+      <div class="prose mt-6 text-md text-ink-2">{{ . | markdownify }}</div>
     {{ end }}
     {{ with .meta }}
       <ul class="mt-5 divide-y divide-hairline text-sm text-muted">

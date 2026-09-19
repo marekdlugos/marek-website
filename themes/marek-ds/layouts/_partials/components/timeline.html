@@ -5,7 +5,11 @@
   entries  []dict, required: see components/timeline-entry.html
   level    int, heading level of entry titles, default 3
 */}}
-<ol class="space-y-section">
+{{- /* Deliberately not space-y-section: the gap between two jobs is not the
+  gap between two page sections, and tying them together meant widening one
+  widened the other.
+*/}}
+<ol class="space-y-24">
   {{ range .entries }}
     <li>
       {{ partial "components/timeline-entry.html" (dict "entry" . "level" ($.level | default 3)) }}

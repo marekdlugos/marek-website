@@ -45,10 +45,10 @@
       <p class="mt-1 text-sm text-muted">{{ . }}</p>
     {{ end }}
     {{ with $e.body }}
-      <div class="prose mt-4 max-w-measure text-md">{{ . | markdownify }}</div>
+      <div class="prose mt-6 max-w-measure text-md">{{ . | markdownify }}</div>
     {{ end }}
     {{ with $e.bullets }}
-      <div class="prose mt-4 max-w-measure text-md">
+      <div class="prose mt-6 max-w-measure text-md">
         <ul>
           {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
         </ul>

@@ -77,14 +77,14 @@
   /* Rhythm. Added on top of Tailwind's default 0.25rem spacing scale.
      page    top and bottom padding of <main>
      section gap between two sections
-     header  gap from a section title down to its own content
      block   gap between sibling blocks inside a section
+     The gap from a section title down to its own content is stock mt-14;
+     it needs no token because it never scales with the viewport.
      Page and section are separate tokens on purpose: they were one, and
      widening the gap between sections also pushed every page's first
      heading further down the screen. */
   --spacing-page: clamp(4rem, 3rem + 4vw, 7rem);
-  --spacing-section: clamp(5rem, 3.75rem + 5vw, 8.75rem);
-  --spacing-header: 3.5rem;
+  --spacing-section: clamp(5rem, 5rem + 5vw, 10rem);
   --spacing-block: 2.5rem;
   --spacing-gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
   --spacing-scroll-offset: 6rem; /* keeps anchor targets clear of the sticky header */
