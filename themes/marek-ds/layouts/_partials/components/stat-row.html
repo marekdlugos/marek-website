@@ -2,14 +2,17 @@
   A row of headline numbers. An item without a value renders as an arrow link.
 
   The row is distributed rather than left-packed: the item in the first column
-  aligns left, the third right, the middle one centres. Left-packing every
-  column put the middle number a third of the way across the track and read as
-  three left-aligned things rather than one balanced row.
+  sits left, the third right, the middle one centres. Left-packing every column
+  put the middle number a third of the way across the track and read as three
+  left-aligned things rather than one balanced row.
+
+  It is justify-self, not text-align: the box is what moves, while the number
+  and its label keep a shared left edge. Centring the text instead would centre
+  the two lines against each other, so the digit would float over the middle of
+  the word beneath it.
 
   Alignment is keyed to the grid column (mod 3), not to the index, so a row of
-  one or of four still aligns to the columns it actually occupies. A valueless
-  arrow-link item is expected in the last column, which is where both callers
-  put it; elsewhere it aligns left.
+  one or of four still aligns to the columns it actually occupies.
 
   Props:
   stats  []dict, required: { value?, label, href?, external? }
@@ -20,9 +23,9 @@
       {{- $col := mod $i 3 }}
       <li
         class="{{ if eq $col 1 }}
-          sm:text-center
+          sm:justify-self-center
         {{ else if eq $col 2 }}
-          sm:text-right
+          sm:justify-self-end
         {{ end }}"
       >
         {{ if $s.value }}
@@ -31,11 +34,7 @@
           </span>
           <span class="mt-1 block text-md text-muted">{{ $s.label }}</span>
         {{ else }}
-          <span
-            class="{{ if eq $col 2 }}
-              sm:justify-end
-            {{ end }} flex h-full items-center"
-          >
+          <span class="flex h-full items-center">
             {{ partial "components/arrow-link.html" $s }}
           </span>
         {{ end }}
