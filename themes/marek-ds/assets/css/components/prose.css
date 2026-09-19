@@ -24,7 +24,11 @@
     font-size: var(--text-xl);
     line-height: var(--text-xl--line-height);
     font-weight: var(--font-weight-semibold);
-    margin-top: calc(var(--spacing-section) / 2);
+    /* Deliberately a fixed step, not --spacing-section / 2: the gap between
+       two page sections and the gap above a heading inside an article are
+       different decisions, and tying them together silently retuned every
+       blog post whenever the page rhythm was adjusted. */
+    margin-top: 4.5rem;
   }
 
   .prose h3 {

@@ -84,7 +84,7 @@
      widening the gap between sections also pushed every page's first
      heading further down the screen. */
   --spacing-page: clamp(4rem, 3rem + 4vw, 7rem);
-  --spacing-section: clamp(5rem, 5rem + 5vw, 10rem);
+  --spacing-section: min(5rem + 5vw, 10rem);
   --spacing-block: 2.5rem;
   --spacing-gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
   --spacing-scroll-offset: 6rem; /* keeps anchor targets clear of the sticky header */
