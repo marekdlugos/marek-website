@@ -12,7 +12,7 @@
     class="text-muted transition-transform duration-fast group-hover/link:translate-x-0.5"
     aria-hidden="true"
     >{{ if .external }}
-      {{ partial "icons/arrow-up-right.svg" }}
+      {{ partial "icons/external.svg" (dict "class" "size-3") }}
     {{ else }}
       {{ partial "icons/arrow-right.svg" }}
     {{ end }}</span

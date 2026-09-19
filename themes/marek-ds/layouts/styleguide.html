@@ -13,6 +13,7 @@
   {{ partial "components/page-hero.html" (dict
     "title" "Styleguide"
     "dek" "Every token and component of marek-ds, rendered with sample data. Change theme.css and watch this page."
+    "meta" (partial "components/byline.html" (dict "date" now "subscribe" "#newsletter"))
     "actions" (slice (dict "href" "#components" "label" "Jump to components" "variant" "outline")))
   }}
 

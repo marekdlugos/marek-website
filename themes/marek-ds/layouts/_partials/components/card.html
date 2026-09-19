@@ -26,7 +26,7 @@
 {{- $stretch := and .href (not .links) }}
 {{- $title := .title }}
 {{- if $stretch }}
-  {{- $target := cond (eq .external true) ` target="_blank" rel="noopener"` "" }}
+  {{- $target := cond (not (not .external)) ` target="_blank" rel="noopener"` "" }}
   {{- /* The arrow rides inside the anchor, so a card that leaves the site says
     so on the title itself rather than only in the status bar on hover.
   */}}
@@ -37,7 +37,7 @@
     Colour is left inheriting: Apple tints the indicator with its link, it does
     not mute it.
   */}}
-  {{- $arrow := cond (eq .external true) (partial "icons/external.svg" (dict
+  {{- $arrow := cond (not (not .external)) (partial "icons/external.svg" (dict
     "class" "ml-2 inline size-[0.55em] align-baseline") | chomp | string) ""
   }}
   {{- $title = printf `<a class="no-underline after:absolute after:inset-0" href="%s"%s>%s%s</a>` .href $target .title $arrow }}

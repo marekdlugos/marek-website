@@ -23,6 +23,10 @@
 {{- $e := .entry }}
 {{- $level := int (.level | default 3) }}
 {{- $nested := gt $level 3 }}
+{{- /* body and bullets are separate blocks on purpose: an entry with both
+  needs the gap between them, so they cannot share one wrapper.
+*/}}
+{{- $prose := "prose mt-6 max-w-measure text-md" }}
 {{- $date := $e.date }}
 {{- if not $date }}
   {{- $date = $e.from }}
@@ -45,10 +49,10 @@
       <p class="mt-1 text-sm text-muted">{{ . }}</p>
     {{ end }}
     {{ with $e.body }}
-      <div class="prose mt-6 max-w-measure text-md">{{ . | markdownify }}</div>
+      <div class="{{ $prose }}">{{ . | markdownify }}</div>
     {{ end }}
     {{ with $e.bullets }}
-      <div class="prose mt-6 max-w-measure text-md">
+      <div class="{{ $prose }}">
         <ul>
           {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
         </ul>

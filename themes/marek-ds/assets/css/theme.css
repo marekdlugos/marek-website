@@ -107,7 +107,6 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
-  --radius-pill: 9999px;
 
   --shadow-*: initial;
   --shadow-card: 0 10px 34px rgb(0 0 0 / 0.11);
@@ -115,7 +114,6 @@
   /* ---- Motion ------------------------------------------------------------ */
   --ease-*: initial;
   --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 /* Tailwind v4 has no duration namespace, so durations are plain variables
@@ -124,7 +122,6 @@
   color-scheme: light;
   --duration-fast: 150ms;
   --duration-base: 250ms;
-  --duration-slow: 500ms;
 }
 
 @utility duration-fast {
@@ -132,7 +129,4 @@
 }
 @utility duration-base {
   transition-duration: var(--duration-base);
-}
-@utility duration-slow {
-  transition-duration: var(--duration-slow);
 }

@@ -1,0 +1,20 @@
+{{- /* script.html
+  Builds, minifies, fingerprints and emits one of the theme's scripts.
+
+  Three call sites used to repeat this pipeline verbatim, each naming its file
+  twice, which is a quiet typo vector: a mismatched targetPath silently writes
+  the bundle to the wrong name.
+
+  Props:
+  src     string, required: path under assets/, e.g. "js/scroll.js"
+  params  map, optional: build-time values exposed to the script as @params
+*/}}
+{{- $opts := dict "targetPath" .src "minify" true }}
+{{- with .params }}{{ $opts = merge $opts (dict "params" .) }}{{ end }}
+{{- with resources.Get .src | js.Build $opts | fingerprint }}
+  <script
+    src="{{ .RelPermalink }}"
+    integrity="{{ .Data.Integrity }}"
+    defer
+  ></script>
+{{- end }}

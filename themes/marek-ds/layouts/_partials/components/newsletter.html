@@ -41,12 +41,6 @@
         ></p>
       </form>
     </section>
-    {{- with resources.Get "js/newsletter.js" | js.Build (dict "targetPath" "js/newsletter.js" "minify" true) | fingerprint }}
-      <script
-        src="{{ .RelPermalink }}"
-        integrity="{{ .Data.Integrity }}"
-        defer
-      ></script>
-    {{- end }}
+    {{ partial "script.html" (dict "src" "js/newsletter.js") }}
   {{- end }}
 {{- end }}

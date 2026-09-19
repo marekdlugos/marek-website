@@ -5,6 +5,8 @@
   footer and the Sharing page use.
   */
 -}}
+{{- $personID := printf "%s#person" site.BaseURL -}}
+{{- $siteURL := site.BaseURL | strings.TrimSuffix "/" -}}
 {{- $sameAs := slice -}}
 {{- range hugo.Data.sharing.socialnetworks -}}
   {{- $sameAs = $sameAs | append .url -}}
@@ -12,9 +14,9 @@
 {{- $person := dict
   "@context" "https://schema.org"
   "@type" "Person"
-  "@id" (printf "%s#person" site.BaseURL)
+  "@id" $personID
   "name" site.Params.author
-  "url" (site.BaseURL | strings.TrimSuffix "/")
+  "url" $siteURL
   "jobTitle" site.Params.jobTitle
   "description" site.Params.description
   "knowsAbout" site.Params.knowsAbout
@@ -25,8 +27,8 @@
   "@context" "https://schema.org"
   "@type" "WebSite"
   "name" site.Params.author
-  "url" (site.BaseURL | strings.TrimSuffix "/")
-  "author" (dict "@id" (printf "%s#person" site.BaseURL))
+  "url" $siteURL
+  "author" (dict "@id" $personID)
 -}}
 <script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
 <script type="application/ld+json">{{ $website | jsonify | safeJS }}</script>

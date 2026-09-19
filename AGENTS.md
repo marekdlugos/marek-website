@@ -31,7 +31,7 @@ One site, one look. No colour schemes, no i18n, no feature flags. Theme params (
 
 ```
 ├── .github/workflows/hugo.yml   # CI: format check, build, deploy master to Pages
-├── archetypes/post.md           # Blog post archetype
+├── archetypes/                  # default.md; post/index.md for blog posts
 ├── assets/
 │   ├── images/                  # Site images: awards/, client-logos/, hobbies/, sharing/, marek-dlugos.webp
 │   └── js/world-map.js          # amCharts init; country codes injected at build time
@@ -49,7 +49,7 @@ One site, one look. No colour schemes, no i18n, no feature flags. Theme params (
 │   └── work/                    # assignments.json, clients.json, experience.json
 ├── docs/superpowers/specs/      # Design spec
 ├── layouts/                     # SITE GLUE
-│   ├── home.html                # Home composition: page-hero + newsletter band
+│   ├── home.html                # Home composition: page-hero only
 │   ├── _partials/head/site.html     # Site-only <head>: Clearbit, rel=me, JSON-LD
 │   ├── _partials/footer/links.html  # Footer links from socialnetworks.json (footer: true)
 │   ├── _partials/schema-person.html # Person + WebSite JSON-LD (home only)
@@ -65,17 +65,17 @@ One site, one look. No colour schemes, no i18n, no feature flags. Theme params (
 │   ├── assets/css/theme.css     # EVERY TOKEN. The single tweak point.
 │   ├── assets/css/base.css      # font-face, element defaults, focus, reduced motion, view transitions
 │   ├── assets/css/components/   # layout.css (breakout grid), prose.css, toc.css, scroll-progress.css
-│   ├── assets/js/               # toc.js, newsletter.js
+│   ├── assets/js/               # scroll.js, toc.js, newsletter.js
 │   ├── static/fonts/            # InterVariable(-Italic).woff2
 │   └── layouts/
 │       ├── baseof.html, page.html, section.html, 404.html, styleguide.html
 │       ├── _partials/head.html, head/{css,fonts,site}.html, header.html, footer.html, footer/links.html, toc.html, toc-headings.html
 │       ├── _partials/components/  page-hero, section, section-header, heading, label-body, inner, timeline,
 │       │                          timeline-entry, disclosure, card-grid, card, dated-list, logo-wall, stat-row,
-│       │                          link-list, button, status-pill, arrow-link, byline, picture, figure, newsletter
+│       │                          link-list, button, arrow-link, byline, picture, figure, newsletter
 │       ├── _partials/icons/*.svg
-│       ├── _shortcodes/         # section, label-body, prose, figure
-│       └── _markup/render-link.html
+│       ├── _shortcodes/         # section, label-body, prose, figure, callout, gallery, youtube
+│       └── _markup/            # render-link.html, render-image.html
 ├── package.json                 # tailwindcss, @tailwindcss/cli, prettier + plugins; dev/build/format scripts
 └── hugo_stats.json              # generated class inventory (gitignored, referenced explicitly)
 ```
@@ -96,7 +96,7 @@ Every commit must build with zero warnings. Known quirk: the first `hugo server`
 
 `themes/marek-ds/layouts/page.html` renders every single page in one of three modes chosen by front matter:
 
-- **article** (`article: true`, cascaded from `content/blog/_index.md`): hero with byline, TOC rail, `.prose` content, newsletter.
+- **article** (`article: true`, cascaded from `content/blog/_index.md`): hero with byline, TOC rail, `.prose` content.
 - **prose** (`prose: true`): hero, `.prose` content. For plain Markdown pages (now, privacy policy).
 - **default**: hero, then the content as a sequence of `section` shortcodes.
 
@@ -124,7 +124,7 @@ Plain **Markdown** paragraphs.
 ## Design system conventions (the harness)
 
 - **Utilities live only in templates** (`themes/**/layouts`, `layouts/**`). `content/**` and `data/**` contain no class attributes and no raw HTML. Check: `grep -rn 'class=' content/` returns nothing.
-- **Tokens come only from `themes/marek-ds/assets/css/theme.css`.** No hex colours, px font sizes or ad-hoc durations anywhere else. Stock Tailwind namespaces are wiped there, so `text-3xl`, `text-neutral-500` or `rounded-2xl` do not exist; only `text-xs|sm|md|base|lg|xl|2xl`, `text-ink|ink-2|muted`, `bg-surface|surface-2`, `border-hairline`, `rounded-sm|md|lg|pill`, `font-light|normal|medium|semibold`, `tracking-body|tight|display|wide`, `max-w-measure|wide|track`, `p-gutter`, `mt-block`, `mt-section`, `py-page`, `duration-fast|base|slow`, `ease-out|in-out`. To change the type scale, edit `--text-*` and nothing else.
+- **Tokens come only from `themes/marek-ds/assets/css/theme.css`.** No hex colours, px font sizes or ad-hoc durations anywhere else. Stock Tailwind namespaces are wiped there, so `text-3xl`, `text-neutral-500` or `rounded-2xl` do not exist; only `text-xs|sm|md|base|lg|xl|2xl`, `text-ink|ink-2|muted`, `bg-surface|surface-2`, `border-hairline`, `rounded-sm|md|lg`, `font-light|normal|medium|semibold`, `tracking-body|tight|display|wide`, `max-w-measure|wide|track`, `px-gutter`, `mt-block`, `mt-section`, `py-page`, `duration-fast|base`, `ease-out`. To change the type scale, edit `--text-*` and nothing else.
 - **Spacing is the one namespace left intact.** `--spacing-*` is not wiped, so Tailwind's stock steps (`mt-6`, `mt-14`, `gap-y-20`, `space-y-24`) are available and are the right tool for a one-off gap that never scales with the viewport. Reach for a new `--spacing-*` token only when the value repeats across components or has to respond to the viewport; a token invented for a single call site is just a magic number with a longer name.
 - **The hierarchy rule.** The scale is a ladder and text may never sit on a rung at or above the heading it belongs to: `2xl` display, `xl` section title, `lg` entry title and dek, `base` long-form reading only, `md` supporting text inside a component, `sm` meta, `xs` captions. A timeline entry titled at `lg` carries its bullets at `md`, never at `base`.
 - **Watch for stock utilities that shadow a token.** Most Tailwind utilities come from a namespace that `--*: initial` empties, but a few are static and cannot be overridden by a token. `max-w-prose` is one, which is why the measure token is `--container-measure` and the utility is `max-w-measure`. When a new token's utility does not take effect, check for a stock utility of the same name before debugging anything else.

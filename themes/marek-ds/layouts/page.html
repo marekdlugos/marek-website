@@ -43,13 +43,7 @@
       {{ .Content }}
     </article>
     {{- if $toc }}
-      {{- with resources.Get "js/toc.js" | js.Build (dict "targetPath" "js/toc.js" "minify" true) | fingerprint }}
-        <script
-          src="{{ .RelPermalink }}"
-          integrity="{{ .Data.Integrity }}"
-          defer
-        ></script>
-      {{- end }}
+      {{ partial "script.html" (dict "src" "js/toc.js") }}
     {{- end }}
   {{- else }}
     {{ .Content }}

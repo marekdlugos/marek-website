@@ -28,13 +28,11 @@
       )
       [wide-end] minmax(var(--spacing-gutter), 1fr)
       [full-end];
-  }
 
-  /* main is flex-1, so on a short page it grows past its content and the grid
-     hands the surplus to its auto rows. That silently stretched the gap under
-     a page title on /now/ by ~143px. Rows keep their content size; the free
-     space stays at the bottom, where it belongs. */
-  .layout-grid {
+    /* main is flex-1, so on a short page it grows past its content and the
+       grid hands the surplus to its auto rows. That silently stretched the
+       gap under a page title on /now/ by ~143px. Rows keep their content
+       size; the free space stays at the bottom, where it belongs. */
     align-content: start;
   }
 

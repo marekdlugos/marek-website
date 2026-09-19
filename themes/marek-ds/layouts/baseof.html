@@ -15,12 +15,6 @@
     </main>
     {{ partial "footer.html" . }}
     <div class="scroll-progress" aria-hidden="true"></div>
-    {{- with resources.Get "js/scroll.js" | js.Build (dict "targetPath" "js/scroll.js" "minify" true) | fingerprint }}
-      <script
-        src="{{ .RelPermalink }}"
-        integrity="{{ .Data.Integrity }}"
-        defer
-      ></script>
-    {{- end }}
+    {{ partial "script.html" (dict "src" "js/scroll.js") }}
   </body>
 </html>

@@ -125,9 +125,10 @@
   .prose img,
   .prose video,
   .prose iframe {
+    /* No border-radius here: every image that reaches prose comes through
+       picture.html with rounded-lg, and a utility outranks this layer. */
     max-width: 100%;
     height: auto;
-    border-radius: var(--radius-md);
   }
 
   .prose small {
@@ -135,14 +136,8 @@
     color: var(--color-muted);
   }
 
-  .prose s {
-    color: var(--color-muted);
-  }
-}
-
-/* An article is itself a breakout grid, so figures and galleries inside it
-   can span the wide or full track while text stays in the prose column. */
-@layer components {
+  /* An article is itself a breakout grid, so figures and galleries inside it
+     can span the wide or full track while text stays in the prose column. */
   .prose.layout-grid {
     max-width: none;
   }

@@ -16,4 +16,4 @@
 */ -}}
 {{- $class := "ml-1 inline size-[0.7em] align-baseline" -}}
 {{- if reflect.IsMap . }}{{ with .class }}{{ $class = . }}{{ end }}{{ end -}}
-<svg class="{{ $class }}" viewBox="3 3 10 10" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>
+<svg class="{{ $class }}" viewBox="3 3 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>

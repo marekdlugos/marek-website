@@ -12,13 +12,10 @@
   width    "normal" (prose column, default) | "wide" | "full"
 */}}
 {{- $width := .width | default "normal" }}
+{{- $track := index (dict "wide" "breakout-wide" "full" "breakout-full") $width | default "" }}
 <section
   {{ with .id }}id="{{ . }}"{{ end }}
-  class="{{ if eq $width "wide" }}
-    breakout-wide
-  {{ else if eq $width "full" }}
-    breakout-full
-  {{ end }} mt-section"
+  class="{{ $track }} mt-section"
 >
   {{ if .title }}
     {{ partial "components/section-header.html" (dict "title" .title "eyebrow" .eyebrow "dek" .dek "level" .level) }}

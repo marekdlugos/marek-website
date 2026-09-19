@@ -22,7 +22,13 @@
       <p class="text-sm text-muted md:pt-1">{{ $date }}</p>
       <p>
         {{- $title := .title }}
-        {{- if .struck }}{{ $title = printf "<s>%s</s>" $title }}{{ end }}
+        {{- /* text-muted on the element, not in prose.css: a dated-list is passed
+          through as raw HTML by inner.html and never enters .prose, so a .prose s
+          rule could never reach it.
+        */}}
+        {{- if .struck }}
+          {{ $title = printf `<s class="text-muted">%s</s>` $title }}
+        {{ end }}
         {{- with .url }}
           <a href="{{ . }}" target="_blank" rel="noopener"
             >{{- $title | safeHTML -}}{{- partial "icons/external.svg" | chomp -}}</a
