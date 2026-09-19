@@ -2,7 +2,6 @@
 author: "Marek Dlugos"
 title: "1 Backpack 150 Days on the Road From Freezing Cold to Sweating"
 date: 2024-05-11T17:34:41+02:00
-description: ""
 draft: true
 tags: []
 categories: []

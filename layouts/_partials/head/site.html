@@ -14,3 +14,9 @@
 {{ if .IsHome }}
   {{ partial "schema-person.html" . }}
 {{ end }}
+{{ if .Params.article }}
+  {{ partial "schema-blogposting.html" . }}
+{{ end }}
+{{ if not .IsHome }}
+  {{ partial "schema-breadcrumb.html" . }}
+{{ end }}

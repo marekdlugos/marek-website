@@ -23,7 +23,7 @@ disableKinds = ["taxonomy", "term"]
   author = "Marek Dlugos"
   email = "hi@marekdlugos.com"
   description = "B2B SaaS consultant specializing in product, retention, and revenue growth. Aligning design, engineering, and sales into one execution engine."
-  jobTitle = "AI Solutions & Revenue Growth Consultant"
+  jobTitle = "Transformation Strategist"
   knowsAbout = ["B2B SaaS", "AI agents", "business process automation", "revenue growth", "product management", "customer success"]
   clearbitKey = "pk_4494011d9a7d418f46e138cdcbff45fa"
   # Fallback og:image, resolved against baseURL by the embedded opengraph
@@ -32,7 +32,7 @@ disableKinds = ["taxonomy", "term"]
 
   [params.worksFor]
     name = "Duvo"
-    url = "https://duvo.com"
+    url = "https://duvo.ai"
 
   [params.social]
     twitter = "MarekDlugos"

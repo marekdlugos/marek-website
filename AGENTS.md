@@ -53,6 +53,8 @@ One site, one look. No colour schemes, no i18n, no feature flags. Theme params (
 │   ├── _partials/head/site.html     # Site-only <head>: Clearbit, rel=me, JSON-LD
 │   ├── _partials/footer/links.html  # Footer links from socialnetworks.json (footer: true)
 │   ├── _partials/schema-person.html # Person + WebSite JSON-LD (home only)
+│   ├── _partials/schema-blogposting.html # BlogPosting JSON-LD (pages with `article`)
+│   ├── _partials/schema-breadcrumb.html  # BreadcrumbList JSON-LD (every page but home)
 │   └── _shortcodes/             # Data-bound wrappers: client-logos, experience-list, assignments,
 │                                #   projects, education-timeline, dated-list, social, travel-stats,
 │                                #   country-lists, world-map, podcast, videos-list, video-series
@@ -145,7 +147,8 @@ Plain **Markdown** paragraphs.
 
 ### Blog Posts
 
-- `content/blog/*.md`, kebab-case filenames matching the slug. Front matter: `author`, `title`, `date`, `description`, `draft`, `tags`, `categories`. Do not add `layout:` or `article:`; the section cascade handles it.
+- `content/blog/*.md`, kebab-case filenames matching the slug. Front matter: `author`, `title`, `date`, `description`, `draft`, `tags`, `categories`, and optionally `lastmod` and `images`. Do not add `layout:` or `article:`; the section cascade handles it.
+- `lastmod` is set by hand, only when a post is genuinely revised. It feeds `dateModified` in the BlogPosting JSON-LD and `lastmod` in the sitemap, so an unrevised post must not carry one. `enableGitInfo` is deliberately off: it would date every post to the last theme refactor.
 - Headings start at `##`. The TOC rail renders when a post has more than one heading.
 - The blog is "authentic, non-AI generated"; never write post content.
 - External links open in a new tab with a small outward arrow (`_markup/render-link.html`).

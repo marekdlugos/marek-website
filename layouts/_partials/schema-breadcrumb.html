@@ -1,0 +1,29 @@
+{{- /*
+  BreadcrumbList JSON-LD. Built from .Ancestors reversed so the home page is
+  position 1 and the current page is last. Not rendered on the home page: a
+  one-item breadcrumb tells a crawler nothing.
+  */
+-}}
+{{- $items := slice -}}
+{{- $position := 1 -}}
+{{- range .Ancestors.Reverse -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" $position
+    "name" (cond .IsHome "Home" .Title)
+    "item" .Permalink)
+  -}}
+  {{- $position = add $position 1 -}}
+{{- end -}}
+{{- $items = $items | append (dict
+  "@type" "ListItem"
+  "position" $position
+  "name" .Title
+  "item" .Permalink)
+-}}
+{{- $crumbs := dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "itemListElement" $items
+-}}
+<script type="application/ld+json">{{ $crumbs | jsonify | safeJS }}</script>
