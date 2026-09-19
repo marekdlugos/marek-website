@@ -1,7 +1,19 @@
-{{- /* size-[0.7em]: the arrow tracks the size of the text it follows, and no
-  token is a font-relative length. `inline` rather than `inline-block`: on an
-  svg with a viewBox and no width attribute, inline-block makes the browser
-  ignore the CSS width and reserve a 40px box, which showed up as a hole around
-  the arrow. viewBox is cropped to the path plus its half stroke, so the glyph
-  carries no built-in padding and ml-1 is the whole gap. */ -}}
-<svg class="ml-1 inline size-[0.7em] align-baseline" viewBox="3 3 10 10" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>
+{{- /* icons/external.svg
+
+  Props (all optional; the partial is also called with no context at all):
+  class  string: replaces the default sizing and spacing classes
+
+  Defaults are tuned for the arrow following body-size text in a list. The
+  glyph is font-relative so it tracks whatever it trails, and no token is a
+  font-relative length, hence the arbitrary size-[..].
+
+  `inline`, never `inline-block`: on an svg with a viewBox and no width
+  attribute, inline-block makes the browser ignore the CSS width and reserve a
+  40px box, which showed up as a hole around the arrow.
+
+  The viewBox is cropped to the path plus its half stroke, so the glyph carries
+  no built-in padding and the left margin is the whole gap.
+*/ -}}
+{{- $class := "ml-1 inline size-[0.7em] align-baseline" -}}
+{{- if reflect.IsMap . }}{{ with .class }}{{ $class = . }}{{ end }}{{ end -}}
+<svg class="{{ $class }}" viewBox="3 3 10 10" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>

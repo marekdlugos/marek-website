@@ -30,7 +30,16 @@
   {{- /* The arrow rides inside the anchor, so a card that leaves the site says
     so on the title itself rather than only in the status bar on hover.
   */}}
-  {{- $arrow := cond (eq .external true) (partial "icons/external.svg" | chomp | string) "" }}
+  {{- /* Smaller and further off the text than the list default: against a
+    display-size title the body-text arrow read as a second glyph rather than
+    an indicator. Apple sizes a trailing indicator well under the cap height of
+    the text it follows and gives it room (see the design spec's target look).
+    Colour is left inheriting: Apple tints the indicator with its link, it does
+    not mute it.
+  */}}
+  {{- $arrow := cond (eq .external true) (partial "icons/external.svg" (dict
+    "class" "ml-2 inline size-[0.55em] align-baseline") | chomp | string) ""
+  }}
   {{- $title = printf `<a class="no-underline after:absolute after:inset-0" href="%s"%s>%s%s</a>` .href $target .title $arrow }}
 {{- end }}
 <article
