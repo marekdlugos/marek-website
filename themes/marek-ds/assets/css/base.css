@@ -61,6 +61,12 @@
     scroll-margin-top: var(--spacing-scroll-offset);
   }
 
+  /* Lets height/block-size transition to and from auto, which is what makes
+     the disclosure panel glide instead of snap (components/disclosure.css). */
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     ::before,

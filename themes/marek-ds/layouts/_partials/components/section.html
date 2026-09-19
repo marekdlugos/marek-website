@@ -23,5 +23,5 @@
   {{ if .title }}
     {{ partial "components/section-header.html" (dict "title" .title "eyebrow" .eyebrow "dek" .dek "level" .level) }}
   {{ end }}
-  <div class="{{ if .title }}mt-block{{ end }} space-y-block">{{ .body }}</div>
+  <div class="{{ if .title }}mt-header{{ end }} space-y-block">{{ .body }}</div>
 </section>

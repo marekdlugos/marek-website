@@ -1,4 +1,7 @@
-{{- /* Home page: hero with portrait and actions, then the newsletter band. */}}
+{{- /* Home page: the hero with portrait. The newsletter band and the "My work"
+  action were removed on 2026-09-19; components/newsletter.html still ships and
+  is demoed on /styleguide/, so re-adding either is a one-line change.
+*/}}
 {{ define "main" }}
   {{- $portrait := resources.Get "images/marek-dlugos.webp" }}
   {{- /* Publish the original at a stable path; params.images points social cards at it. */}}
@@ -7,8 +10,6 @@
     "title" .Params.headline
     "weight" "normal"
     "image" $portrait
-    "imageAlt" site.Params.ds.author
-    "actions" (slice (dict "href" "/work/" "label" "My work")))
+    "imageAlt" site.Params.ds.author)
   }}
-  {{ partial "components/newsletter.html" . }}
 {{ end }}

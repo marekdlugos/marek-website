@@ -68,10 +68,23 @@
      token cannot override, so that name would silently lose. */
   --container-measure: 42rem; /* 672px: 60-65 characters at 22px */
   --container-wide: 75rem; /* 1200px: the content track */
-  --container-track: 75rem; /* header and footer share the content track */
+  /* The header and footer re-derive the content track by hand, outside the
+     breakout grid, and pad it with px-gutter. The grid keeps its gutter in a
+     track of its own, so the box has to be wider by that much for the two to
+     line up: a wide section, the wordmark and the footer rule all end flush. */
+  --container-track: calc(75rem + 2 * var(--spacing-gutter));
 
-  /* Rhythm. Added on top of Tailwind's default 0.25rem spacing scale. */
-  --spacing-section: clamp(4rem, 3rem + 4vw, 7rem);
+  /* Rhythm. Added on top of Tailwind's default 0.25rem spacing scale.
+     page    top and bottom padding of <main>
+     section gap between two sections
+     header  gap from a section title down to its own content
+     block   gap between sibling blocks inside a section
+     Page and section are separate tokens on purpose: they were one, and
+     widening the gap between sections also pushed every page's first
+     heading further down the screen. */
+  --spacing-page: clamp(4rem, 3rem + 4vw, 7rem);
+  --spacing-section: clamp(5rem, 3.75rem + 5vw, 8.75rem);
+  --spacing-header: 3.5rem;
   --spacing-block: 2.5rem;
   --spacing-gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
   --spacing-scroll-offset: 6rem; /* keeps anchor targets clear of the sticky header */

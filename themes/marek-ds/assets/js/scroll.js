@@ -15,8 +15,13 @@
 const header = document.querySelector('[data-header]');
 const root = document.documentElement;
 
-// Far enough that a stray trackpad nudge does not resize the header.
-const COMPACT_AFTER = 64;
+// Compacting removes ~54px of in-flow header height. The browser's scroll
+// anchoring then pulls scrollTop back by about as much, so a single threshold
+// gets re-crossed on the next frame and the header oscillates. Two thresholds
+// with a dead zone wider than that delta break the loop: once compact, stay
+// compact until the reader is genuinely back near the top.
+const COMPACT_AFTER = 96;
+const EXPAND_BEFORE = 32;
 
 let ticking = false;
 
@@ -25,7 +30,8 @@ const update = () => {
   const y = root.scrollTop;
 
   if (header) {
-    header.toggleAttribute('data-compact', y > COMPACT_AFTER);
+    const compact = header.hasAttribute('data-compact');
+    header.toggleAttribute('data-compact', y > (compact ? EXPAND_BEFORE : COMPACT_AFTER));
   }
 
   const scrollable = root.scrollHeight - root.clientHeight;

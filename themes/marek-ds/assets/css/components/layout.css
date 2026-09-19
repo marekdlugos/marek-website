@@ -30,6 +30,14 @@
       [full-end];
   }
 
+  /* main is flex-1, so on a short page it grows past its content and the grid
+     hands the surplus to its auto rows. That silently stretched the gap under
+     a page title on /now/ by ~143px. Rows keep their content size; the free
+     space stays at the bottom, where it belongs. */
+  .layout-grid {
+    align-content: start;
+  }
+
   .layout-grid > * {
     grid-column: prose;
   }
@@ -40,5 +48,18 @@
 
   .layout-grid > .breakout-full {
     grid-column: full;
+  }
+
+  /* A hideTitle hero renders only an sr-only h1, so it is a zero-height grid
+     row. Without this the next section still adds its own mt-section and the
+     first visible heading sits a whole section-gap lower than on a page that
+     shows its headline.
+
+     !important because mt-section is a Tailwind utility: the utilities layer
+     outranks this one whatever the specificity, and an important declaration
+     in the lower layer is the documented way back. Same reason base.css uses
+     it for the reduced-motion reset. */
+  .layout-grid > .hero-collapsed + * {
+    margin-top: 0 !important;
   }
 }

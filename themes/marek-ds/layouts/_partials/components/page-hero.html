@@ -23,7 +23,9 @@
 {{- $weight := index $weights (.weight | default "medium") }}
 {{- $wide := ne .width "prose" }}
 <header
-  class="{{ if $wide }}breakout-wide{{ end }} {{ if .image }}
+  class="{{ if $wide }}breakout-wide{{ end }} {{ if .hideTitle }}
+    hero-collapsed
+  {{ end }} {{ if .image }}
     grid gap-block md:grid-cols-[3fr_2fr] md:items-center
   {{ end }}"
 >

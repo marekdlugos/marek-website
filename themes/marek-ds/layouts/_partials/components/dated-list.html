@@ -25,12 +25,12 @@
         {{- if .struck }}{{ $title = printf "<s>%s</s>" $title }}{{ end }}
         {{- with .url }}
           <a href="{{ . }}" target="_blank" rel="noopener"
-            >{{- $title | safeHTML -}}{{- partial "icons/external.svg" -}}</a
+            >{{- $title | safeHTML -}}{{- partial "icons/external.svg" | chomp -}}</a
           >
         {{- else }}
           {{ $title | safeHTML }}
         {{- end }}
-        {{- with .medium }}<span class="text-muted">, {{ . }}</span>{{ end }}
+        {{- with .medium }}<span class="ml-2 text-muted">{{ . }}</span>{{ end }}
         {{- with .note }}
           <span class="block text-sm text-muted">{{ . }}</span>
         {{ end }}

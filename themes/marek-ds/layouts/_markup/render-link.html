@@ -8,6 +8,6 @@
   {{ with .Title }}title="{{ . }}"{{ end }}
   {{ if $external }}target="_blank" rel="noopener"{{ end }}
   >{{- .Text | safeHTML -}}{{- if $external -}}
-    {{- partial "icons/external.svg" -}}
+    {{- partial "icons/external.svg" | chomp -}}
   {{- end -}}</a
 >

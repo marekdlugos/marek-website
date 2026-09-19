@@ -213,6 +213,11 @@
     "iso": "MT"
   },
   {
+    "name": "Monaco",
+    "continent": "europe",
+    "iso": "MC"
+  },
+  {
     "name": "Montenegro",
     "continent": "europe",
     "iso": "ME"

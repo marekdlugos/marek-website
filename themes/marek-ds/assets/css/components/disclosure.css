@@ -1,0 +1,31 @@
+/*
+ * The disclosure panel's open/close glide.
+ *
+ * components/disclosure.html is a native <details>. Only the chevron animated,
+ * so the rotation read as detached from a panel that snapped open. Utilities
+ * cannot express this: it is a ::details-content pseudo-element, and animating
+ * to an intrinsic height needs interpolate-size (set on :root in base.css).
+ *
+ * Wrapped in prefers-reduced-motion: no-preference on purpose. The global reset
+ * in base.css lists `*, ::before, ::after`, which does NOT match
+ * ::details-content, so this transition would otherwise ignore the preference.
+ *
+ * Browsers without ::details-content, or without interpolate-size, keep the
+ * previous instant open. Nothing is lost but the glide.
+ */
+@layer components {
+  @media (prefers-reduced-motion: no-preference) {
+    details::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size var(--duration-base) var(--ease-out),
+        content-visibility var(--duration-base) var(--ease-out);
+      transition-behavior: allow-discrete;
+    }
+
+    details[open]::details-content {
+      block-size: auto;
+    }
+  }
+}

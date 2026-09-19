@@ -1,1 +1,7 @@
-<svg class="ml-0.5 inline-block size-[0.7em] align-baseline" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>
+{{- /* size-[0.7em]: the arrow tracks the size of the text it follows, and no
+  token is a font-relative length. `inline` rather than `inline-block`: on an
+  svg with a viewBox and no width attribute, inline-block makes the browser
+  ignore the CSS width and reserve a 40px box, which showed up as a hole around
+  the arrow. viewBox is cropped to the path plus its half stroke, so the glyph
+  carries no built-in padding and ml-1 is the whole gap. */ -}}
+<svg class="ml-1 inline size-[0.7em] align-baseline" viewBox="3 3 10 10" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>

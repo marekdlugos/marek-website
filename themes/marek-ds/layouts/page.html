@@ -14,11 +14,7 @@
   {{- $reading := or .Params.article .Params.prose }}
   {{- $meta := "" }}
   {{- if .Params.article }}
-    {{- $subscribe := "" }}
-    {{- with site.Params.ds.newsletter }}
-      {{- with .action }}{{ $subscribe = "#newsletter" }}{{ end }}
-    {{- end }}
-    {{- $meta = partial "components/byline.html" (dict "date" .Date "subscribe" $subscribe) }}
+    {{- $meta = partial "components/byline.html" (dict "date" .Date) }}
   {{- end }}
   {{ partial "components/page-hero.html" (dict
     "title" (.Params.headline | default .Title)
@@ -34,7 +30,16 @@
       {{- $toc = partial "toc.html" . | string | strings.TrimSpace }}
     {{- end }}
     {{ $toc | safeHTML }}
-    <article class="prose layout-grid breakout-full mt-block">
+    {{- /* Articles keep the block gap under the byline; a prose page has no
+      byline, so its title would otherwise float too far above the text.
+    */}}
+    <article
+      class="prose layout-grid breakout-full {{ if .Params.article }}
+        mt-block
+      {{ else }}
+        mt-6
+      {{ end }}"
+    >
       {{ .Content }}
     </article>
     {{- if $toc }}
@@ -45,9 +50,6 @@
           defer
         ></script>
       {{- end }}
-    {{- end }}
-    {{- if .Params.article }}
-      {{ partial "components/newsletter.html" . }}
     {{- end }}
   {{- else }}
     {{ .Content }}

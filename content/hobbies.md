@@ -16,7 +16,7 @@ menu:
 {{< /section >}}
 
 {{< section title="Sharing" width="wide" >}}
-{{< label-body label="Interviews" measure="prose" >}}
+{{< label-body label="Interviews" >}}
 {{< figure src="hobbies/marek-dlugos-podcast.jpg" alt="Marek Dlugos Podcast" >}}
 {{< prose >}}
 I was fortunate to meet a lot of very interesting people along the way and now I am happy to bring 5 interviews with some of them! I guess I might be able to say it is quality content, unfortunately, it is only available in the Slovak language.
