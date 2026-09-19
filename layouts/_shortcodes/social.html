@@ -1,6 +1,6 @@
 {{- /* Social networks from data/sharing/socialnetworks.json as quiet cards. */}}
 {{- $items := slice }}
 {{- range hugo.Data.sharing.socialnetworks }}
-  {{- $items = $items | append (dict "title" .name "text" .desc "href" .url "external" true "level" 3) }}
+  {{- $items = $items | append (dict "title" .name "text" .desc "href" .url "external" true "dense" true "level" 3) }}
 {{- end }}
 {{- partial "components/card-grid.html" (dict "cols" 2 "items" $items) }}

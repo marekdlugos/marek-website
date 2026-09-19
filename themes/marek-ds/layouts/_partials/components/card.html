@@ -6,6 +6,8 @@
   external  bool, optional
   image     resource, optional (media variant)
   imageAlt  string, required with image
+  dense     bool, optional: `text` is a one-line caption, not a paragraph, so
+  it sits tight under the title instead of a paragraph gap below it
   meta      []string, optional: short facts, one per hairline row
   links     []dict{label, href, external}, optional: arrow links under the text
   cta       dict{label, href, external}, optional: button at the bottom
@@ -25,7 +27,11 @@
 {{- $title := .title }}
 {{- if $stretch }}
   {{- $target := cond (eq .external true) ` target="_blank" rel="noopener"` "" }}
-  {{- $title = printf `<a class="no-underline after:absolute after:inset-0" href="%s"%s>%s</a>` .href $target .title }}
+  {{- /* The arrow rides inside the anchor, so a card that leaves the site says
+    so on the title itself rather than only in the status bar on hover.
+  */}}
+  {{- $arrow := cond (eq .external true) (partial "icons/external.svg" | chomp | string) "" }}
+  {{- $title = printf `<a class="no-underline after:absolute after:inset-0" href="%s"%s>%s%s</a>` .href $target .title $arrow }}
 {{- end }}
 <article
   class="group {{ if eq $variant "media" }}
@@ -48,7 +54,15 @@
       "class" "text-lg font-medium tracking-tight")
     }}
     {{ with .text }}
-      <div class="prose mt-6 text-md text-ink-2">{{ . | markdownify }}</div>
+      <div
+        class="prose {{ if $.dense }}
+          mt-2
+        {{ else }}
+          mt-6
+        {{ end }} text-md text-ink-2"
+      >
+        {{ . | markdownify }}
+      </div>
     {{ end }}
     {{ with .meta }}
       <ul class="mt-5 divide-y divide-hairline text-sm text-muted">

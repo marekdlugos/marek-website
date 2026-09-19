@@ -7,6 +7,12 @@
  * for why it is not a CSS scroll-driven animation. Transition durations are
  * collapsed under prefers-reduced-motion by base.css, so the change snaps
  * instead of gliding for readers who ask for that.
+ *
+ * Only from 40rem up. On a phone the menu already wraps onto three rows, and
+ * shrinking the type reflowed it to a different number of items per row
+ * mid-scroll. Losing a few pixels of header is not worth the menu rearranging
+ * itself under the reader's thumb. The attribute is still set at every width;
+ * only the styling is gated.
  */
 @layer components {
   .site-header-inner {
@@ -25,15 +31,17 @@
     transition: font-size var(--duration-base) var(--ease-out);
   }
 
-  [data-compact] .site-header-inner {
-    padding-block: 0.85rem;
-  }
+  @media (min-width: 40rem) {
+    [data-compact] .site-header-inner {
+      padding-block: 0.85rem;
+    }
 
-  [data-compact] .site-brand {
-    font-size: var(--text-md);
-  }
+    [data-compact] .site-brand {
+      font-size: var(--text-md);
+    }
 
-  [data-compact] .site-nav {
-    font-size: var(--text-sm);
+    [data-compact] .site-nav {
+      font-size: var(--text-sm);
+    }
   }
 }
