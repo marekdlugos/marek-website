@@ -351,6 +351,11 @@
     ]
   },
   {
+    "name": "Egypt",
+    "continent": "africa",
+    "iso": "EG"
+  },
+  {
     "name": "Morocco",
     "continent": "africa",
     "iso": "MA"
